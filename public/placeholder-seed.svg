@@ -1,0 +1,21 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="seedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="90" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2"/>
+  
+  <!-- Seed shape -->
+  <ellipse cx="100" cy="100" rx="35" ry="25" fill="url(#seedGradient)" stroke="#654321" stroke-width="1"/>
+  
+  <!-- Seed details -->
+  <ellipse cx="95" cy="95" rx="8" ry="5" fill="#654321" opacity="0.6"/>
+  <ellipse cx="105" cy="105" rx="6" ry="4" fill="#654321" opacity="0.4"/>
+  
+  <!-- Text -->
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#6c757d">Seed Image</text>
+</svg> 

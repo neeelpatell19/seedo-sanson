@@ -1,0 +1,101 @@
+/* Made In India Component */
+.made-in-india-home-container {
+    background-color: #BC272B;
+    color: white;
+}
+
+.made-in-india-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    min-height: 400px;
+}
+
+.made-in-india-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.made-in-india-description {
+    font-size: 18px;
+    line-height: 1.7;
+    color: white;
+    margin: 0;
+    opacity: 0.95;
+}
+
+.made-in-india-description strong {
+    font-weight: 700;
+    color: white;
+}
+
+.made-in-india-image {
+    flex: 1;
+    max-width: 600px;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    background: white;
+    padding: 0px;
+}
+
+.child-toy-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    min-height: 300px;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .made-in-india-content {
+        gap: 40px;
+    }
+    
+   
+    
+    .made-in-india-description {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .made-in-india-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .made-in-india-text {
+        max-width: 100%;
+    }
+  
+    
+    .made-in-india-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+  
+    .made-in-india-description {
+        font-size: 15px;
+    }
+    
+    .image-container {
+        border-radius: 15px;
+        padding: 8px;
+    }
+    
+    .child-toy-image {
+        border-radius: 8px;
+        min-height: 250px;
+    }
+}
+

@@ -1,0 +1,82 @@
+.home-marquee-container {
+  overflow: hidden;
+  background: #BC272B;
+  padding: 20px 0px;
+}
+
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+}
+
+.marquee-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  animation: marquee-scroll 100s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 80px;
+  flex-shrink: 0;
+}
+
+.star-image {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.marquee-text {
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Remove the pseudo-element approach since we're using dynamic content */
+.marquee-content::before,
+.marquee-content::after {
+  display: none;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .marquee-text {
+    font-size: 16px;
+  }
+  
+  .star-image {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .marquee-content {
+    animation-duration: 25s;
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee-content {
+    animation-duration: 20s;
+  }
+}

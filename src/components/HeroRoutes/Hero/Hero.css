@@ -1,0 +1,192 @@
+/* Hero Video Container - Main wrapper */
+.hero-video-container {
+    width: 100%;
+}
+
+/* Hero Video Wrapper - Contains video and overlay */
+.hero-video-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    height: 700px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e0e0e0;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-wrapper:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+/* Hero Video - Main video element */
+.hero-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: #f0f0f0;
+    min-height: 300px;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hero Video Overlay - Contains play button */
+.hero-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+/* .hero-video-wrapper:hover .hero-video-overlay {
+    background: rgba(0, 0, 0, 0.2);
+} */
+
+/* Hero Play Button - Main play button */
+.hero-play-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(255, 71, 87, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-play-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #ff6b7a, #ff4757);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+}
+
+.hero-play-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(255, 71, 87, 0.6);
+}
+
+.hero-play-button:hover::before {
+    opacity: 1;
+}
+
+.hero-play-button:active {
+    transform: scale(0.95);
+}
+
+/* Hero Play Icon - SVG play icon */
+.hero-play-icon {
+    width: 32px;
+    height: 32px;
+    color: white;
+    position: relative;
+    z-index: 1;
+    margin-left: 4px; /* Slight offset for visual balance */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-video-container {
+        padding: 15px;
+    }
+    
+    .hero-play-button {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .hero-play-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-video-container {
+        padding: 10px;
+    }
+    
+    .hero-play-button {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .hero-play-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .hero-video {
+        min-height: 200px;
+    }
+}
+
+/* Loading state */
+.hero-video-container.loading .hero-video-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-video-container.loading .hero-play-button {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Focus states for accessibility */
+.hero-play-button:focus {
+    outline: 3px solid rgba(255, 71, 87, 0.5);
+    outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .hero-video-wrapper {
+        border-color: #404040;
+        background-color: #2a2a2a;
+    }
+    
+    .hero-video {
+        background-color: #1a1a1a;
+    }
+    
+    .hero-video-overlay {
+        background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-video-wrapper:hover .hero-video-overlay {
+        background: rgba(0, 0, 0, 0.4);
+    }
+}

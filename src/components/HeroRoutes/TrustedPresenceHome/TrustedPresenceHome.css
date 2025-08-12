@@ -1,0 +1,70 @@
+.TrustedPresenceHome {
+    background-image: url("https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/Trusted Presence Background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.TrustedPresenceHome .section-header h1 {
+    color: #BC272B;
+}
+
+.TrustedPresenceHome .section-header {
+    justify-content: center !important;
+}
+
+/* Client Logos Slider Styles */
+.clients-slider-container {
+    margin-top: 40px;
+}
+
+.clients-swiper {
+    padding: 20px 0;
+}
+
+.client-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-logo-container {
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    /* width: 100%; */
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-logo-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.client-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* filter: grayscale(100%); */
+    transition: filter 0.3s ease;
+}
+
+.client-logo-container:hover .client-logo {
+    filter: grayscale(0%);
+}
+
+/* Swiper pagination styles for TrustedPresenceHome */
+.TrustedPresenceHome .clients-swiper .swiper-pagination-bullet {
+    background: #BC272B;
+    opacity: 0.5;
+}
+
+.TrustedPresenceHome .clients-swiper .swiper-pagination-bullet-active {
+    background: #BC272B;
+    opacity: 1;
+}

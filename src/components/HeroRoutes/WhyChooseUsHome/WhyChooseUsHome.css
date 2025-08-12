@@ -1,0 +1,28 @@
+.why-choose-us-home .header-section{
+    justify-content: center;
+}
+.why-choose-us-home{
+    background-color: #003049;
+}
+.why-choose-us-home{
+    padding: 80px 0px;
+}
+.WhyChooseUsPoint p{
+    margin: 20px 0px;
+}
+.WhyChooseUsPoint p:before{
+   content: "✔";
+   margin: 0px 10px;
+}
+.WhyChooseUsPointsContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.why-choose-us-home{
+    background-image: url("https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/Background1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
