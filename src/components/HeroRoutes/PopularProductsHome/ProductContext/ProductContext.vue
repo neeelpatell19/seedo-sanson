@@ -20,7 +20,7 @@ export default {
 
             try {
                 // console.log('Fetching products from API via proxy...')
-                const response = await fetch('/api/seedo/getAllProducts')
+                const response = await fetch('/seedo/getAllProducts')
                 // console.log('Fetch response status:', response.status)
                 if (!response.ok) {
                     throw new Error('Failed to fetch products')
