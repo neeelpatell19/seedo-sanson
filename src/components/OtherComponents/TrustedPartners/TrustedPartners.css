@@ -1,0 +1,116 @@
+/* Parent namespace */
+.TrustedPartners {
+    background: #082d3b;          /* plain, no graphics */
+    color: #ffffff;
+    padding: 64px 20px;
+  }
+  
+  /* Two-column shell: logos (left) + copy (right) */
+  .TrustedPartners .tp-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 48px 64px;
+    align-items: center;
+  }
+  
+  /* Mosaic grid on the left
+     4 columns, auto rows. The big card spans 2x2 to match the reference. */
+  .TrustedPartners .tp-logos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    grid-auto-rows: 150px;
+    gap: 26px;
+    align-items: start;
+    justify-items: stretch;
+  }
+  
+  /* Cards */
+  .TrustedPartners .logo-card {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    display: grid;
+    place-items: center;
+    padding: 14px;
+  }
+  
+  .TrustedPartners .logo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* --- Explicit placement to mirror screenshot --- */
+  .TrustedPartners .card-big       { grid-column: 1 / span 2; grid-row: 1 / span 2; } /* big tile */
+  .TrustedPartners .card-cn        { grid-column: 3; grid-row: 1; }
+  .TrustedPartners .card-unilever  { grid-column: 3; grid-row: 2; }
+  .TrustedPartners .card-marvel    { grid-column: 4; grid-row: 2; }
+  .TrustedPartners .card-disney    { grid-column: 1; grid-row: 3; }
+  .TrustedPartners .card-toystory  { grid-column: 2; grid-row: 3; }
+  .TrustedPartners .card-chhota    { grid-column: 3; grid-row: 3; }
+  .TrustedPartners .card-pepsi     { grid-column: 2; grid-row: 4; }
+  
+  /* Right column text */
+  .TrustedPartners .tp-copy h2 {
+    margin: 0 0 14px;
+    line-height: 1.05;
+    font-weight: 700;            /* typography can be overridden by your global CSS */
+  }
+  
+  .TrustedPartners .tp-copy p {
+    margin: 0;
+    color: #b8d0da;
+    line-height: 1.7;
+    max-width: 560px;
+  }
+  
+  /* --------- Responsive --------- */
+  @media (max-width: 1100px) {
+    .TrustedPartners .tp-wrap {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .TrustedPartners .tp-copy {
+      max-width: 720px;
+    }
+  }
+  
+  @media (max-width: 860px) {
+    .TrustedPartners .tp-logos {
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      grid-auto-rows: 140px;
+    }
+  
+    /* Reflow placements while keeping big tile first */
+    .TrustedPartners .card-big      { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+    .TrustedPartners .card-cn       { grid-column: 3; grid-row: 1; }
+    .TrustedPartners .card-unilever { grid-column: 3; grid-row: 2; }
+    .TrustedPartners .card-marvel   { grid-column: 3; grid-row: 3; }
+    .TrustedPartners .card-disney   { grid-column: 1; grid-row: 3; }
+    .TrustedPartners .card-toystory { grid-column: 2; grid-row: 3; }
+    .TrustedPartners .card-chhota   { grid-column: 1; grid-row: 4; }
+    .TrustedPartners .card-pepsi    { grid-column: 2; grid-row: 4; }
+  }
+  
+  @media (max-width: 560px) {
+    .TrustedPartners { padding: 44px 16px; }
+  
+    .TrustedPartners .tp-logos {
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      grid-auto-rows: 130px;
+      gap: 16px;
+    }
+  
+    /* Mobile: stack; big stays spanning 2 columns on top */
+    .TrustedPartners .card-big      { grid-column: 1 / -1; grid-row: 1 / span 2; }
+    .TrustedPartners .card-cn       { grid-column: 1; grid-row: 3; }
+    .TrustedPartners .card-unilever { grid-column: 2; grid-row: 3; }
+    .TrustedPartners .card-marvel   { grid-column: 1; grid-row: 4; }
+    .TrustedPartners .card-disney   { grid-column: 2; grid-row: 4; }
+    .TrustedPartners .card-toystory { grid-column: 1; grid-row: 5; }
+    .TrustedPartners .card-chhota   { grid-column: 2; grid-row: 5; }
+    .TrustedPartners .card-pepsi    { grid-column: 1 / -1; grid-row: 6; }
+  }
+  

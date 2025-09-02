@@ -1,0 +1,133 @@
+/* Parent namespace */
+.OurValues {
+    /* width: 100%; */
+    display: grid;
+    place-items: center;
+    padding: 40px 20px;
+}
+
+/* Main grid: two columns on desktop */
+.OurValues .ov-grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1.05fr 1.4fr;
+    gap: 90px;
+}
+
+/* Left side */
+.OurValues .ov-left {
+    display: grid;
+    align-content: start;
+    gap: 24px;
+}
+
+.OurValues .ov-title {
+    margin: 0;
+    color: #0b2d3f;
+    /* deep navy */
+    line-height: 1.2;
+}
+
+.OurValues .ov-figure {
+    margin: 0;
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .08);
+}
+
+.OurValues .ov-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Right side: stacked cards */
+.OurValues .ov-right {
+    display: grid;
+    gap: 28px;
+    /* align-content: start; */
+}
+
+/* Card */
+.OurValues .ov-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    grid-template-columns: 1fr;
+    /* content will be in body */
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px 28px 24px 72px;
+    /* left space for badge overlap */
+    box-shadow: 0 10px 24px rgba(10, 40, 60, 0.12);
+}
+
+/* Badge (red circle overlapping left) */
+.OurValues .ov-badge {
+    position: absolute;
+    left: -28px;
+    /* top: 28px; */
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #cf2e2e;
+    /* seedo red */
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 18px rgba(207, 46, 46, 0.35);
+}
+
+.OurValues .ov-badge svg {
+    width: 34px;
+    height: 34px;
+    fill: #fff;
+}
+
+
+.OurValues .ov-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Card body */
+.OurValues .ov-card-body h3 {
+    margin: 0 0 10px;
+    color: #0c2d48;
+}
+
+.OurValues .ov-card-body p {
+    margin: 0;
+    color: #123b56;
+    line-height: 1.65;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .OurValues .ov-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .OurValues .ov-title {
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
+    .OurValues {
+        padding: 28px 16px;
+    }
+
+    .OurValues .ov-card {
+        padding: 22px 20px 22px 66px;
+    }
+
+    .OurValues .ov-badge {
+        left: -22px;
+        width: 64px;
+        height: 64px;
+    }
+}

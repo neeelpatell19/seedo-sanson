@@ -1,0 +1,27 @@
+.TimeLineImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.TimeLineImage {
+    padding: 56px 20px 48px;
+}
+
+.TimeLineImage.pcOnly {
+    display: block;
+}
+
+.TimeLineImage.mobileOnly {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .TimeLineImage.pcOnly {
+        display: none;
+    }
+
+    .TimeLineImage.mobileOnly {
+        display: block;
+    }
+}

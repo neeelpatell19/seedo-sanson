@@ -1,0 +1,106 @@
+.OurOfferingAbout {
+    background: url("	https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/Background1.png") center/cover no-repeat;
+    padding: 60px 20px;
+    color: #fff;
+}
+
+/* Container grid */
+.OurOfferingAbout .oo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Left */
+.OurOfferingAbout .oo-left h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+
+/* Right Grid */
+.OurOfferingAbout .oo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+/* Card */
+.OurOfferingAbout .oo-card {
+    background: #fff;
+    color: #222;
+    padding: 28px 22px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    display: grid;
+    gap: 12px;
+    position: relative;
+    padding-top: 100px !important;
+    transition: .5s;
+}
+
+.OurOfferingAbout .oo-card  img{
+    width: 200px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    position: absolute;
+    top: -30px;
+    left: -20px;
+}
+.OurOfferingAbout .oo-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #111;
+}
+
+.OurOfferingAbout .oo-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Icon placeholder */
+.OurOfferingAbout .oo-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+/* Highlight card */
+.OurOfferingAbout .oo-card:hover {
+    background: #f7b733;
+    /* orange highlight */
+    /* color: #fff; */
+    transition: .5s;
+}
+
+/* .OurOfferingAbout .oo-card.highlight h3,
+.OurOfferingAbout .oo-card.highlight p {
+    color: #fff;
+} */
+
+.OurOfferingAbout .oo-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .OurOfferingAbout .oo-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+
+}
+
+@media (max-width: 600px) {
+    .OurOfferingAbout .oo-grid {
+        grid-template-columns: 1fr;
+    }
+}

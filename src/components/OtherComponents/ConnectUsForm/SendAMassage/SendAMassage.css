@@ -1,0 +1,102 @@
+/* Wrapper */
+.sa-message {
+    background-image: url('https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/Background1.png');
+    /* solid red */
+    color: #ffffff;
+    /* white text */
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Grid container */
+.sa-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+@media (min-width: 992px) {
+    .sa-container {
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+        gap: 48px;
+        padding: 72px 24px;
+    }
+}
+
+/* Left column */
+.sa-left {}
+
+/* Title (no font-size/weight here; rely on your global style.css) */
+.sa-title {
+    line-height: 1.05;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* Right column form */
+.sa-form {
+    display: grid;
+    gap: 16px;
+}
+
+/* Inputs — simple, clean, same look as screenshot */
+.sa-input,
+.sa-textarea {
+    /* width: 100%; */
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #ffffff;
+    outline: none;
+}
+
+.sa-input:focus,
+.sa-textarea:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+/* Placeholder in white (slightly dim) */
+.sa-input::placeholder,
+.sa-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Submit button (simple, no fancy styles) */
+.sa-button {
+    border: 1.5px solid transparent;
+    background: #FEB705;
+    color: black;
+    border-radius: 999px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    width: fit-content;
+    justify-self: end;
+    /* aligns like the screenshot */
+}
+
+.sa-button:hover,
+.sa-button:focus {
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+}
+
+/* Accessibility helper for hidden labels */
+.sr-only {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: -1px;
+}

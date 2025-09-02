@@ -1,0 +1,104 @@
+/* ===== Parent namespace ===== */
+.Certifications {
+    padding: 36px 20px 56px;
+    color: #111;
+  }
+  
+  .Certifications .cert-head {
+    max-width: 1220px;
+    margin: 0 auto 18px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 16px;
+  }
+  
+  .Certifications .cert-head h2 {
+    margin: 0;
+  }
+  
+  .Certifications .cert-head .view-all {
+    color: #3b3b3b;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  
+  /* Swiper container kept within page width */
+  .Certifications .cert-swiper {
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+  
+  /* Slide/Card */
+  .Certifications .cert-card {
+    background: #fff;
+    border-radius: 14px;
+    border:2px solid #d8b800; /* gold edge like reference */
+    /* min-height: 360px;          roomy interior */
+    display: grid;
+    place-items: stretch;
+    height: 100%;
+  }
+
+  .Certifications .swiper-wrapper {
+    padding-bottom: 80px;
+  }
+  
+  .Certifications .cert-inner {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 24px 24px 28px;
+    /* height: 100%; */
+    gap: 16px;
+  }
+  
+  .Certifications .swiper-slide{
+    height: unset !important;
+  }
+  .Certifications .cert-logo {
+    display: grid;
+    place-items: center;
+    background: #fff;
+    border-radius: 10px;
+  }
+  
+  .Certifications .cert-logo img {
+    width: 100%;
+    max-width: 380px;
+    height: 190px;
+    object-fit: contain;
+  }
+  
+  .Certifications .cert-title {
+    margin: 0;
+    text-align: center;
+    line-height: 1.25;
+  }
+  
+  /* Swiper nav styling */
+  .Certifications .swiper-button-prev,
+  .Certifications .swiper-button-next {
+    color: #1a1a1a;
+  }
+  
+  .Certifications .swiper-pagination-bullet {
+    background: #c4c4c4;
+    opacity: 1;
+  }
+  .Certifications .swiper-pagination-bullet-active {
+    background: #1a1a1a;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 640px) {
+    .Certifications {
+      padding: 24px 16px 40px;
+    }
+    .Certifications .cert-card {
+      min-height: 300px;
+    }
+    .Certifications .cert-logo img {
+      height: 160px;
+    }
+  }
+  

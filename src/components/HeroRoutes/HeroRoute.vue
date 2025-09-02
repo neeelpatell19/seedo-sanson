@@ -8,6 +8,7 @@ import PopularProductsHome from './PopularProductsHome/PopularProductsHome.vue'
 import TrustedPresenceHome from './TrustedPresenceHome/TrustedPresenceHome.vue'
 import OurJourneyVideo from './OurJourneyVideo/OurJourneyVideo.vue'
 import MadeInIndiaHome from './MadeInIndiaHome/MadeInIndiaHome.vue'
+import SendAMassage from '../OtherComponents/ConnectUsForm/SendAMassage/SendAMassage.vue'
 export default {
   components: {
     Hero,
@@ -18,7 +19,8 @@ export default {
     PopularProductsHome,
       TrustedPresenceHome,
     OurJourneyVideo,
-    MadeInIndiaHome
+    MadeInIndiaHome,
+    SendAMassage
   }
 }
 </script>
@@ -34,6 +36,7 @@ export default {
     <TrustedPresenceHome />
     <OurJourneyVideo />
     <MadeInIndiaHome />
+    <SendAMassage />
   </div>
 </template>
 

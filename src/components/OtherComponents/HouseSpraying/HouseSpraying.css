@@ -1,0 +1,90 @@
+/* Parent namespace */
+.InHouseSpraying {
+    /* width: 100%; */
+    background: #f6f7f8; /* subtle light background like reference */
+    padding: 56px 20px 48px;
+    color: #1b1b1b;
+  }
+  
+  /* Top grid: left (eyebrow + title) | right (copy) */
+  .InHouseSpraying .ihs-head {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    display: grid;
+    grid-template-columns: 1.05fr 1.4fr;
+    gap: 48px;
+    align-items: start;
+  }
+  
+  /* Left */
+  .InHouseSpraying .ihs-eyebrow {
+    margin: 0 0 10px;
+    color: #d33a35;            /* red eyebrow */
+    letter-spacing: 0.2px;
+  }
+  
+  .InHouseSpraying .ihs-title {
+    margin: 0;
+    color: #05324a;            /* deep navy like screenshot */
+    line-height: 1.15;
+  }
+  
+  /* Right copy */
+  .InHouseSpraying .ihs-right p {
+    margin: 0 0 16px;
+    color: #6f6f6f;            /* muted gray paragraph */
+    line-height: 1.7;
+  }
+  
+  /* Gallery row */
+  .InHouseSpraying .ihs-gallery {
+    max-width: 1200px;
+    margin: 16px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  
+  .InHouseSpraying .ihs-photo {
+    margin: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #e8eaec;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  }
+  
+  .InHouseSpraying .ihs-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/10;       /* keeps a wide look similar to reference */
+    object-fit: cover;
+  }
+
+  .InHouseSpraying .ihs-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0px;
+    height: 100%;
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .InHouseSpraying .ihs-head {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+  
+  @media (max-width: 680px) {
+    .InHouseSpraying {
+      padding: 40px 16px 36px;
+    }
+  
+    .InHouseSpraying .ihs-gallery {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  

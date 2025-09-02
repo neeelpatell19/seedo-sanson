@@ -1,0 +1,68 @@
+/* Base wrapper */
+.ft {
+    background: #fbf2d9; /* light cream like reference */
+    width: 100%;
+    color: #1a1a1a;
+  }
+  
+  /* Grid */
+  .ft__grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  /* Desktop layout: 4 columns; last column wider */
+  @media (min-width: 992px) {
+    .ft__grid {
+      grid-template-columns: 1.2fr 0.8fr 1fr 2fr;
+      gap: 48px;
+      padding: 56px 24px;
+    }
+  }
+  
+  /* Brand block */
+  .ft__brand { display: grid; gap: 16px; align-content: start; }
+  .ft__logo { width: 220px; max-width: 100%; }
+  .ft__tagline { margin: 0; color: #c63b2f; } /* red like ref */
+  
+  /* Socials */
+  .ft__socials { display: flex; align-items: center; gap: 12px; }
+  .ft__social {
+    display: inline-flex;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: #0b2b3d;
+    align-items: center; justify-content: center;
+  }
+  .ft__social svg { width: 22px; height: 22px; fill: #fff; }
+  
+  /* Section block */
+  .ft__block { display: grid; gap: 16px; align-content: start; }
+  .ft__heading { margin: 0; }
+  
+  /* Lists */
+  .ft__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .ft__list a { text-decoration: none; color: inherit; }
+  
+  /* Rows with icons */
+  .ft__row {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .ft__row p { margin: 0; }
+  .ft__row a { color: inherit; text-decoration: none; }
+  
+  /* SVG icons style */
+  .ft__icon { width: 24px; height: 24px; display: inline-grid; place-items: center; }
+  .ft__icon svg { width: 22px; height: 22px; fill: #0b2b3d; }
+  
+  /* Address column can have a bit more spacing */
+  .ft__address .ft__row { margin-bottom: 14px; }
+  

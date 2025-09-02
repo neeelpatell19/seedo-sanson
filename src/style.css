@@ -177,3 +177,11 @@ p {
 .white {
   color: white;
 }
+
+.paddingTop100px{
+  padding-top: 100px;
+}
+
+.ExtraSpaceTop50px{
+  padding-top: 50px;
+}

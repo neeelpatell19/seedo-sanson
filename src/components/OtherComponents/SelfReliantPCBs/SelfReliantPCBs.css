@@ -1,0 +1,131 @@
+/* Parent namespace */
+.PCBsSection {
+    /* width: 100%; */
+    padding: 56px 20px;
+    /* background: #f7f8f9; */
+    color: #1a1a1a;
+}
+
+.PCBsSection .pcb-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Heading */
+.PCBsSection .pcb-title {
+    margin: 0 0 28px;
+    color: #0b3245;
+    /* deep navy */
+    line-height: 1.2;
+}
+
+/* Mosaic grid */
+.PCBsSection .pcb-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr 1.05fr;
+    grid-template-rows: auto auto;
+    gap: 28px;
+    grid-template-areas:
+        "img1  imgTall  textTop"
+        "textBottom imgTall imgBottom";
+}
+
+/* Area assignments */
+.PCBsSection .img1 {
+    grid-area: img1;
+}
+
+.PCBsSection .imgTall {
+    grid-area: imgTall;
+}
+
+.PCBsSection .textTop {
+    grid-area: textTop;
+}
+
+.PCBsSection .textBottom {
+    grid-area: textBottom;
+}
+
+.PCBsSection .imgBottom {
+    grid-area: imgBottom;
+}
+
+/* Images */
+.PCBsSection .pcb-img {
+    margin: 0;
+    /* border-radius: 8px; */
+    overflow: hidden;
+    background: #e9ecef;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+}
+
+.PCBsSection .pcb-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Give the tall image a pleasing aspect on large screens */
+.PCBsSection .imgTall img {
+    aspect-ratio: 3/5;
+}
+
+.PCBsSection .img1 img,
+.PCBsSection .imgBottom img {
+    aspect-ratio: 16/10;
+}
+
+/* Text cards */
+.PCBsSection .pcb-text {
+    background: #ffffff;
+    border-radius: 8px;
+    /* padding: 22px 24px; */
+    /* box-shadow: 0 10px 24px rgba(0,0,0,.06); */
+    color: #606a70;
+    line-height: 1.75;
+}
+
+.PCBsSection .pcb-text strong {
+    color: #233a4a;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .PCBsSection .pcb-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "pcbTitle pcbTitle"
+            /* (kept for clarity; not used) */
+            "img1     textTop"
+            "imgTall  imgTall"
+            "textBottom imgBottom";
+    }
+
+    /* Make tall image truly tall on tablets */
+    .PCBsSection .imgTall img {
+        aspect-ratio: 3/4;
+    }
+}
+
+@media (max-width: 680px) {
+    .PCBsSection {
+        padding: 40px 16px;
+    }
+
+    .PCBsSection .pcb-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "img1"
+            "textTop"
+            "imgTall"
+            "imgBottom"
+            "textBottom";
+        gap: 18px;
+    }
+
+    .PCBsSection .imgTall img {
+        aspect-ratio: 4/3;
+    }
+}
