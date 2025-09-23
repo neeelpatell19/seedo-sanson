@@ -32,7 +32,7 @@ export default {
                 <h2 class="section-title">Popular Products</h2>
                 <a href="#" class="view-all-btn">View All</a>
             </div>
-<br>
+            <br>
             <WrapContext v-slot="{ products, loading, error }">
                 <LogProducts :products="products" />
 

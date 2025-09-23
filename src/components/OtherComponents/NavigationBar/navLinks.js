@@ -15,13 +15,13 @@ export const PRIMARY_LINKS = [
     {
       label: "About Us",
       href: "/about",
-      key: "about",
-      children: [
-        { label: "Company", href: "/about/company" },
-        { label: "Manufacturing", href: "/about/manufacturing" },
-        { label: "Careers", href: "/about/careers" },
-        { label: "Contact", href: "/contact" }
-      ]
+      // key: "about",
+      // children: [
+      //   { label: "Company", href: "/about/company" },
+      //   { label: "Manufacturing", href: "/about/manufacturing" },
+      //   { label: "Careers", href: "/about/careers" },
+      //   { label: "Contact", href: "/contact" }
+      // ]
     }
   ];
   

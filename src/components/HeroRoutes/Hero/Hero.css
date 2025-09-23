@@ -1,12 +1,12 @@
 /* Hero Video Container - Main wrapper */
-.hero-video-container {
+/* .hero-video-container {
     width: 100%;
-}
+} */
 
 /* Hero Video Wrapper - Contains video and overlay */
 .hero-video-wrapper {
     position: relative;
-    width: 100%;
+    /* width: 100%; */
     border-radius: 12px;
     height: 700px;
     overflow: hidden;
@@ -109,8 +109,12 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero-video-wrapper{
+        height: 100% !important;
+    }
     .hero-video-container {
-        padding: 15px;
+       padding: 0px 20px;
+       padding-top: 5rem !important;
     }
     
     .hero-play-button {

@@ -135,9 +135,10 @@ body {
   margin-top: 80px;
 }
 
-h1{
+h1 {
   font-weight: 500;
   font-size: 50px;
+  line-height: 50px;
 }
 
 h2 {
@@ -145,7 +146,7 @@ h2 {
   font-size: 40px;
 }
 
-h3{
+h3 {
   font-weight: 500;
   font-size: 30px;
 }
@@ -178,10 +179,16 @@ p {
   color: white;
 }
 
-.paddingTop100px{
+.paddingTop100px {
   padding-top: 100px;
 }
 
-.ExtraSpaceTop50px{
+.ExtraSpaceTop50px {
   padding-top: 50px;
+}
+
+@media (max-width:800px) {
+  .Container {
+    padding: 0px 10px !important;
+  }
 }

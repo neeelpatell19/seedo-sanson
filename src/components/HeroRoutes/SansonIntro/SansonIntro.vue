@@ -98,8 +98,8 @@ export default {
             </div>
 
             <!-- Content Section -->
-            <div class="content-section max-width-800">
-                <p class="company-description text-center">
+            <div class="content-section max-width-800 ">
+                <p class="company-description text-center Container">
                     At Seedo, from the house of Sanson Promo Innovations LLP- a product innovation company with 2
                     decades of consumer promotion for kids. Driven by innovation and strong technical control, we at
                     Seedo have developed a range of high-quality toys, ensuring they are safe, affordable, and meet the

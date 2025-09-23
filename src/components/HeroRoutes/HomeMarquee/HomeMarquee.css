@@ -61,9 +61,6 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .marquee-text {
-    font-size: 16px;
-  }
   
   .star-image {
     width: 20px;
@@ -71,12 +68,12 @@
   }
   
   .marquee-content {
-    animation-duration: 25s;
+    animation: marquee-scroll 100s linear infinite;
   }
 }
 
 @media (max-width: 480px) {
   .marquee-content {
-    animation-duration: 20s;
+    animation: marquee-scroll 100s linear infinite;
   }
 }

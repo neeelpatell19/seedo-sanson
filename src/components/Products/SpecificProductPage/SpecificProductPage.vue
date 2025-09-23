@@ -18,7 +18,8 @@
                         :alt="`${product.title} - ${currentVariant.name} - image ${selectedImageIndex + 1}`" />
                     <div class="sp-actions">
                         <button class="sp-icon" aria-label="Share" @click="share">
-                        <img src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/ShareIcon.png" alt="">
+                            <img src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/ShareIcon.png"
+                                alt="">
                         </button>
                         <button class="sp-icon" :class="{ active: isFav }" aria-label="Favorite"
                             @click="isFav = !isFav">
@@ -83,6 +84,28 @@
                     <li><span>Master packaging:</span> <strong>{{ product.masterPackaging }}</strong></li>
                     <li><span>HSN Code:</span> <strong>{{ product.hsn }}</strong></li>
                 </ul>
+            </div>
+        </div>
+        <div class="Container MainPaddingContainerTop80">
+
+            <div class="section-header">
+                <h2 class="section-title">Related Products</h2>
+                <a href="#" class="view-all-btn">View All</a>
+            </div>
+            <!-- <br> -->
+            <!-- Reuse PopularProductsHome grid/card classes -->
+            <div v-if="relatedProducts && relatedProducts.length" class="products-grid">
+                <div v-for="item in relatedProducts" :key="item._id || item.id" class="product-card">
+                    <div class="product-image-container">
+                        <img v-if="item.mainImages && item.mainImages.length" :src="item.mainImages[0]"
+                            :alt="item.title" class="product-image" />
+                    </div>
+                    <h3 class="product-title">{{ item.title }}</h3>
+                    <p class="product-price">Rs. {{ item.price }}</p>
+                </div>
+            </div>
+            <div v-else class="no-products">
+                <p>No related products found.</p>
             </div>
         </div>
     </section>
@@ -184,6 +207,34 @@ const formatINR = (n) => new Intl.NumberFormat("en-IN", { style: "currency", cur
 /* Dummy actions */
 const isFav = ref(false);
 const share = () => alert("Share clicked (demo)");
+
+/* Related products - reuse PopularProductsHome structure */
+const relatedProducts = ref([
+    {
+        _id: "r1",
+        title: "Mini Pull-back Car",
+        price: 249,
+        mainImages: ["https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage1.png"],
+    },
+    {
+        _id: "r2",
+        title: "Animal Racer",
+        price: 299,
+        mainImages: ["https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage2.png"],
+    },
+    {
+        _id: "r3",
+        title: "City Truck",
+        price: 349,
+        mainImages: ["https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage3.png"],
+    },
+    {
+        _id: "r4",
+        title: "Cute Coupe",
+        price: 399,
+        mainImages: ["https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage4.png"],
+    },
+]);
 </script>
 
 <style scoped></style>

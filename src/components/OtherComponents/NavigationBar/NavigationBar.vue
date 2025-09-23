@@ -29,18 +29,18 @@
                     </li>
 
                     <li class="nav-item has-children">
-                        <a href="#" class="nav-link">
+                        <a href="/about" class="nav-link">
                             About Us
-                            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true">
+                            <!-- <svg class="caret" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M6 9l6 6 6-6" />
-                            </svg>
+                            </svg> -->
                         </a>
-                        <ul class="dropdown">
+                        <!-- <ul class="dropdown">
                             <li><router-link to="/about/company">Company</router-link></li>
                             <li><router-link to="/about/manufacturing">Manufacturing</router-link></li>
                             <li><router-link to="/about/careers">Careers</router-link></li>
                             <li><router-link to="/contact">Contact</router-link></li>
-                        </ul>
+                        </ul> -->
                     </li>
                 </ul>
             </nav>

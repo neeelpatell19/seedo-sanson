@@ -30,7 +30,7 @@
     <SeedoTimeline />
     <OurClientsAboutUs />
     <SelfReliantPCBs />
-    <TrustedPartners />
+    <!-- <TrustedPartners /> -->
     <Certifications />
 </template>
 
