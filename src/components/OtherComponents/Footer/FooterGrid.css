@@ -35,11 +35,15 @@
     display: inline-flex;
     width: 40px; height: 40px;
     border-radius: 10px;
-    background: #0b2b3d;
+    /* background: #0b2b3d; */
     align-items: center; justify-content: center;
   }
   .ft__social svg { width: 22px; height: 22px; fill: #fff; }
-  
+.ft__social {
+    text-decoration: none;
+    font-size: 30px;
+    color: black;
+  }
   /* Section block */
   .ft__block { display: grid; gap: 16px; align-content: start; }
   .ft__heading { margin: 0; }

@@ -3,20 +3,56 @@
         <div class="TopPaddingAnotherPage">
             <h2 class="text-center">All Products</h2>
             <div>
-                <ProductContext v-slot="{ products, loading, error }">
+                <ProductContext v-slot="{ products, categories, loading, error }">
+                    <!-- Filters Toggle -->
+                    <div class="filters-bar">
+                        <button class="view-button" @click="toggleFilters">
+                            <span>{{ showFilters ? 'Hide Filters' : 'Show Filters' }}</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Filters Panel -->
+                    <div v-if="showFilters" class="filters-panel">
+                        <div class="filters-row">
+                            <div class="filter-item">
+                                <label>Category</label>
+                                <select v-model="selectedCategoryId">
+                                    <option value="">All</option>
+                                    <option v-for="cat in categories" :key="cat._id" :value="cat._id">{{ cat.name || 'Untitled' }}</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-item">
+                                <label>Subcategory</label>
+                                <select v-model="selectedSubcategoryId" :disabled="!selectedCategoryId">
+                                    <option value="">All</option>
+                                    <option v-for="sub in getSubcategories(categories, selectedCategoryId)" :key="sub._id" :value="sub._id">{{ sub.name || 'Untitled' }}</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-actions">
+                                <button class="view-button" @click="resetFilters">
+                                    <span>Reset</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div v-if="loading" class="loading-container">
                         <p>Loading products...</p>
                     </div>
                     <div v-else-if="error" class="error-container">
                         <p>Error: {{ error }}</p>
                     </div>
-                    <div v-else-if="products && products.length > 0" class="products-grid">
+                    <div v-else-if="(filterProducts(products, categories, selectedCategoryId, selectedSubcategoryId) || []).length > 0" class="products-grid">
                         <router-link
-                            v-for="product in products"
+                            v-for="product in filterProducts(products, categories, selectedCategoryId, selectedSubcategoryId)"
                             :key="product._id"
                             class="product-card"
-                            :to="{ name: 'ProductDetails', params: { productSlug: slug(product.title || product.name) } }"
-                        >
+                            :to="{ name: 'ProductDetails', params: { productSlug: slug(product.title || product.name || product._id) } }">
                             <div class="product-image-container">
                                 <img v-if="product.mainImages && product.mainImages.length" :src="product.mainImages[0]"
                                     :alt="product.title || product.name" class="product-image" />
@@ -45,7 +81,49 @@ export default {
     components: {
         ProductContext
     },
+    data() {
+        return {
+            showFilters: false,
+            selectedCategoryId: '',
+            selectedSubcategoryId: ''
+        }
+    },
     methods: {
+        toggleFilters() {
+            this.showFilters = !this.showFilters
+        },
+        resetFilters() {
+            this.selectedCategoryId = ''
+            this.selectedSubcategoryId = ''
+        },
+        getSubcategories(categories, categoryId) {
+            if (!categoryId) return []
+            const found = (categories || []).find(c => String(c?._id) === String(categoryId))
+            return Array.isArray(found?.subcategories) ? found.subcategories : []
+        },
+        filterProducts(products, categories, categoryId, subcategoryId) {
+            let list = products || []
+            if (!categoryId && !subcategoryId) return list
+            // If subcategory selected, filter by products belonging to that subcategory
+            if (subcategoryId) {
+                const subs = (categories || [])
+                    .flatMap(c => Array.isArray(c.subcategories) ? c.subcategories : [])
+                    .filter(s => String(s?._id) === String(subcategoryId))
+                const ids = new Set((subs[0]?.products || []).map(p => String(p?._id)))
+                return list.filter(p => ids.has(String(p?._id)))
+            }
+            // Else if only category selected, include products from all its subcategories
+            if (categoryId) {
+                const cat = (categories || []).find(c => String(c?._id) === String(categoryId))
+                const ids = new Set(
+                    (cat?.subcategories || [])
+                        .flatMap(s => Array.isArray(s.products) ? s.products : [])
+                        .map(p => String(p?._id))
+                )
+                return list.filter(p => ids.has(String(p?._id)))
+            }
+            return list
+        },
         slug(value) {
             return String(value || '')
                 .toLowerCase()

@@ -71,6 +71,9 @@
     gap: 36px;
 }
 
+.SpecificProductPage .sp-grid>div:first-child{
+    display: none !important;
+}
 @media (max-width: 900px) {
     .SpecificProductPage .sp-grid {
         grid-template-columns: 1fr;

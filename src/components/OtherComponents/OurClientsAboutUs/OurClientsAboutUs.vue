@@ -3,44 +3,44 @@
       <div class="oc-wrap">
         <!-- Left: Logos grid -->
         <div class="clients-grid">
-          <!-- Dummy logos (replace src/alt later) -->
+          <!-- Real client logos from public/Images/ClientsLogos -->
           <div class="logo-card white">
-            <img src="https://dummyimage.com/220x120/ffffff/1a1a1a&text=LuLu" alt="Client logo 1" />
+            <img src="/Images/ClientsLogos/LuLu.png" alt="LuLu" />
           </div>
           <div class="logo-card dark">
-            <img src="https://dummyimage.com/220x120/000000/ffffff&text=amazon" alt="Client logo 2" />
+            <img src="/Images/ClientsLogos/amazon.png" alt="Amazon" />
           </div>
           <div class="logo-card blue">
-            <img src="https://dummyimage.com/220x120/1780e2/ffffff&text=Flipkart" alt="Client logo 3" />
+            <img src="/Images/ClientsLogos/Flipkart.png" alt="Flipkart" />
           </div>
           <div class="logo-card red">
-            <img src="https://dummyimage.com/220x120/d64545/ffffff&text=SMART" alt="Client logo 4" />
+            <img src="/Images/ClientsLogos/Smart.png" alt="Smart Superstore" />
           </div>
-  
+
           <div class="logo-card red">
-            <img src="https://dummyimage.com/220x120/d64545/ffffff&text=Hamleys" alt="Client logo 5" />
+            <img src="/Images/ClientsLogos/hamleys.png" alt="Hamleys" />
           </div>
           <div class="logo-card yellow">
-            <img src="https://dummyimage.com/220x120/f2c94c/1a1a1a&text=blinkit" alt="Client logo 6" />
+            <img src="/Images/ClientsLogos/%20Blinkit.png" alt="Blinkit" />
           </div>
           <div class="logo-card green">
-            <img src="https://dummyimage.com/220x120/27ae60/ffffff&text=MUMUSO" alt="Client logo 7" />
+            <img src="/Images/ClientsLogos/Mumuso.png" alt="Mumuso" />
           </div>
           <div class="logo-card orange">
-            <img src="https://dummyimage.com/220x120/f2994a/ffffff&text=Instamart" alt="Client logo 8" />
+            <img src="/Images/ClientsLogos/Instamart.png" alt="Instamart" />
           </div>
-  
+
           <div class="logo-card red">
-            <img src="https://dummyimage.com/220x120/d64545/ffffff&text=MINISO" alt="Client logo 9" />
+            <img src="/Images/ClientsLogos/Miniso.png" alt="Miniso" />
           </div>
           <div class="logo-card white">
-            <img src="https://dummyimage.com/220x120/ffffff/1a1a1a&text=WEMBLEY" alt="Client logo 10" />
+            <img src="/Images/ClientsLogos/Wembley.png" alt="Wembley" />
           </div>
           <div class="logo-card white">
-            <img src="https://dummyimage.com/220x120/ffffff/1a1a1a&text=Wishkey" alt="Client logo 11" />
+            <img src="/Images/ClientsLogos/Wishkey.png" alt="Wishkey" />
           </div>
           <div class="logo-card red">
-            <img src="https://dummyimage.com/220x120/d64545/ffffff&text=SNOOPLAY" alt="Client logo 12" />
+            <img src="/Images/ClientsLogos/Snooplay.png" alt="Snooplay" />
           </div>
         </div>
   

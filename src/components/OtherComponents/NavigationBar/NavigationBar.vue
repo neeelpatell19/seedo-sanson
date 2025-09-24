@@ -34,12 +34,12 @@
                     </li>
 
                     <li class="nav-item has-children">
-                        <a href="/about" class="nav-link">
+                        <router-link to="/about" class="nav-link">
                             About Us
                             <!-- <svg class="caret" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M6 9l6 6 6-6" />
                             </svg> -->
-                        </a>
+                        </router-link>
                         <!-- <ul class="dropdown">
                             <li><router-link to="/about/company">Company</router-link></li>
                             <li><router-link to="/about/manufacturing">Manufacturing</router-link></li>
@@ -62,7 +62,7 @@
             :aria-hidden="drawerOpen ? 'false' : 'true'">
             <aside id="mobile-drawer" class="drawer__panel" role="dialog" aria-label="Mobile navigation">
                 <div class="drawer__header">
-                    <router-link class="drawer__logo" to="/">
+                    <router-link class="drawer__logo" to="/" @click="closeDrawer">
                         <img src="/Images/SeedoLogoImage.svg" alt="Logo" />
                     </router-link>
                     <button class="drawer__close" @click="closeDrawer" aria-label="Close menu">✕</button>
@@ -71,7 +71,7 @@
                 <nav class="drawer__nav">
                     <ul class="drawer__list">
                         <li class="drawer__item">
-                            <router-link to="/" class="drawer__link">Home</router-link>
+                            <router-link to="/" class="drawer__link" @click="closeDrawer">Home</router-link>
                         </li>
 
                         <!-- Accordion group -->
@@ -89,7 +89,8 @@
                                     <li v-else-if="error"><span>Error</span></li>
                                     <template v-else>
                                         <li v-for="cat in uniqueCategories(categories)" :key="cat._id">
-                                            <router-link :to="`/products/${slug(cat.name)}`">{{ cat.name }}</router-link>
+                                            <router-link :to="`/products/${slug(cat.name)}`" @click="closeDrawer">{{ cat.name
+                                                }}</router-link>
                                         </li>
                                     </template>
                                 </ProductContext>
@@ -97,20 +98,9 @@
                         </li>
 
                         <li class="drawer__item">
-                            <button class="drawer__accordion" :aria-expanded="isOpen('about')"
-                                @click="toggleAccordion('about')">
-                                About Us
-                                <svg class="acc-caret" viewBox="0 0 24 24">
-                                    <path d="M6 9l6 6 6-6" />
-                                </svg>
-                            </button>
-                            <ul class="drawer__submenu" v-show="isOpen('about')">
-                                <li><router-link to="/about/company">Company</router-link></li>
-                                <li><router-link to="/about/manufacturing">Manufacturing</router-link></li>
-                                <li><router-link to="/about/careers">Careers</router-link></li>
-                                <li><router-link to="/contact">Contact</router-link></li>
-                            </ul>
+                            <router-link to="/about" class="drawer__link" @click="closeDrawer">about us</router-link>
                         </li>
+
                     </ul>
                 </nav>
             </aside>

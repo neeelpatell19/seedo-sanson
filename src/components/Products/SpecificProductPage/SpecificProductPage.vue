@@ -11,11 +11,11 @@
         </nav>
         <br>
         <div class="sp-grid">
-            <!-- <ProductContext v-slot="{ products }">
+            <ProductContext v-slot="{ products }">
                 <template v-if="products && products.length">
                     <div style="display:none">{{ maybeHydrateFrom(products) }}</div>
                 </template>
-</ProductContext> -->
+            </ProductContext>
             <!-- Left: Gallery -->
             <div class="sp-left">
                 <div class="sp-main">
@@ -41,7 +41,7 @@
                 <div class="sp-thumbs">
                     <button class="sp-arrow" aria-label="Previous image" @click="prevImage">‹</button>
                     <ul class="sp-thumb-list">
-                        <li v-for="(img, idx) in variantImages" :key="idx">
+                        <li v-for="(img, idx) in allImages" :key="idx">
                             <button class="sp-thumb" :class="{ active: idx === selectedImageIndex }"
                                 @click="selectThumb(idx)" :aria-label="`Thumbnail ${idx + 1}`">
                                 <img :src="img" :alt="`Thumbnail ${idx + 1}`" />
@@ -83,11 +83,18 @@
                 </div>
 
                 <ul class="sp-specs">
-                    <li><span>Material type:</span> <strong>{{ product.material }}</strong></li>
-                    <li><span>Dimension:</span> <strong>{{ product.dimension }}</strong></li>
-                    <li><span>Inner Packaging:</span> <strong>{{ product.innerPackaging }}</strong></li>
-                    <li><span>Master packaging:</span> <strong>{{ product.masterPackaging }}</strong></li>
-                    <li><span>HSN Code:</span> <strong>{{ product.hsn }}</strong></li>
+                    <template v-if="product.specs && product.specs.length">
+                        <li v-for="(s, i) in product.specs" :key="i">
+                            <span>{{ s.label }}:</span> <strong>{{ s.value }}</strong>
+                        </li>
+                    </template>
+                    <!-- <template v-else>
+                        <li><span>Material type:</span> <strong>{{ product.material }}</strong></li>
+                        <li><span>Dimension:</span> <strong>{{ product.dimension }}</strong></li>
+                        <li><span>Inner Packaging:</span> <strong>{{ product.innerPackaging }}</strong></li>
+                        <li><span>Master packaging:</span> <strong>{{ product.masterPackaging }}</strong></li>
+                        <li><span>HSN Code:</span> <strong>{{ product.hsn }}</strong></li>
+                    </template> -->
                 </ul>
             </div>
         </div>
@@ -101,7 +108,8 @@
             <ProductContext v-slot="{ products }">
                 <div class="products-grid sp-related-grid">
                     <!-- Dynamic products from API -->
-                    <router-link v-for="p in (products || []).filter(p => (p && (p.title || p.name)))" :key="p._id" class="product-card"
+                    <router-link v-for="p in (products || []).filter(p => (p && (p.title || p.name)))" :key="p._id"
+                        class="product-card"
                         :to="{ name: 'ProductDetails', params: { productSlug: slug(p.title || p.name) } }">
                         <div class="product-image-container">
                             <img v-if="p.mainImages && p.mainImages.length" :src="p.mainImages[0]"
@@ -144,6 +152,7 @@ const product = reactive({
     innerPackaging: "",
     masterPackaging: "",
     hsn: "",
+    specs: [],
 });
 
 // Route and slug helper
@@ -161,28 +170,63 @@ const slug = (value) =>
 // Hydrate product from context when available
 function maybeHydrateFrom(products) {
     const list = Array.isArray(products) ? products : []
-    const match = list.find(p => slug(p.title || p.name) === productSlug.value)
+    const match = list.find(p => slug(p.title || p.name || p._id) === productSlug.value)
     if (!match) return
     // Primary fields
     product.title = match.title || match.name || product.title
     product.price = Number(match.price ?? product.price) || 0
     product.mrp = Number(match.mrp ?? product.mrp) || product.price || 0
-    product.code = match.code || match.sku || product.code
-    product.material = match.material || product.material
-    product.dimension = match.dimension || product.dimension
-    product.innerPackaging = match.innerPackaging || product.innerPackaging
-    product.masterPackaging = match.masterPackaging || product.masterPackaging
-    product.hsn = match.hsn || product.hsn
-    // Use first color images if provided else mainImages
-    const mainImages = Array.isArray(match.mainImages) ? match.mainImages : []
-    const colorImages = Array.isArray(match.colors) && match.colors[0] && Array.isArray(match.colors[0].images) ? match.colors[0].images : []
-    const images = colorImages.length ? colorImages : mainImages
-    if (images.length) {
-        product.variants.default.images = images
+    product.code = match.itemCode || match.code || match.sku || product.code
+    // Description: prefer tabs.description (HTML) then description (HTML/string)
+    const richDesc = (match.tabs && match.tabs.description) || match.description || ''
+    if (typeof richDesc === 'string') {
+        product.description = richDesc.replace(/<[^>]+>/g, '')
     }
-    // Optional description fallback
-    if (match.description && typeof match.description === 'string') {
-        product.description = match.description.replace(/<[^>]+>/g, '')
+    // Build variants from colors if available; fallback to mainImages
+    const variants = {}
+    const colors = Array.isArray(match.colors) ? match.colors : []
+    if (colors.length) {
+        colors.forEach((c, idx) => {
+            const key = `v${idx}`
+            variants[key] = {
+                name: c.colorName || `Variant ${idx + 1}`,
+                swatch: c.color || '#cccccc',
+                images: Array.isArray(c.images) ? c.images : []
+            }
+        })
+    }
+    const mainImages = Array.isArray(match.mainImages) ? match.mainImages : []
+    if (!Object.keys(variants).length) {
+        variants.default = {
+            name: 'Default',
+            swatch: '#cccccc',
+            images: mainImages
+        }
+    }
+    // Assign back to product
+    product.variants = Object.keys(variants).length ? variants : product.variants
+    // Ensure selected images exist
+    if (!product.variants.default && variants[Object.keys(variants)[0]]) {
+        // ensure we have at least one key to use as current
+        selectedVariantKey.value = Object.keys(variants)[0]
+    }
+    // Parse specifications HTML into list items
+    if (typeof match.specifications === 'string' && match.specifications.trim()) {
+        const items = []
+        const html = match.specifications
+        const liMatches = Array.from(html.matchAll(/<li>([\s\S]*?)<\/li>/gi))
+        liMatches.forEach(m => {
+            const raw = String(m[1] || '')
+                .replace(/<[^>]+>/g, '')
+                .replace(/&nbsp;/g, ' ')
+                .trim()
+            if (!raw) return
+            const idx = raw.indexOf(':')
+            const label = (idx >= 0 ? raw.slice(0, idx) : raw).trim()
+            const value = (idx >= 0 ? raw.slice(idx + 1) : '').trim()
+            items.push({ label, value })
+        })
+        if (items.length) product.specs = items
     }
 }
 
@@ -204,23 +248,33 @@ const breadcrumbs = computed(() => [
 /* Gallery + variant state */
 const selectedVariantKey = ref("default");
 const selectedImageIndex = ref(0);
-const currentVariant = computed(() => product.variants[selectedVariantKey.value]);
-const variantImages = computed(() => (currentVariant.value?.images?.length ? currentVariant.value.images : ["/placeholder-seed.svg"]));
-const currentImage = computed(() => variantImages.value[selectedImageIndex.value] || "/placeholder-seed.svg");
+const currentVariant = computed(() => product.variants[selectedVariantKey.value] || product.variants.default);
+// Build a flat list of all images across variants, placing current variant first
+const allImages = computed(() => {
+    const order = [selectedVariantKey.value, ...Object.keys(product.variants || {}).filter(k => k !== selectedVariantKey.value)]
+    const seen = new Set()
+    const out = []
+    order.forEach(key => {
+        const imgs = (product.variants?.[key]?.images) || []
+        imgs.forEach(src => { if (src && !seen.has(src)) { seen.add(src); out.push(src) } })
+    })
+    return out.length ? out : ["/placeholder-seed.svg"]
+})
+const currentImage = computed(() => allImages.value[selectedImageIndex.value] || "/placeholder-seed.svg");
 
 function selectVariant(key) {
     selectedVariantKey.value = key;
-    selectedImageIndex.value = 0;
+    selectedImageIndex.value = 0; // reset to first image of new ordering
 }
 function selectThumb(i) {
     selectedImageIndex.value = i;
 }
 function nextImage() {
-    selectedImageIndex.value = (selectedImageIndex.value + 1) % variantImages.value.length;
+    selectedImageIndex.value = (selectedImageIndex.value + 1) % allImages.value.length;
 }
 function prevImage() {
     selectedImageIndex.value =
-        (selectedImageIndex.value - 1 + variantImages.value.length) % variantImages.value.length;
+        (selectedImageIndex.value - 1 + allImages.value.length) % allImages.value.length;
 }
 
 /* Description “See more” */
