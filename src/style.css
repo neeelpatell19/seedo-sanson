@@ -187,8 +187,13 @@ p {
   padding-top: 50px;
 }
 
+
+.TopPaddingAnotherPage{
+  padding-top: 100px;
+}
 @media (max-width:800px) {
   .Container {
     padding: 0px 10px !important;
   }
 }
+

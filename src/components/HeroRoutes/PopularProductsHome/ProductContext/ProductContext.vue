@@ -1,6 +1,6 @@
 <template>
     <div>
-        <slot :products="products" :loading="loading" :error="error"></slot>
+        <slot :products="products" :categories="categories" :loading="loading" :error="error"></slot>
     </div>
 </template>
 
@@ -11,6 +11,7 @@ export default {
     name: 'ProductContext',
     setup() {
         const products = ref([])
+        const categories = ref([])
         const loading = ref(false)
         const error = ref(null)
 
@@ -26,9 +27,11 @@ export default {
                     throw new Error('Failed to fetch products')
                 }
                 const data = await response.json()
+                // Expose categories as-is for navigation usage
+                categories.value = Array.isArray(data?.categories) ? data.categories : []
                 // Flatten products from categories -> subcategories -> products
-                const flattened = Array.isArray(data?.categories)
-                    ? data.categories
+                const flattened = Array.isArray(categories.value)
+                    ? categories.value
                         .flatMap(cat => Array.isArray(cat.subcategories) ? cat.subcategories : [])
                         .flatMap(sub => Array.isArray(sub.products) ? sub.products : [])
                     : []
@@ -49,6 +52,7 @@ export default {
 
         return {
             products,
+            categories,
             loading,
             error
         }

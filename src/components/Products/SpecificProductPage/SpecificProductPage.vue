@@ -4,13 +4,18 @@
         <nav class="sp-breadcrumbs ExtraSpaceTop50px" aria-label="Breadcrumb ">
             <ol>
                 <li v-for="(bc, i) in breadcrumbs" :key="i">
-                    <a v-if="!bc.current" :href="bc.href">{{ bc.label }}</a>
+                    <router-link v-if="!bc.current" :to="bc.to">{{ bc.label }}</router-link>
                     <span v-else aria-current="page">{{ bc.label }}</span>
                 </li>
             </ol>
         </nav>
         <br>
         <div class="sp-grid">
+            <!-- <ProductContext v-slot="{ products }">
+                <template v-if="products && products.length">
+                    <div style="display:none">{{ maybeHydrateFrom(products) }}</div>
+                </template>
+</ProductContext> -->
             <!-- Left: Gallery -->
             <div class="sp-left">
                 <div class="sp-main">
@@ -92,94 +97,116 @@
                 <h2 class="section-title">Related Products</h2>
                 <a href="#" class="view-all-btn">View All</a>
             </div>
-            <!-- <br> -->
             <!-- Reuse PopularProductsHome grid/card classes -->
-            <div v-if="relatedProducts && relatedProducts.length" class="products-grid">
-                <div v-for="item in relatedProducts" :key="item._id || item.id" class="product-card">
-                    <div class="product-image-container">
-                        <img v-if="item.mainImages && item.mainImages.length" :src="item.mainImages[0]"
-                            :alt="item.title" class="product-image" />
-                    </div>
-                    <h3 class="product-title">{{ item.title }}</h3>
-                    <p class="product-price">Rs. {{ item.price }}</p>
+            <ProductContext v-slot="{ products }">
+                <div class="products-grid sp-related-grid">
+                    <!-- Dynamic products from API -->
+                    <router-link v-for="p in (products || []).filter(p => (p && (p.title || p.name)))" :key="p._id" class="product-card"
+                        :to="{ name: 'ProductDetails', params: { productSlug: slug(p.title || p.name) } }">
+                        <div class="product-image-container">
+                            <img v-if="p.mainImages && p.mainImages.length" :src="p.mainImages[0]"
+                                :alt="p.title || p.name" class="product-image" />
+                            <img v-else src="/placeholder-seed.svg" :alt="p.title || p.name" class="product-image" />
+                        </div>
+                        <h3 class="product-title">{{ p.title || p.name }}</h3>
+                        <p class="product-price">Rs. {{ p.price }}</p>
+                    </router-link>
+
+
                 </div>
-            </div>
-            <div v-else class="no-products">
-                <p>No related products found.</p>
-            </div>
+            </ProductContext>
         </div>
     </section>
 </template>
 
 <script setup>
 import { ref, reactive, computed } from "vue";
+import { useRoute, useRouter } from 'vue-router'
+import ProductContext from '../../HeroRoutes/PopularProductsHome/ProductContext/ProductContext.vue'
 import "./SpecificProductPage.css";
 
-/* --- Static dummy data (swap with API later) --- */
+/* --- Product state: hydrated from API, minimal defaults only --- */
 const product = reactive({
-    code: "123",
-    title: "Animal Face Car",
-    price: 389,
-    mrp: 780,
-    description:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam.",
+    code: "",
+    title: "",
+    price: 0,
+    mrp: 0,
+    description: "",
     variants: {
-        green: {
-            name: "Green",
-            swatch: "#0ea5a5",
-            images: [
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage1.png",
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage2.png",
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage3.png",
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage4.png"
-            ],
-        },
-        grey: {
-            name: "Grey",
-            swatch: "#e6e7e9",
-            images: [
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage1.png",
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage2.png",
-            ],
-        },
-        blue: {
-            name: "Blue",
-            swatch: "#4a6f8f",
-            images: [
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage1.png",
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage2.png",
-            ],
-        },
-        black: {
-            name: "Black",
-            swatch: "#151c23",
-            images: [
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage3.png",
-                "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage4.png"
-            ],
-        },
+        default: {
+            name: "Default",
+            swatch: "#cccccc",
+            images: []
+        }
     },
-    material: "Plastic",
-    dimension: "6.9 x 9.1 x 10.1 cm",
-    innerPackaging: "12 pcs",
-    masterPackaging: "192 pcs./box",
-    hsn: "95030090",
+    material: "",
+    dimension: "",
+    innerPackaging: "",
+    masterPackaging: "",
+    hsn: "",
 });
+
+// Route and slug helper
+const route = useRoute()
+const router = useRouter()
+const productSlug = computed(() => String(route.params.productSlug || '').toLowerCase())
+const slug = (value) =>
+    String(value || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+
+// Hydrate product from context when available
+function maybeHydrateFrom(products) {
+    const list = Array.isArray(products) ? products : []
+    const match = list.find(p => slug(p.title || p.name) === productSlug.value)
+    if (!match) return
+    // Primary fields
+    product.title = match.title || match.name || product.title
+    product.price = Number(match.price ?? product.price) || 0
+    product.mrp = Number(match.mrp ?? product.mrp) || product.price || 0
+    product.code = match.code || match.sku || product.code
+    product.material = match.material || product.material
+    product.dimension = match.dimension || product.dimension
+    product.innerPackaging = match.innerPackaging || product.innerPackaging
+    product.masterPackaging = match.masterPackaging || product.masterPackaging
+    product.hsn = match.hsn || product.hsn
+    // Use first color images if provided else mainImages
+    const mainImages = Array.isArray(match.mainImages) ? match.mainImages : []
+    const colorImages = Array.isArray(match.colors) && match.colors[0] && Array.isArray(match.colors[0].images) ? match.colors[0].images : []
+    const images = colorImages.length ? colorImages : mainImages
+    if (images.length) {
+        product.variants.default.images = images
+    }
+    // Optional description fallback
+    if (match.description && typeof match.description === 'string') {
+        product.description = match.description.replace(/<[^>]+>/g, '')
+    }
+}
+
+// Ensure page updates when navigating to another product without full reload
+import { watch } from 'vue'
+watch(() => route.params.productSlug, (newSlug) => {
+    // reset minimal state so UI re-renders smoothly
+    selectedVariantKey.value = 'default'
+    selectedImageIndex.value = 0
+}, { immediate: false })
 
 /* Breadcrumbs */
 const breadcrumbs = computed(() => [
-    { label: "Homepage", href: "#" },
-    { label: "Products", href: "#" },
-    { label: "Friction, Pull Back, Press & Go Toys", href: "#" },
-    { label: product.title, href: "#", current: true },
+    { label: "Homepage", to: { name: 'Home' } },
+    { label: "All Products", to: { name: 'Allproducts' } },
+    { label: product.title, to: { name: 'ProductDetails', params: { productSlug: productSlug.value } }, current: true },
 ]);
 
 /* Gallery + variant state */
-const selectedVariantKey = ref("green");
+const selectedVariantKey = ref("default");
 const selectedImageIndex = ref(0);
 const currentVariant = computed(() => product.variants[selectedVariantKey.value]);
-const variantImages = computed(() => currentVariant.value.images);
-const currentImage = computed(() => variantImages.value[selectedImageIndex.value]);
+const variantImages = computed(() => (currentVariant.value?.images?.length ? currentVariant.value.images : ["/placeholder-seed.svg"]));
+const currentImage = computed(() => variantImages.value[selectedImageIndex.value] || "/placeholder-seed.svg");
 
 function selectVariant(key) {
     selectedVariantKey.value = key;
@@ -206,35 +233,7 @@ const formatINR = (n) => new Intl.NumberFormat("en-IN", { style: "currency", cur
 
 /* Dummy actions */
 const isFav = ref(false);
-const share = () => alert("Share clicked (demo)");
-
-/* Related products - reuse PopularProductsHome structure */
-const relatedProducts = ref([
-    {
-        _id: "r1",
-        title: "Mini Pull-back Car",
-        price: 249,
-        mainImages: ["https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage1.png"],
-    },
-    {
-        _id: "r2",
-        title: "Animal Racer",
-        price: 299,
-        mainImages: ["https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage2.png"],
-    },
-    {
-        _id: "r3",
-        title: "City Truck",
-        price: 349,
-        mainImages: ["https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage3.png"],
-    },
-    {
-        _id: "r4",
-        title: "Cute Coupe",
-        price: 399,
-        mainImages: ["https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/DummyImage4.png"],
-    },
-]);
+const share = () => { };
 </script>
 
 <style scoped></style>

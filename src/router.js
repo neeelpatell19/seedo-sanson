@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HeroRoute from './components/HeroRoutes/HeroRoute.vue'
 import AboutUs from './components/OtherComponents/AboutUs/AboutUs.vue'
 import SpecificProductPage from './components/Products/SpecificProductPage/SpecificProductPage.vue'
+import Allproducts from './components/Products/Allproducts/Allproducts.vue'
+import CategoriesWiseProduct from './components/Products/CategoriesWiseProduct/CategoriesWiseProduct.vue'
 const routes = [
   {
     path: '/',
@@ -15,9 +17,24 @@ const routes = [
     component: AboutUs
   },
   {
+    path: '/product/:productSlug',
+    name: 'ProductDetails',
+    component: SpecificProductPage
+  },
+  {
+    path: '/products/:categorySlug',
+    name: 'CategoryProducts',
+    component: CategoriesWiseProduct
+  },
+  {
     path: '/products',
     name: 'SpecificProduct',
     component: SpecificProductPage
+  },
+  {
+    path: '/allproducts',
+    name: 'Allproducts',
+    component: Allproducts
   }
 ]
 

@@ -2,7 +2,7 @@
     <section class="Certifications">
         <div class="cert-head">
             <h2>Certifications</h2>
-            <a class="view-all" href="#">View All</a>
+            <!-- <a class="view-all" href="#">View All</a> -->
         </div>
         <br>
         <Swiper class="cert-swiper" :modules="modules" :slides-per-view="1.1" speed="800" :space-between="16"

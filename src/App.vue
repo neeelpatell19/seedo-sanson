@@ -6,7 +6,7 @@ import NavigationBar from './components/OtherComponents/NavigationBar/Navigation
 
 <template>
   <NavigationBar />     
-  <router-view />
+  <router-view :key="$route.fullPath" />
   <Footer />
 </template>
 

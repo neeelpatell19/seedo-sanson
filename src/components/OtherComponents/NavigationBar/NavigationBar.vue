@@ -21,10 +21,15 @@
                             </svg>
                         </a>
                         <ul class="dropdown">
-                            <li><router-link to="/products/rc-cars">RC Cars</router-link></li>
-                            <li><router-link to="/products/bath-toys">Bath Toys</router-link></li>
-                            <li><router-link to="/products/educational">Educational</router-link></li>
-                            <li><router-link to="/products/plush-figures">Plush & Figures</router-link></li>
+                            <ProductContext v-slot="{ categories, loading, error }">
+                                <li v-if="loading"><span>Loading...</span></li>
+                                <li v-else-if="error"><span>Error</span></li>
+                                <template v-else>
+                                    <li v-for="cat in uniqueCategories(categories)" :key="cat._id">
+                                        <router-link :to="`/products/${slug(cat.name)}`">{{ cat.name }}</router-link>
+                                    </li>
+                                </template>
+                            </ProductContext>
                         </ul>
                     </li>
 
@@ -79,10 +84,15 @@
                                 </svg>
                             </button>
                             <ul class="drawer__submenu" v-show="isOpen('products')">
-                                <li><router-link to="/products/rc-cars">RC Cars</router-link></li>
-                                <li><router-link to="/products/bath-toys">Bath Toys</router-link></li>
-                                <li><router-link to="/products/educational">Educational</router-link></li>
-                                <li><router-link to="/products/plush-figures">Plush & Figures</router-link></li>
+                                <ProductContext v-slot="{ categories, loading, error }">
+                                    <li v-if="loading"><span>Loading...</span></li>
+                                    <li v-else-if="error"><span>Error</span></li>
+                                    <template v-else>
+                                        <li v-for="cat in uniqueCategories(categories)" :key="cat._id">
+                                            <router-link :to="`/products/${slug(cat.name)}`">{{ cat.name }}</router-link>
+                                        </li>
+                                    </template>
+                                </ProductContext>
                             </ul>
                         </li>
 
@@ -111,6 +121,7 @@
 <script setup>
 import { reactive, computed, onMounted, onUnmounted } from "vue";
 import "./NavigationBar.css";
+import ProductContext from '../../HeroRoutes/PopularProductsHome/ProductContext/ProductContext.vue'
 
 const state = reactive({
     drawerOpen: false,
@@ -128,6 +139,26 @@ const toggleAccordion = (key) => {
     state.openKey = state.openKey === key ? null : key;
 };
 const isOpen = (key) => state.openKey === key;
+
+// Simple slug generator for category names -> URL paths
+const slug = (value) =>
+    String(value || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+
+// Unique categories by name
+const uniqueCategories = (cats) => {
+    const seen = new Set();
+    return (cats || []).filter(cat => {
+        const key = String(cat?.name || '').trim().toLowerCase();
+        if (!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    });
+};
 
 // Scroll handler
 const handleScroll = () => {
