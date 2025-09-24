@@ -88,14 +88,9 @@
                             <span>{{ s.label }}:</span> <strong>{{ s.value }}</strong>
                         </li>
                     </template>
-                    <!-- <template v-else>
-                        <li><span>Material type:</span> <strong>{{ product.material }}</strong></li>
-                        <li><span>Dimension:</span> <strong>{{ product.dimension }}</strong></li>
-                        <li><span>Inner Packaging:</span> <strong>{{ product.innerPackaging }}</strong></li>
-                        <li><span>Master packaging:</span> <strong>{{ product.masterPackaging }}</strong></li>
-                        <li><span>HSN Code:</span> <strong>{{ product.hsn }}</strong></li>
-                    </template> -->
                 </ul>
+                <div v-if="product.boxQuantity" class="sp-boxqty">Box quantity: <strong>{{ product.boxQuantity
+                        }}</strong></div>
             </div>
         </div>
         <div class="Container MainPaddingContainerTop80">
@@ -153,6 +148,7 @@ const product = reactive({
     masterPackaging: "",
     hsn: "",
     specs: [],
+    boxQuantity: "",
 });
 
 // Route and slug helper
@@ -227,6 +223,10 @@ function maybeHydrateFrom(products) {
             items.push({ label, value })
         })
         if (items.length) product.specs = items
+    }
+    // Box quantity
+    if (typeof match.boxQuantity === 'string' && match.boxQuantity.trim()) {
+        product.boxQuantity = match.boxQuantity.trim()
     }
 }
 

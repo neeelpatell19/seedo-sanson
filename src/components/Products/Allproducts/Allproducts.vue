@@ -8,7 +8,8 @@
                     <div class="filters-bar">
                         <button class="view-button" @click="toggleFilters">
                             <span>{{ showFilters ? 'Hide Filters' : 'Show Filters' }}</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <path d="M7 17L17 7M17 7H7M17 7V17" />
                             </svg>
                         </button>
@@ -21,7 +22,8 @@
                                 <label>Category</label>
                                 <select v-model="selectedCategoryId">
                                     <option value="">All</option>
-                                    <option v-for="cat in categories" :key="cat._id" :value="cat._id">{{ cat.name || 'Untitled' }}</option>
+                                    <option v-for="cat in categories" :key="cat._id" :value="cat._id">{{ cat.name ||
+                                        'Untitled' }}</option>
                                 </select>
                             </div>
 
@@ -29,7 +31,8 @@
                                 <label>Subcategory</label>
                                 <select v-model="selectedSubcategoryId" :disabled="!selectedCategoryId">
                                     <option value="">All</option>
-                                    <option v-for="sub in getSubcategories(categories, selectedCategoryId)" :key="sub._id" :value="sub._id">{{ sub.name || 'Untitled' }}</option>
+                                    <option v-for="sub in getSubcategories(categories, selectedCategoryId)"
+                                        :key="sub._id" :value="sub._id">{{ sub.name || 'Untitled' }}</option>
                                 </select>
                             </div>
 
@@ -47,11 +50,11 @@
                     <div v-else-if="error" class="error-container">
                         <p>Error: {{ error }}</p>
                     </div>
-                    <div v-else-if="(filterProducts(products, categories, selectedCategoryId, selectedSubcategoryId) || []).length > 0" class="products-grid">
+                    <div v-else-if="(filterProducts(products, categories, selectedCategoryId, selectedSubcategoryId) || []).length > 0"
+                        class="products-grid">
                         <router-link
                             v-for="product in filterProducts(products, categories, selectedCategoryId, selectedSubcategoryId)"
-                            :key="product._id"
-                            class="product-card"
+                            :key="product._id" class="product-card"
                             :to="{ name: 'ProductDetails', params: { productSlug: slug(product.title || product.name || product._id) } }">
                             <div class="product-image-container">
                                 <img v-if="product.mainImages && product.mainImages.length" :src="product.mainImages[0]"
