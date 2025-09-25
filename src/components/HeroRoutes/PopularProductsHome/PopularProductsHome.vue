@@ -45,7 +45,7 @@ export default {
                 </div>
 
                 <div v-else-if="products && products.length > 0" class="products-grid">
-                    <div v-for="product in products" :key="product._id" class="product-card">
+                    <div v-for="product in products.slice(0, 8)" :key="product._id" class="product-card">
                         <div class="product-image-container">
                             <img v-if="product.mainImages && product.mainImages.length" :src="product.mainImages[0]"
                                 :alt="product.title" class="product-image" />

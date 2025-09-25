@@ -276,6 +276,14 @@
     color: #4b5560;
 }
 
+.sp-specs strong{
+    font-weight: 500;
+}
+
+.SpecificProductPage .sp-colors-label strong{
+    font-weight: 500;
+}
+
 .SpecificProductPage .sp-swatches {
     display: flex;
     gap: 12px;

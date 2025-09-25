@@ -59,19 +59,19 @@
 
                 <div class="sp-price-wrap">
                     <span class="sp-price">{{ formatINR(product.price) }}</span>
-                    <span class="sp-mrp">{{ formatINR(product.mrp) }}</span>
-                    <span class="sp-off">-{{ discountPercent }}%</span>
+                    <span v-if="discountPercent > 0" class="sp-mrp">{{ formatINR(product.mrp) }}</span>
+                    <span v-if="discountPercent > 0" class="sp-off">-{{ discountPercent }}%</span>
                 </div>
 
                 <hr class="sp-divider" />
 
-                <div class="sp-desc">
+                <!-- <div class="sp-desc">
                     <h3>Description:</h3>
                     <p v-if="!showFull">{{ truncatedDesc }} <button class="sp-see" @click="showFull = true">See
                             More…</button></p>
                     <p v-else>{{ product.description }} <button class="sp-see" @click="showFull = false">Show
                             less</button></p>
-                </div>
+                </div> -->
 
                 <div class="sp-colors">
                     <div class="sp-colors-label">Color: <strong>{{ currentVariant.name }}</strong></div>
@@ -97,14 +97,14 @@
 
             <div class="section-header">
                 <h2 class="section-title">Related Products</h2>
-                <a href="#" class="view-all-btn">View All</a>
+                <router-link to="/allproducts" class="view-all-btn">View All</router-link>
             </div>
             <!-- Reuse PopularProductsHome grid/card classes -->
             <ProductContext v-slot="{ products }">
                 <div class="products-grid sp-related-grid">
-                    <!-- Dynamic products from API -->
-                    <router-link v-for="p in (products || []).filter(p => (p && (p.title || p.name)))" :key="p._id"
-                        class="product-card"
+                    <!-- Dynamic products from API - limited to 8 products -->
+                    <router-link v-for="p in (products || []).filter(p => (p && (p.title || p.name))).slice(0, 8)"
+                        :key="p._id" class="product-card"
                         :to="{ name: 'ProductDetails', params: { productSlug: slug(p.title || p.name) } }">
                         <div class="product-image-container">
                             <img v-if="p.mainImages && p.mainImages.length" :src="p.mainImages[0]"
@@ -114,8 +114,6 @@
                         <h3 class="product-title">{{ p.title || p.name }}</h3>
                         <p class="product-price">Rs. {{ p.price }}</p>
                     </router-link>
-
-
                 </div>
             </ProductContext>
         </div>

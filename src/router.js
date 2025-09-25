@@ -22,7 +22,7 @@ const routes = [
     component: SpecificProductPage
   },
   {
-    path: '/products/:categorySlug',
+    path: '/allproducts/:categorySlug',
     name: 'CategoryProducts',
     component: CategoriesWiseProduct
   },

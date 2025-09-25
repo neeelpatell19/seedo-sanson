@@ -26,7 +26,7 @@
                                 <li v-else-if="error"><span>Error</span></li>
                                 <template v-else>
                                     <li v-for="cat in uniqueCategories(categories)" :key="cat._id">
-                                        <router-link :to="`/products/${slug(cat.name)}`">{{ cat.name }}</router-link>
+                                        <router-link :to="`/allproducts/${slug(cat.name)}`">{{ cat.name }}</router-link>
                                     </li>
                                 </template>
                             </ProductContext>
@@ -89,7 +89,7 @@
                                     <li v-else-if="error"><span>Error</span></li>
                                     <template v-else>
                                         <li v-for="cat in uniqueCategories(categories)" :key="cat._id">
-                                            <router-link :to="`/products/${slug(cat.name)}`" @click="closeDrawer">{{ cat.name
+                                            <router-link :to="`/allproducts/${slug(cat.name)}`" @click="closeDrawer">{{ cat.name
                                                 }}</router-link>
                                         </li>
                                     </template>
