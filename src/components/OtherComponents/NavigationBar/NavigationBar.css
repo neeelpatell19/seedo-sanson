@@ -5,12 +5,16 @@
     --nav-border: transparent;
 
     position: fixed;
-    inset: 0 0 auto 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     color: var(--nav-fg);
     background: var(--nav-bg);
     border-bottom: 1px solid var(--nav-border);
     transition: background .28s ease, border-color .28s ease, color .28s ease;
+    width: 100%;
+    height: auto;
 }
 
 .navigation-bar.scrolled {
@@ -23,11 +27,12 @@
 .navigation-bar .nav-inner {
     max-width: 1220px;
     margin: 0 auto;
-    padding: 0px 20px;
+    padding: 10px 20px;
     display: grid;
     grid-template-columns: auto 1fr auto;
     gap: 16px;
     align-items: center;
+    min-height: 60px;
 }
 
 .navigation-bar-logo img {
@@ -152,7 +157,6 @@
     margin-left: auto;
     border-radius: 4px;
     transition: background-color 0.2s ease;
-    z-index: 1003; /* Ensure hamburger is clickable */
 }
 
 .hamburger:hover {
@@ -173,16 +177,16 @@
     border-radius: 1px;
 }
 
-/* Hamburger animation when drawer is open */
-.navigation-bar:has(.drawer.is-open) .hamburger span:nth-child(1) {
+/* Hamburger animation when drawer is open - using class on navigation bar */
+.navigation-bar.drawer-open .hamburger span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
 
-.navigation-bar:has(.drawer.is-open) .hamburger span:nth-child(2) {
+.navigation-bar.drawer-open .hamburger span:nth-child(2) {
     opacity: 0;
 }
 
-.navigation-bar:has(.drawer.is-open) .hamburger span:nth-child(3) {
+.navigation-bar.drawer-open .hamburger span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
@@ -195,18 +199,25 @@
 /* ===== Drawer ===== */
 .drawer {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0, 0, 0, .35);
     opacity: 0;
     pointer-events: none;
     transition: opacity .25s ease;
     z-index: 1001;
+    visibility: hidden;
+    width: 100%;
+    height: 100vh;
     /* Ensure it's above the navigation bar */
 }
 
 .drawer.is-open {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
 }
 
 .drawer__panel {
@@ -346,5 +357,16 @@
 @media (max-width:900px) {
     .navigation-bar .nav-inner {
         padding: 10px 10px;
+    }
+}
+
+/* Ensure body accounts for fixed navigation bar */
+body {
+    padding-top: 80px; /* Adjust based on your nav bar height */
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px; /* Slightly smaller on mobile */
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <header class="navigation-bar" :class="{ 'scrolled': isScrolled }" role="banner">
+    <header class="navigation-bar" :class="{ 'scrolled': isScrolled, 'drawer-open': drawerOpen }" role="banner">
         <div class="nav-inner">
             <!-- Logo -->
             <router-link class="navigation-bar-logo" to="/" aria-label="Seedo logo">
@@ -58,8 +58,8 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div class="drawer" :class="{ 'is-open': drawerOpen }" @click.self="closeDrawer"
-            :aria-hidden="drawerOpen ? 'false' : 'true'" v-show="drawerOpen">
+        <div class="drawer" :class="{ 'is-open': drawerOpen }" @click="handleDrawerClick"
+            :aria-hidden="drawerOpen ? 'false' : 'true'">
             <aside id="mobile-drawer" class="drawer__panel" role="dialog" aria-label="Mobile navigation">
                 <div class="drawer__header">
                     <router-link class="drawer__logo" to="/" @click="closeDrawer">
@@ -122,7 +122,9 @@ const state = reactive({
 const drawerOpen = computed(() => state.drawerOpen);
 const isScrolled = computed(() => state.isScrolled);
 
-const toggleDrawer = () => {
+const toggleDrawer = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     console.log('Toggle drawer clicked, current state:', state.drawerOpen);
     state.drawerOpen = !state.drawerOpen;
     // Close any open accordion when opening drawer
@@ -135,6 +137,13 @@ const closeDrawer = () => {
     console.log('Close drawer called');
     state.drawerOpen = false;
     state.openKey = null; // Also close any open accordion
+};
+
+const handleDrawerClick = (event) => {
+    // Only close if clicking on the overlay (not the panel)
+    if (event.target === event.currentTarget) {
+        closeDrawer();
+    }
 };
 
 const toggleAccordion = (key) => {
