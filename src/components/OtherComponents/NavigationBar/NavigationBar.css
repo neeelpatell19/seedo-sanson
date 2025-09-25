@@ -148,8 +148,20 @@
     display: inline-flex;
     flex-direction: column;
     gap: 4px;
-    padding: 6px;
+    padding: 8px;
     margin-left: auto;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    z-index: 1003; /* Ensure hamburger is clickable */
+}
+
+.hamburger:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger:focus {
+    outline: 2px solid var(--nav-fg);
+    outline-offset: 2px;
 }
 
 .hamburger span {
@@ -157,6 +169,21 @@
     height: 2px;
     background: var(--nav-fg);
     display: block;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+/* Hamburger animation when drawer is open */
+.navigation-bar:has(.drawer.is-open) .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navigation-bar:has(.drawer.is-open) .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.navigation-bar:has(.drawer.is-open) .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 @media (min-width: 992px) {
@@ -173,6 +200,8 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity .25s ease;
+    z-index: 1001;
+    /* Ensure it's above the navigation bar */
 }
 
 .drawer.is-open {
@@ -193,6 +222,8 @@
     display: flex;
     flex-direction: column;
     box-shadow: -10px 0 30px rgba(0, 0, 0, .2);
+    z-index: 1002;
+    /* Ensure panel is above overlay */
 }
 
 .drawer.is-open .drawer__panel {
@@ -253,6 +284,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: background-color 0.2s ease;
+    border-radius: 0;
+}
+
+.drawer__accordion:hover {
+    background: #f8f9fa;
+}
+
+.drawer__accordion:focus {
+    outline: 2px solid #d33a35;
+    outline-offset: -2px;
 }
 
 .acc-caret {
@@ -261,7 +303,7 @@
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
-    transition: transform .2s ease;
+    transition: transform .3s ease;
 }
 
 .drawer__accordion[aria-expanded="true"] .acc-caret {
@@ -272,7 +314,8 @@
     list-style: none;
     margin: 0;
     padding: 0 0 10px;
-    animation: drop .22s ease;
+    animation: drop .3s ease;
+    background: #f8f9fa;
 }
 
 .drawer__submenu li a {

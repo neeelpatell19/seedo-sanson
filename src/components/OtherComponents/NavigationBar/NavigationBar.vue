@@ -52,14 +52,14 @@
 
             <!-- Mobile hamburger -->
             <button class="hamburger" :aria-expanded="drawerOpen ? 'true' : 'false'" aria-controls="mobile-drawer"
-                @click="toggleDrawer">
+                @click="toggleDrawer" @keydown.enter="toggleDrawer" @keydown.space.prevent="toggleDrawer">
                 <span></span><span></span><span></span>
             </button>
         </div>
 
         <!-- Mobile Drawer -->
         <div class="drawer" :class="{ 'is-open': drawerOpen }" @click.self="closeDrawer"
-            :aria-hidden="drawerOpen ? 'false' : 'true'">
+            :aria-hidden="drawerOpen ? 'false' : 'true'" v-show="drawerOpen">
             <aside id="mobile-drawer" class="drawer__panel" role="dialog" aria-label="Mobile navigation">
                 <div class="drawer__header">
                     <router-link class="drawer__logo" to="/" @click="closeDrawer">
@@ -77,7 +77,7 @@
                         <!-- Accordion group -->
                         <li class="drawer__item">
                             <button class="drawer__accordion" :aria-expanded="isOpen('products')"
-                                @click="toggleAccordion('products')">
+                                @click="toggleAccordion('products')" @keydown.enter="toggleAccordion('products')" @keydown.space.prevent="toggleAccordion('products')">
                                 Products
                                 <svg class="acc-caret" viewBox="0 0 24 24">
                                     <path d="M6 9l6 6 6-6" />
@@ -122,12 +122,26 @@ const state = reactive({
 const drawerOpen = computed(() => state.drawerOpen);
 const isScrolled = computed(() => state.isScrolled);
 
-const toggleDrawer = () => (state.drawerOpen = !state.drawerOpen);
-const closeDrawer = () => (state.drawerOpen = false);
+const toggleDrawer = () => {
+    console.log('Toggle drawer clicked, current state:', state.drawerOpen);
+    state.drawerOpen = !state.drawerOpen;
+    // Close any open accordion when opening drawer
+    if (state.drawerOpen) {
+        state.openKey = null;
+    }
+};
+
+const closeDrawer = () => {
+    console.log('Close drawer called');
+    state.drawerOpen = false;
+    state.openKey = null; // Also close any open accordion
+};
 
 const toggleAccordion = (key) => {
+    console.log('Toggle accordion:', key, 'current open:', state.openKey);
     state.openKey = state.openKey === key ? null : key;
 };
+
 const isOpen = (key) => state.openKey === key;
 
 // Simple slug generator for category names -> URL paths
@@ -155,14 +169,30 @@ const handleScroll = () => {
     state.isScrolled = window.scrollY > 50;
 };
 
+// Prevent body scroll when drawer is open
+const handleBodyScroll = () => {
+    if (state.drawerOpen) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+};
+
+// Watch for drawer state changes to handle body scroll
+import { watch } from 'vue';
+watch(drawerOpen, (newValue) => {
+    handleBodyScroll();
+});
+
 // Add scroll listener
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
 });
 
-// Remove scroll listener
+// Remove scroll listener and restore body scroll
 onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
+    document.body.style.overflow = '';
 });
 </script>
 
