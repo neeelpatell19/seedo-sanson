@@ -26,6 +26,7 @@
     </section>
     <OurValuesContainer />
     <OurOfferingAbout />
+    <Achivements />
     <HouseSpraying />
     <SeedoTimeline />
     <OurClientsAboutUs />
@@ -44,6 +45,7 @@ import OurClientsAboutUs from "../OurClientsAboutUs/OurClientsAboutUs.vue";
 import SelfReliantPCBs from "../SelfReliantPCBs/SelfReliantPCBs.vue";
 import TrustedPartners from "../TrustedPartners/TrustedPartners.vue";
 import Certifications from "../Certifications/Certifications.vue";
+import Achivements from "../Achivements/Achivements.vue";
 </script>
 
 <style scoped></style>

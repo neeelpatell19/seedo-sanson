@@ -5,10 +5,11 @@
         <div class="oo-left">
           <h2>Our Offerings</h2>
           <p>
-            At Seedo, we offer a diverse range of manufacturing and distribution solutions
+            <!-- At Seedo, we offer a diverse range of manufacturing and distribution solutions
             to meet the unique needs of our partners. From customized product development
             to brand-driven distribution, our services are designed to deliver innovation,
-            quality, and value at every stage.
+            quality, and value at every stage. -->
+            We specialize in Original Design Manufacturing, creating innovative products tailored to the clients' specifications. Our focus is on quality, customization, and delivering exceptional value to our partners.
           </p>
         </div>
   

@@ -9,10 +9,10 @@
 .AboutUs .hero {
     width: 100%;
     min-height: 750px;
-    background: url("https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/SeedoAboutBlurImage.jpg") center/cover no-repeat;
+    background: url("https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/AboutUsSeedoImage.png") center/cover no-repeat;
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
 }
 
@@ -21,6 +21,7 @@
     max-width: 1200px;
     width: 100%;
     padding: 0 20px;
+    padding-bottom: 100px;
 }
 
 .AboutUs .hero-content h2 {
