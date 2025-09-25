@@ -5,11 +5,11 @@
             <!-- <a class="view-all" href="#">View All</a> -->
         </div>
         <br>
-        <Swiper class="cert-swiper" :modules="modules" :slides-per-view="1.1" speed="800" :space-between="16"
+        <Swiper class="cert-swiper" :modules="modules" :slides-per-view="1" :slides-per-group="1" speed="800" :space-between="16"
             :breakpoints="{
-                640: { slidesPerView: 2, spaceBetween: 20 },
-                960: { slidesPerView: 3, spaceBetween: 24 },
-                1280: { slidesPerView: 3, spaceBetween: 32 }
+                640: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 20 },
+                960: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 24 },
+                1280: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 32 }
             }" :autoplay="{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }"
             :pagination="{ clickable: true }" :a11y="{ enabled: true }" :loop="true">
             <SwiperSlide v-for="(item, i) in items" :key="i">
