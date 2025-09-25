@@ -359,14 +359,3 @@
         padding: 10px 10px;
     }
 }
-
-/* Ensure body accounts for fixed navigation bar */
-body {
-    padding-top: 80px; /* Adjust based on your nav bar height */
-}
-
-@media (max-width: 768px) {
-    body {
-        padding-top: 70px; /* Slightly smaller on mobile */
-    }
-}
