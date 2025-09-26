@@ -279,7 +279,14 @@
 .sp-specs strong{
     font-weight: 500;
 }
+.sp-specs{
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
 
+.sp-specs li{
+    width: 46% !important;
+}
 .SpecificProductPage .sp-colors-label strong{
     font-weight: 500;
 }

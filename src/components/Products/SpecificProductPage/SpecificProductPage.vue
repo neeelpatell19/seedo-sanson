@@ -85,7 +85,7 @@
                 <ul class="sp-specs">
                     <template v-if="product.specs && product.specs.length">
                         <li v-for="(s, i) in product.specs" :key="i">
-                            <span>{{ s.label }}:</span> <strong>{{ s.value }}</strong>
+                            <span>{{ s.label }}</span> <strong>{{ s.value }}</strong>
                         </li>
                     </template>
                 </ul>

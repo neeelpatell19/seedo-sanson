@@ -21,7 +21,7 @@
 .OurClientsAboutUs .clients-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(140px, 1fr));
-  gap: 36px 44px;
+  gap: 20px 20px;
   align-items: start;
 }
 
