@@ -32,7 +32,7 @@
             <img src="/Images/ClientsLogos/tynimo.png" alt="Dunzo" />
           </div>
           <div class="logo-card white">
-            <img src="/Images/ClientsLogos/Rally’s.png.OurClientsAboutUs .clients-grid" alt="Dunzo" />
+            <img src="/Images/ClientsLogos/Rally’s.png" alt="Dunzo" />
           </div>
         </div>
   
