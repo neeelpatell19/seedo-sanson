@@ -322,3 +322,9 @@
     color: #8b9299;
     margin-right: 6px;
 }
+
+@media (max-width: 768px) {
+    .SpecificProductPage .sp-thumbs {
+        gap: 0px;
+    }
+}
