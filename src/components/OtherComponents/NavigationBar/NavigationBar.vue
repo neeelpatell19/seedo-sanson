@@ -33,6 +33,12 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item">
+                        <router-link to="/manufacturing" class="nav-link">
+                            Manufacturing
+                        </router-link>
+                    </li>
+
                     <li class="nav-item has-children">
                         <router-link to="/about" class="nav-link">
                             About Us
@@ -95,6 +101,10 @@
                                     </template>
                                 </ProductContext>
                             </ul>
+                        </li>
+
+                        <li class="drawer__item">
+                            <router-link to="/manufacturing" class="drawer__link" @click="closeDrawer">Manufacturing</router-link>
                         </li>
 
                         <li class="drawer__item">

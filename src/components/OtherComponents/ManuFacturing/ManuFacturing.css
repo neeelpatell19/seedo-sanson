@@ -1,0 +1,817 @@
+/* Manufacturing Component */
+.ManuFacturing {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.manufacturing-step {
+    margin-top: 60px;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
+}
+
+/* Step Header */
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    gap: 40px;
+}
+
+.step-title-section {
+    flex: 1;
+    max-width: 600px;
+}
+
+.step-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #d33a35;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.step-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.step-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.seedo-logo img {
+    height: 60px;
+    width: auto;
+}
+
+.make-in-india-logo img {
+    height: 80px;
+    width: auto;
+    border-radius: 8px;
+}
+
+/* Factory Units */
+.factory-units {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.factory-unit {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.factory-unit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.unit-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.unit-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.factory-unit:hover .unit-image img {
+    transform: scale(1.05);
+}
+
+.unit-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: #d33a35;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(211, 58, 53, 0.3);
+}
+.ManuFacturing-container {
+    background-image: url("/Images/ManufacturingFactory.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ManuFacturing-container::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ManuFacturing-container::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.3) 20%,
+        rgba(0, 0, 0, 0.1) 40%,
+        rgba(0, 0, 0, 0.1) 60%,
+        rgba(0, 0, 0, 0.3) 80%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    pointer-events: none;
+}
+
+.BackgroundImageContainer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 1000px;
+    padding: 40px 20px;
+}
+
+.BackgroundImageContainer h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+}
+
+.BackgroundImageContainer p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    opacity: 0.95;
+}
+
+.SansonIntro img{
+    width: 100%;
+}
+
+.SansonIntroContentGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Manufacturing Cards Section */
+.ManufacturingProcessContainer {
+    background: #f8f9fa;
+}
+
+.cards-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 80px 30px;
+}
+
+.manufacturing-card {
+    background: white;
+    border-radius: 5px;
+    /* overflow: hidden; */
+    /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); */
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.manufacturing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    max-height:400px;
+    /* height: 250px;
+    overflow: hidden; */
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.manufacturing-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    z-index: 5;
+    bottom: -40px;
+    background: white;
+    /* width: 90%; */
+    left: 20px;
+    right: 20px;
+    border-radius: 20px;
+    border: 1px solid #d33a357e;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #d33a35;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .SansonIntroContentGrid{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .ManuFacturing-container {
+        min-height: 600px;
+    }
+    
+    .BackgroundImageContainer h1 {
+        font-size: 3rem;
+    }
+    
+    .BackgroundImageContainer p {
+        font-size: 1.2rem;
+    }
+    
+    .step-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .step-logos {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .step-title {
+        font-size: 2.2rem;
+    }
+    
+    .step-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ManufacturingProcessContainer {
+        padding: 60px 0;
+    }
+    
+    .cards-section {
+        padding: 0 15px;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card-image {
+        height: 200px;
+    }
+    
+    .card-content {
+        padding: 25px;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .card-description {
+        font-size: 0.9rem;
+    }
+    
+    .ManuFacturing-container {
+        min-height: 500px;
+    }
+    
+    .BackgroundImageContainer {
+        padding: 30px 15px;
+    }
+    
+    .BackgroundImageContainer h1 {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .BackgroundImageContainer p {
+        font-size: 1.1rem;
+    }
+    
+    .manufacturing-step {
+        padding: 30px 20px;
+        margin-top: 40px;
+    }
+    
+    .step-title {
+        font-size: 1.8rem;
+    }
+    
+    .step-description {
+        font-size: 0.95rem;
+    }
+    
+    .factory-units {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .unit-image {
+        height: 250px;
+    }
+    
+    .seedo-logo img {
+        height: 50px;
+    }
+    
+    .make-in-india-logo img {
+        height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ManufacturingProcessContainer {
+        padding: 40px 0;
+    }
+    
+    .cards-section {
+        padding: 0 10px;
+    }
+    
+    .section-header {
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .cards-grid {
+        gap: 15px;
+    }
+    
+    .card-image {
+        height: 180px;
+    }
+    
+    .card-content {
+        padding: 20px;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .card-description {
+        font-size: 0.85rem;
+    }
+    
+    .ManuFacturing-container {
+        min-height: 400px;
+    }
+    
+    .BackgroundImageContainer {
+        padding: 20px 10px;
+    }
+    
+    .BackgroundImageContainer h1 {
+        font-size: 2rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+    }
+    
+    .BackgroundImageContainer p {
+        font-size: 1rem;
+    }
+    
+    .manufacturing-step {
+        padding: 20px 15px;
+    }
+    
+    .step-title {
+        font-size: 1.5rem;
+    }
+    
+    .step-description {
+        font-size: 0.9rem;
+    }
+    
+    .unit-image {
+        height: 200px;
+    }
+    
+    .unit-label {
+        bottom: 15px;
+        left: 15px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .seedo-logo img {
+        height: 40px;
+    }
+    
+    .make-in-india-logo img {
+        height: 60px;
+    }
+}
+
+/* Seedo Certifications Section */
+.SeedoCertificationsContainer {
+    background: #f8f9fa;
+    padding: 80px 0;
+    margin-top: 60px;
+}
+
+.certifications-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.certifications-swiper-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.certifications-swiper {
+    flex: 1;
+}
+
+.cert-nav-btn {
+    background: #d33a35;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    box-shadow: 0 4px 12px rgba(211, 58, 53, 0.3);
+    z-index: 10;
+}
+
+.cert-nav-btn:hover {
+    background: #b8312e;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(211, 58, 53, 0.4);
+}
+
+.cert-nav-btn:active {
+    transform: scale(0.95);
+}
+
+.cert-nav-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.cert-nav-prev {
+    order: 1;
+}
+
+.certifications-swiper {
+    order: 2;
+}
+
+.cert-nav-next {
+    order: 3;
+}
+
+.certification-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    /* height: 300px; */
+}
+
+.certification-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.certification-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.certification-card:hover .certification-image {
+    transform: scale(1.05);
+}
+
+.certification-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 20px;
+    color: white;
+}
+
+.certification-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Fullscreen Modal */
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.fullscreen-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.fullscreen-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.fullscreen-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Responsive Design for Certifications */
+@media (max-width: 1024px) {
+    .certifications-swiper-container {
+        gap: 15px;
+    }
+    
+    .cert-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .cert-nav-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .certification-card {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .SeedoCertificationsContainer {
+        padding: 60px 0;
+    }
+    
+    .certifications-section {
+        padding: 0 15px;
+    }
+    
+    .certifications-swiper-container {
+        gap: 10px;
+    }
+    
+    .cert-nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .cert-nav-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .certification-card {
+        height: 200px;
+    }
+    
+    .certification-title {
+        font-size: 0.9rem;
+    }
+    
+    .fullscreen-image {
+        max-height: 70vh;
+    }
+    
+    .fullscreen-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .SeedoCertificationsContainer {
+        padding: 40px 0;
+    }
+    
+    .certifications-section {
+        padding: 0 10px;
+    }
+    
+    .certifications-swiper-container {
+        gap: 8px;
+    }
+    
+    .cert-nav-btn {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .cert-nav-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .certification-card {
+        height: 180px;
+    }
+    
+    .certification-overlay {
+        padding: 15px;
+    }
+    
+    .certification-title {
+        font-size: 0.8rem;
+    }
+    
+    .fullscreen-modal {
+        padding: 10px;
+    }
+    
+    .fullscreen-image {
+        max-height: 60vh;
+    }
+    
+    .fullscreen-title {
+        font-size: 1rem;
+        margin-top: 15px;
+    }
+    
+    .close-btn {
+        top: -40px;
+        width: 35px;
+        height: 35px;
+    }
+}

@@ -5,6 +5,7 @@ import AboutUs from './components/OtherComponents/AboutUs/AboutUs.vue'
 import SpecificProductPage from './components/Products/SpecificProductPage/SpecificProductPage.vue'
 import Allproducts from './components/Products/Allproducts/Allproducts.vue'
 import CategoriesWiseProduct from './components/Products/CategoriesWiseProduct/CategoriesWiseProduct.vue'
+import ManuFacturing from './components/OtherComponents/ManuFacturing/ManuFacturing.vue'
 const routes = [
   {
     path: '/',
@@ -35,6 +36,11 @@ const routes = [
     path: '/allproducts',
     name: 'Allproducts',
     component: Allproducts
+  },
+  {
+    path: '/manufacturing',
+    name: 'Manufacturing',
+    component: ManuFacturing
   }
 ]
 
