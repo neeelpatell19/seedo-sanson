@@ -122,6 +122,9 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .product-image-container{
+        min-height:unset !important;
+    }
     .popular-products-home {
         padding: 20px 15px;
     }
@@ -144,6 +147,9 @@
 }
 
 @media (max-width: 480px) {
+    .product-card{
+        width: 100%;
+    }
     .section-header {
         flex-direction: column;
         align-items: flex-start;

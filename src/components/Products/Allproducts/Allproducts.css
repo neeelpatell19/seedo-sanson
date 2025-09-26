@@ -104,5 +104,20 @@
     .filters-bar {
         justify-content: center;
     }
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    /* Mobile: 2 products per row */
+    @media (max-width: 768px) {
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+    }
+    
 }
 

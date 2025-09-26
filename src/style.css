@@ -193,6 +193,10 @@ p {
   padding-bottom: 50px;
 }
 @media (max-width:800px) {
+  .TopPaddingAnotherPage{
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
   .Container {
     padding: 0px 10px !important;
   }
