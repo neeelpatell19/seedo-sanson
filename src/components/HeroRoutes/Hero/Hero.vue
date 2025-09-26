@@ -4,6 +4,8 @@ import "./Hero.css"
 
 <template>
     <div class="hero-video-container Container MainPaddingContainerTop80 paddingTop100px">
+        <br>
+        <br>
         <div class="hero-video-wrapper">
             <video class="hero-video" src=""
                 poster="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/9f24e2172c3f9742af12bfe9359c1c6ad2588e44.jpg"

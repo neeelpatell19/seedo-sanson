@@ -34,6 +34,9 @@
           <div class="logo-card white">
             <img src="/Images/ClientsLogos/Rally’s.png" alt="Dunzo" />
           </div>
+          <div class="logo-card white">
+            <img src="/Images/ClientsLogos/Reliance_Retail.png" alt="Dunzo" />
+          </div>
         </div>
   
         <!-- Right: Copy -->
