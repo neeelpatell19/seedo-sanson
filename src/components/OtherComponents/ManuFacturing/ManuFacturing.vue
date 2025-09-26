@@ -1,6 +1,6 @@
 <template>
     <section class="ManuFacturing MainPaddingContainerTop80">
-
+        <br class="onlypcbr">
         <div class="ManuFacturing-container">
             <div class="BackgroundImageContainer">
                 <h2>Seedo Toys: Sparking Imagination, Ensuring Quality</h2>
@@ -18,7 +18,7 @@
         </div>
         <br><br>
         <div class="Container">
-            <div class="SansonIntro">
+            <!-- <div class="SansonIntro">
                 <p>Sanson Promo Innovations LLP</p>
                 <h2>Sanson is a leading innovator in consumer and trade pro-motions, trusted by major
                     FMCG brands in India such as Unilever, Glaxo, Perfetti, Mondelez, Britannia, and
@@ -44,9 +44,50 @@
                             and trade promotions landscape, delivering exceptional results for our cli-ents.</p>
                     </div>
                 </div>
+            </div> -->
+            <div class="SansonInfoContainerStyle">
+                <div class="SansonInfoContainerStyleTitle">
+                    <p>
+                        Sanson Promo Innovations LLP</p>
+                    <h2>Sanson is a leading innovator in consumer and trade pro-motions, trusted by major FMCG brands in
+                        India such as Unilever, Glaxo, Perfetti, Mondelez, Britannia, and more.</h2>
+                </div>
+                <div class="GridContainerEdit">
+                    <div>
+                        <h2><span>25</span> years <br> of expertise</h2>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <!-- <h5>Heavy machine shop</h5> -->
+                                <p>With extensive expertise in collaborating with global brands and managing OEM
+                                    licensors like Disney, Marvel, Mattel, Pokémon, and Doraemon, we prioritise safety
+                                    and quality throughout the entire product cycle.</p>
+                            </div>
+                            <br>
+                            <div>
+                                <!-- <h5>Heavy machine shop</h5> -->
+                                <p>From concept to execution, we manage every aspect, including conceptualization,
+                                    modelling, product engineer-ing, value engineering, mass manufacturing, quality
+                                    assur-ance, and logistics. Our unwavering commitment to excellence ensures we
+                                    consistently exceed client expectations.</p>
+                            </div>
+                            <br>
+                            <div>
+                                <p>By leveraging our deep understanding of consumer be-haviour and market trends, we
+                                    design engaging campaigns that foster brand loyalty and drive growth. Join Sanson
+                                    Promo Innovations LLP on this exciting journey as we continue to shape the consumer
+                                    and trade promotions landscape, delivering exceptional results for our cli-ents.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/SansonOffice.png" alt="">
+                    </div>
+                </div>
             </div>
             <div class="Container TopPaddingAnotherPage">
-                <h1 class="text-center">Manufacturing</h1>
+                <!-- <h1 class="text-center">Manufacturing</h1> -->
 
                 <!-- Step 1: Factory Exterior -->
                 <div class="manufacturing-step">
@@ -95,6 +136,7 @@
                         <h2>Our Manufacturing Capabilities</h2>
                         <p>Comprehensive solutions across multiple industries</p>
                     </div>
+                    <br><br>
 
                     <div class="cards-grid">
                         <div v-for="(card, index) in manufacturingCards" :key="index" class="manufacturing-card">
@@ -113,67 +155,67 @@
                 </div>
             </div>
             <!-- Seedo Certifications Section -->
-            <div class="SeedoCertificationsContainer">
-                <div class="certifications-section">
-                    <div class="section-header">
-                        <h2>Seedo Certifications</h2>
-                        <p>Our commitment to quality and excellence</p>
-                    </div>
 
-                    <div class="certifications-swiper-container">
-                        <button class="cert-nav-btn cert-nav-prev" @click="slidePrev"
-                            aria-label="Previous certifications">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M15 18l-6-6 6-6" />
-                            </svg>
-                        </button>
 
-                        <Swiper ref="certSwiperRef" class="certifications-swiper" :modules="modules"
-                            :slides-per-view="3" :space-between="20" :breakpoints="{
-                                320: { slidesPerView: 1, spaceBetween: 15 },
-                                640: { slidesPerView: 2, spaceBetween: 20 },
-                                1024: { slidesPerView: 3, spaceBetween: 25 }
-                            }" :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }"
-                            :a11y="{ enabled: true }" :loop="true" @swiper="onCertSwiper">
 
-                            <SwiperSlide v-for="(cert, index) in certifications" :key="index">
-                                <div class="certification-card" @click="openFullscreen(index)">
-                                    <img :src="cert.image" :alt="cert.title" class="certification-image" />
-                                    <div class="certification-overlay">
-                                        <div class="certification-title">{{ cert.title }}</div>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        </Swiper>
-
-                        <button class="cert-nav-btn cert-nav-next" @click="slideNext" aria-label="Next certifications">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M9 18l6-6-6-6" />
-                            </svg>
-                        </button>
-                    </div>
+        </div>
+        <br>
+        <div class="SeedoCertificationsContainer">
+            <div class="certifications-section Container">
+                <div class="section-header">
+                    <h2 class="white">Seedo Certifications</h2>
+                    <p class="white">Our commitment to quality and excellence</p>
                 </div>
+                <br><br>
+                <div class="certifications-swiper-container">
+                    <button class="cert-nav-btn cert-nav-prev" @click="slidePrev" aria-label="Previous certifications">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
 
-                <!-- Fullscreen Modal -->
-                <div v-if="showFullscreen" class="fullscreen-modal" @click="closeFullscreen">
-                    <div class="fullscreen-content" @click.stop>
-                        <button class="close-btn" @click="closeFullscreen" aria-label="Close">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 6L6 18M6 6l12 12" />
-                            </svg>
-                        </button>
-                        <img :src="currentCertification.image" :alt="currentCertification.title"
-                            class="fullscreen-image" />
-                        <div class="fullscreen-title">{{ currentCertification.title }}</div>
-                    </div>
+                    <Swiper ref="certSwiperRef" class="certifications-swiper" :modules="modules" :slides-per-view="3"
+                        :space-between="20" :breakpoints="{
+                            320: { slidesPerView: 1, spaceBetween: 15 },
+                            640: { slidesPerView: 2, spaceBetween: 20 },
+                            1024: { slidesPerView: 3, spaceBetween: 25 }
+                        }" :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }"
+                        :a11y="{ enabled: true }" :loop="true" @swiper="onCertSwiper">
+
+                        <SwiperSlide v-for="(cert, index) in certifications" :key="index">
+                            <div class="certification-card" @click="openFullscreen(index)">
+                                <img :src="cert.image" :alt="cert.title" class="certification-image" />
+                                <div class="certification-overlay">
+                                    <div class="certification-title">{{ cert.title }}</div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+
+                    <button class="cert-nav-btn cert-nav-next" @click="slideNext" aria-label="Next certifications">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
                 </div>
             </div>
 
+            <!-- Fullscreen Modal -->
+            <div v-if="showFullscreen" class="fullscreen-modal" @click="closeFullscreen">
+                <div class="fullscreen-content" @click.stop>
+                    <button class="close-btn" @click="closeFullscreen" aria-label="Close">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <img :src="currentCertification.image" :alt="currentCertification.title" class="fullscreen-image" />
+                    <div class="fullscreen-title">{{ currentCertification.title }}</div>
+                </div>
+            </div>
         </div>
-
     </section>
 </template>
 

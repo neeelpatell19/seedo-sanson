@@ -35,7 +35,7 @@
 
                     <li class="nav-item">
                         <router-link to="/manufacturing" class="nav-link">
-                            Manufacturing
+                            Manufacturing-Process
                         </router-link>
                     </li>
 
@@ -83,7 +83,8 @@
                         <!-- Accordion group -->
                         <li class="drawer__item">
                             <button class="drawer__accordion" :aria-expanded="isOpen('products')"
-                                @click="toggleAccordion('products')" @keydown.enter="toggleAccordion('products')" @keydown.space.prevent="toggleAccordion('products')">
+                                @click="toggleAccordion('products')" @keydown.enter="toggleAccordion('products')"
+                                @keydown.space.prevent="toggleAccordion('products')">
                                 Products
                                 <svg class="acc-caret" viewBox="0 0 24 24">
                                     <path d="M6 9l6 6 6-6" />
@@ -95,7 +96,8 @@
                                     <li v-else-if="error"><span>Error</span></li>
                                     <template v-else>
                                         <li v-for="cat in uniqueCategories(categories)" :key="cat._id">
-                                            <router-link :to="`/allproducts/${slug(cat.name)}`" @click="closeDrawer">{{ cat.name
+                                            <router-link :to="`/allproducts/${slug(cat.name)}`" @click="closeDrawer">{{
+                                                cat.name
                                                 }}</router-link>
                                         </li>
                                     </template>
@@ -104,7 +106,8 @@
                         </li>
 
                         <li class="drawer__item">
-                            <router-link to="/manufacturing" class="drawer__link" @click="closeDrawer">Manufacturing</router-link>
+                            <router-link to="/manufacturing" class="drawer__link"
+                                @click="closeDrawer">Manufacturing</router-link>
                         </li>
 
                         <li class="drawer__item">

@@ -2,6 +2,7 @@
 .ManuFacturing {
     background-color: #f8f9fa;
     padding: 80px 0;
+    padding-bottom: 0px;
 }
 
 .manufacturing-step {
@@ -112,8 +113,9 @@
     letter-spacing: 0.5px;
     box-shadow: 0 4px 12px rgba(211, 58, 53, 0.3);
 }
+
 .ManuFacturing-container {
-    background-image: url("/Images/ManufacturingFactory.png");
+    background-image: url("https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/ManufacturingMainImage.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -126,7 +128,7 @@
     justify-content: center;
 }
 
-.ManuFacturing-container::before{
+.ManuFacturing-container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -136,22 +138,20 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.ManuFacturing-container::after{
+.ManuFacturing-container::after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.3) 20%,
-        rgba(0, 0, 0, 0.1) 40%,
-        rgba(0, 0, 0, 0.1) 60%,
-        rgba(0, 0, 0, 0.3) 80%,
-        rgba(0, 0, 0, 0.7) 100%
-    );
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.3) 20%,
+            rgba(0, 0, 0, 0.1) 40%,
+            rgba(0, 0, 0, 0.1) 60%,
+            rgba(0, 0, 0, 0.3) 80%,
+            rgba(0, 0, 0, 0.7) 100%);
     pointer-events: none;
 }
 
@@ -179,11 +179,11 @@
     opacity: 0.95;
 }
 
-.SansonIntro img{
+.SansonIntro img {
     width: 100%;
 }
 
-.SansonIntroContentGrid{
+.SansonIntroContentGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -200,17 +200,10 @@
     padding: 0 20px;
 }
 
-.section-header {
+/* .section-header {
     text-align: center;
     margin-bottom: 60px;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 15px;
-}
+} */
 
 .section-subtitle {
     font-size: 1.1rem;
@@ -244,7 +237,8 @@
     width: 100%;
     height: 100%;
     min-height: 400px;
-    max-height:400px;
+    max-height: 400px;
+
     /* height: 250px;
     overflow: hidden; */
     position: relative;
@@ -255,6 +249,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    border-radius: 20px 20px 0px 0px;
 }
 
 .manufacturing-card:hover .card-image img {
@@ -295,52 +290,88 @@
     line-height: 1.6;
     margin: 0;
 }
+
+.GridContainerEdit {
+    display: grid;
+    grid-template-columns: 0.7fr 1.5fr 1fr;
+    gap: 90px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.GridContainerEdit>div img {
+    width: 100%;
+}
+
+.SansonInfoContainerStyleTitle {
+    max-width: 1000px;
+    /* margin: 0 auto; */
+}
+
+.GridContainerEdit p {
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.302);
+    padding-bottom: 20px;
+    color: rgb(75, 75, 75);
+    font-weight: 400;
+}
+
+.GridContainerEdit h2 span {
+    font-size: 50px;
+    color: #b8312e;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .SansonIntroContentGrid{
+    .GridContainerEdit {
+        display: flex;
+        flex-direction: column;
+        gap: 90px;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .SansonIntroContentGrid {
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
-    
+
     .cards-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 25px;
     }
-    
-    .section-title {
-        font-size: 2.2rem;
-    }
-    
+
+
     .ManuFacturing-container {
         min-height: 600px;
     }
-    
+
     .BackgroundImageContainer h1 {
         font-size: 3rem;
     }
-    
+
     .BackgroundImageContainer p {
         font-size: 1.2rem;
     }
-    
+
     .step-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 30px;
     }
-    
+
     .step-logos {
         flex-direction: row;
         justify-content: center;
         align-items: center;
     }
-    
+
     .step-title {
         font-size: 2.2rem;
     }
-    
+
     .step-description {
         font-size: 1rem;
     }
@@ -350,87 +381,84 @@
     .ManufacturingProcessContainer {
         padding: 60px 0;
     }
-    
+
     .cards-section {
         padding: 0 15px;
     }
-    
+
     .section-header {
         margin-bottom: 40px;
     }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
+
+
     .section-subtitle {
         font-size: 1rem;
     }
-    
+
     .cards-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .card-image {
         height: 200px;
     }
-    
+
     .card-content {
         padding: 25px;
     }
-    
+
     .card-title {
         font-size: 1.2rem;
     }
-    
+
     .card-description {
         font-size: 0.9rem;
     }
-    
+
     .ManuFacturing-container {
         min-height: 500px;
     }
-    
+
     .BackgroundImageContainer {
         padding: 30px 15px;
     }
-    
+
     .BackgroundImageContainer h1 {
         font-size: 2.5rem;
         letter-spacing: 1px;
     }
-    
+
     .BackgroundImageContainer p {
         font-size: 1.1rem;
     }
-    
+
     .manufacturing-step {
         padding: 30px 20px;
         margin-top: 40px;
     }
-    
+
     .step-title {
         font-size: 1.8rem;
     }
-    
+
     .step-description {
         font-size: 0.95rem;
     }
-    
+
     .factory-units {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .unit-image {
         height: 250px;
     }
-    
+
     .seedo-logo img {
         height: 50px;
     }
-    
+
     .make-in-india-logo img {
         height: 70px;
     }
@@ -440,89 +468,88 @@
     .ManufacturingProcessContainer {
         padding: 40px 0;
     }
-    
+
     .cards-section {
         padding: 0 10px;
     }
-    
+
     .section-header {
         margin-bottom: 30px;
     }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
+
+
     .section-subtitle {
         font-size: 0.95rem;
     }
-    
+
     .cards-grid {
-        gap: 15px;
+        gap: 80px;
     }
-    
+
     .card-image {
         height: 180px;
     }
-    
+
     .card-content {
         padding: 20px;
     }
-    
+
     .card-title {
         font-size: 1.1rem;
         margin-bottom: 12px;
     }
-    
+
     .card-description {
         font-size: 0.85rem;
     }
-    
+
     .ManuFacturing-container {
         min-height: 400px;
+        display: flex;
+        align-items: end;
     }
-    
+
     .BackgroundImageContainer {
         padding: 20px 10px;
     }
-    
+
     .BackgroundImageContainer h1 {
         font-size: 2rem;
         letter-spacing: 0.5px;
         margin-bottom: 15px;
     }
-    
+
     .BackgroundImageContainer p {
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
-    
+
     .manufacturing-step {
-        padding: 20px 15px;
+        padding: 0px;
     }
-    
+
     .step-title {
         font-size: 1.5rem;
     }
-    
+
     .step-description {
         font-size: 0.9rem;
     }
-    
+
     .unit-image {
         height: 200px;
     }
-    
+
     .unit-label {
         bottom: 15px;
         left: 15px;
         padding: 6px 12px;
         font-size: 0.9rem;
     }
-    
+
     .seedo-logo img {
         height: 40px;
     }
-    
+
     .make-in-india-logo img {
         height: 60px;
     }
@@ -533,6 +560,10 @@
     background: #f8f9fa;
     padding: 80px 0;
     margin-top: 60px;
+    background-image: url("https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/Background1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .certifications-section {
@@ -599,10 +630,10 @@
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); */
     transition: all 0.3s ease;
     cursor: pointer;
-    /* height: 300px; */
+    /* height: 500px; */
 }
 
 .certification-card:hover {
@@ -705,57 +736,57 @@
     .certifications-swiper-container {
         gap: 15px;
     }
-    
+
     .cert-nav-btn {
         width: 40px;
         height: 40px;
     }
-    
+
     .cert-nav-btn svg {
         width: 16px;
         height: 16px;
     }
-    
-    .certification-card {
+
+    /* .certification-card {
         height: 250px;
-    }
+    } */
 }
 
 @media (max-width: 768px) {
     .SeedoCertificationsContainer {
         padding: 60px 0;
     }
-    
+
     .certifications-section {
         padding: 0 15px;
     }
-    
+
     .certifications-swiper-container {
         gap: 10px;
     }
-    
+
     .cert-nav-btn {
         width: 35px;
         height: 35px;
     }
-    
+
     .cert-nav-btn svg {
         width: 14px;
         height: 14px;
     }
-    
-    .certification-card {
+
+    /* .certification-card {
         height: 200px;
-    }
-    
+    } */
+
     .certification-title {
         font-size: 0.9rem;
     }
-    
+
     .fullscreen-image {
         max-height: 70vh;
     }
-    
+
     .fullscreen-title {
         font-size: 1.2rem;
     }
@@ -765,50 +796,53 @@
     .SeedoCertificationsContainer {
         padding: 40px 0;
     }
-    
+
     .certifications-section {
         padding: 0 10px;
     }
-    
+
     .certifications-swiper-container {
         gap: 8px;
     }
-    
+
     .cert-nav-btn {
         width: 30px;
         height: 30px;
     }
-    
+
     .cert-nav-btn svg {
         width: 12px;
         height: 12px;
     }
-    
-    .certification-card {
+
+    /* .certification-card {
         height: 180px;
-    }
-    
+    } */
+     .onlypcbr{
+        display: none;
+     }
+
     .certification-overlay {
         padding: 15px;
     }
-    
+
     .certification-title {
         font-size: 0.8rem;
     }
-    
+
     .fullscreen-modal {
         padding: 10px;
     }
-    
+
     .fullscreen-image {
         max-height: 60vh;
     }
-    
+
     .fullscreen-title {
         font-size: 1rem;
         margin-top: 15px;
     }
-    
+
     .close-btn {
         top: -40px;
         width: 35px;
