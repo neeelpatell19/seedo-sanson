@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="Container TopPaddingAnotherPage">
+        <div class="Container TopPaddingAnotherPage">
                 <!-- <h1 class="text-center">Manufacturing</h1> -->
 
                 <!-- Step 1: Factory Exterior -->
@@ -100,9 +100,9 @@
                             </p>
                         </div>
                         <div class="step-logos">
-                            <div class="seedo-logo">
+                            <!-- <div class="seedo-logo">
                                 <img src="/Images/SeedoLogoImage.svg" alt="SEEDO" />
-                            </div>
+                            </div> -->
                             <div class="make-in-india-logo">
                                 <img src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/MakeInIndia.jpg"
                                     alt="Make in India" />
@@ -141,7 +141,24 @@
                     <div class="cards-grid">
                         <div v-for="(card, index) in manufacturingCards" :key="index" class="manufacturing-card">
                             <div class="card-image">
-                                <img :src="card.image" :alt="card.title" />
+                                <!-- If multiple images, show fading carousel; else single image -->
+                                <template v-if="Array.isArray(card.images) && card.images.length > 1">
+                                    <Swiper
+                                        :modules="modules"
+                                        effect="fade"
+                                        :autoplay="{ delay: 2500, disableOnInteraction: false }"
+                                        :loop="true"
+                                        class="manufacturing-card-swiper"
+                                        style="height: 100%;"
+                                    >
+                                        <SwiperSlide v-for="(imgSrc, i) in card.images" :key="i">
+                                            <img :src="imgSrc" :alt="card.title" />
+                                        </SwiperSlide>
+                                    </Swiper>
+                                </template>
+                                <template v-else>
+                                    <img :src="card.images && card.images[0]" :alt="card.title" />
+                                </template>
                                 <div class="card-content">
                                     <h3 class="card-title">{{ card.title }}</h3>
                                     <p class="card-description">
@@ -222,8 +239,9 @@
 <script setup>
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { A11y, Autoplay } from "swiper/modules";
+import { A11y, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/effect-fade";
 import "./ManuFacturing.css";
 
 // Manufacturing cards data
@@ -232,48 +250,51 @@ const manufacturingCards = ref([
         id: 1,
         title: "STORE CAPACITY",
         description: "The factory can store up to 10 standard 40-foot containers, supporting bulk inventory.",
-        image: "/Images/ManufacturingImages/StoreCapicity.png"
+        images: [
+            "/Images/ManufacturingImages/StoreCapicity.png",
+            "/Images/ManufacturingImages/StoreCapacityImag2.jpeg"
+        ]
     },
     {
         id: 2,
         title: "MOULDING",
         description: "Equipped with 24 advanced injection moulding machines, ensuring precision and efficiency in production.",
-        image: "/Images/ManufacturingImages/Moulding.png"
+        images: ["/Images/ManufacturingImages/Moulding.png"]
     },
     {
         id: 3,
         title: "PAD PRINTING",
         description: "The facility has 18 pad printing machines, supporting one to four-colour prints daily.",
-        image: "/Images/ManufacturingImages/Pad Printing.png"
+        images: ["/Images/ManufacturingImages/Pad Printing.png"]
     },
     {
         id: 4,
         title: "SPRAY PAINTING",
         description: "Our 7 booths and 2 conveyor belts can paint up to 6,000 units daily efficiently.",
-        image: "/Images/ManufacturingImages/SprayPainting.png"
+        images: ["/Images/ManufacturingImages/SprayPainting.png","/Images/ManufacturingImages/SprayPaintingImage2.png"]
     },
     {
         id: 5,
         title: "ASSEMBLY",
         description: "Seven assembly lines allow up to 50,000 products to be assembled daily accurately.",
-        image: "/Images/ManufacturingImages/Assembly.png"
+        images: ["/Images/ManufacturingImages/Assembly.png","/Images/ManufacturingImages/ASSEMBLYImage2.jpeg"]
     },
     {
         id: 6,
         title: "PACKAGING STEP",
         description: "Annual production exceeds 10 million units, with packaging done carefully for every product.",
-        image: "/Images/ManufacturingImages/PackagingStep.png"
+        images: ["/Images/ManufacturingImages/PackagingStep.png"]
     },
     {
         id: 7,
         title: "QUALITY CHECK",
         description: "Each product undergoes rigorous quality checks to maintain the highest standards consistently.",
-        image: "/Images/ManufacturingImages/Quality Check.png"
+        images: ["/Images/ManufacturingImages/Quality Check.png"]
     }
 ]);
 
 // Swiper modules
-const modules = [A11y, Autoplay];
+const modules = [A11y, Autoplay, EffectFade];
 
 // Certifications data
 const certifications = ref([

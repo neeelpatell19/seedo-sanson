@@ -634,6 +634,7 @@
     transition: all 0.3s ease;
     cursor: pointer;
     height: 500px;
+    border: 2px solid white;
 }
 
 .certification-card:hover {
