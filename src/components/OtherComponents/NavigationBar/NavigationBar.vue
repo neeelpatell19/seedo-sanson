@@ -35,7 +35,7 @@
 
                     <li class="nav-item">
                         <router-link to="/manufacturing" class="nav-link">
-                            Manufacturing-Process
+                            Manufacturing Process
                         </router-link>
                     </li>
 
@@ -98,7 +98,7 @@
                                         <li v-for="cat in uniqueCategories(categories)" :key="cat._id">
                                             <router-link :to="`/allproducts/${slug(cat.name)}`" @click="closeDrawer">{{
                                                 cat.name
-                                                }}</router-link>
+                                            }}</router-link>
                                         </li>
                                     </template>
                                 </ProductContext>

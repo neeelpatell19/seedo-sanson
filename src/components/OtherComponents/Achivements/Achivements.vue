@@ -23,13 +23,8 @@
                 </div>
 
                 <div class="achievement-card" ref="card4">
-                    <div class="achievement-number">{{ animatedCounters[3] }}+</div>
+                    <div class="achievement-number">{{ animatedCounters[3] }}</div>
                     <div class="achievement-label">Moulding Machines</div>
-                </div>
-
-                <div class="achievement-card" ref="card5">
-                    <div class="achievement-number">{{ animatedCounters[4] }}%</div>
-                    <div class="achievement-label">USP - Centralised Systems</div>
                 </div>
             </div>
         </div>
@@ -40,16 +35,15 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 // Target values for each counter
-const targetValues = [30000, 150, 50000, 25, 100]
-const animatedCounters = ref([0, 0, 0, 0, 0])
-const hasAnimated = ref([false, false, false, false, false])
+const targetValues = [250000, 400, 250000, 25]
+const animatedCounters = ref([0, 0, 0, 0])
+const hasAnimated = ref([false, false, false, false])
 
 // Create refs for each card
 const card1 = ref(null)
 const card2 = ref(null)
 const card3 = ref(null)
 const card4 = ref(null)
-const card5 = ref(null)
 
 // Animation function
 const animateCounter = (index, target, duration = 2000) => {
@@ -90,7 +84,6 @@ const setupObserver = () => {
                 else if (entry.target === card2.value) index = 1
                 else if (entry.target === card3.value) index = 2
                 else if (entry.target === card4.value) index = 3
-                else if (entry.target === card5.value) index = 4
                 
                 console.log('Card index:', index, 'Has animated:', hasAnimated.value[index])
                 
@@ -107,7 +100,7 @@ const setupObserver = () => {
     })
     
     // Observe all achievement cards
-    const cards = [card1.value, card2.value, card3.value, card4.value, card5.value]
+    const cards = [card1.value, card2.value, card3.value, card4.value]
     console.log('Cards to observe:', cards)
     cards.forEach((card, index) => {
         if (card) {

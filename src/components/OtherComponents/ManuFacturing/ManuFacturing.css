@@ -633,7 +633,7 @@
     /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); */
     transition: all 0.3s ease;
     cursor: pointer;
-    /* height: 500px; */
+    height: 500px;
 }
 
 .certification-card:hover {
@@ -815,9 +815,9 @@
         height: 12px;
     }
 
-    /* .certification-card {
-        height: 180px;
-    } */
+    .certification-card {
+        height: 100%;
+    }
      .onlypcbr{
         display: none;
      }
