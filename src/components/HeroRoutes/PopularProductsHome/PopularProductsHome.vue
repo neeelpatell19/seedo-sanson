@@ -40,9 +40,9 @@ export default {
         <div class="Container MainPaddingContainerTop80">
             <div class="section-header">
                 <h2 class="section-title">Popular Products</h2>
-                <a href="#" class="view-all-btn">View All</a>
+                <router-link to="/allproducts" class="view-all-btn">View All</router-link>
             </div>
-            <br>
+            <!-- <br> -->
             <WrapContext v-slot="{ products, loading, error }">
                 <LogProducts :products="products" />
 

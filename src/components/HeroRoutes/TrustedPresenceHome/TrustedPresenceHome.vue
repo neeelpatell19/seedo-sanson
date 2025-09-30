@@ -10,17 +10,17 @@ import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 
 export default {
-  name: 'TrustedPresenceHome',
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  setup() {
-    return {
-      ClientsData,
-      modules: [FreeMode, Pagination, Autoplay],
-    }
-  },
+    name: 'TrustedPresenceHome',
+    components: {
+        Swiper,
+        SwiperSlide,
+    },
+    setup() {
+        return {
+            ClientsData,
+            modules: [FreeMode, Pagination, Autoplay],
+        }
+    },
 }
 </script>
 
@@ -38,52 +38,34 @@ export default {
                         presence across these digital platforms:</p>
                 </div>
             </div>
-            
+
             <!-- Client Logos Slider -->
             <div class="clients-slider-container">
-                <swiper
-                    :slidesPerView="5"
-                    :spaceBetween="30"
-                    :freeMode="true"
-                    :loop="true"
-                    :speed="800"
-                    :autoplay="{
-                       delay: 2000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,    
-                    }"
-                    :breakpoints="{
-                        320: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        640: {
-                            slidesPerView: 3,
-                            spaceBetween: 25,
-                        },
-                        768: {
-                            slidesPerView: 4,
-                            spaceBetween: 30,
-                        },
-                        1024: {
-                            slidesPerView: 5,
-                            spaceBetween: 30,
-                        },
-                    }"
-                    :modules="modules"
-                    class="clients-swiper"
-                >
-                    <swiper-slide 
-                        v-for="client in ClientsData" 
-                        :key="client.id"
-                        class="client-slide"
-                    >
+                <swiper :slidesPerView="5" :spaceBetween="30" :freeMode="true" :loop="true" :speed="800" :autoplay="{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }" :breakpoints="{
+                    320: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    640: {
+                        slidesPerView: 3,
+                        spaceBetween: 25,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                        spaceBetween: 30,
+                    },
+                }" :modules="modules" class="clients-swiper">
+                    <swiper-slide v-for="client in ClientsData" :key="client.id" class="client-slide">
                         <div class="client-logo-container">
-                            <img 
-                                :src="client.image" 
-                                :alt="client.name"
-                                class="client-logo"
-                            />
+                            <img :src="client.image" :alt="client.name" class="client-logo" />
                         </div>
                     </swiper-slide>
                 </swiper>
