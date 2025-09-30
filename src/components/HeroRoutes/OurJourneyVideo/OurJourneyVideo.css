@@ -16,8 +16,14 @@
 
 .journey-text-right {
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    max-width: 450px;
 }
-
+.journey-text-right p{
+    text-align: end;
+}
 .journey-description {
     font-size: 18px;
     color: #666;
@@ -62,6 +68,16 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    .journey-text-right {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 400px;
+    }
+    .journey-text-right p{
+        text-align: center;
+    }
     .journey-content-wrapper {
         gap: 30px;
     }

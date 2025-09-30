@@ -166,6 +166,10 @@ p {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+input, textarea {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .max-width-800 {
   max-width: 800px;
   margin: 0 auto;

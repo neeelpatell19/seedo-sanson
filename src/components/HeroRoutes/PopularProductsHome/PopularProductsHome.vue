@@ -21,6 +21,16 @@ export default {
             },
             template: '<div style="display:none"></div>'
         }
+    },
+    methods: {
+        slug(value) {
+            return String(value || '')
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .trim()
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+        }
     }
 }
 </script>
@@ -45,14 +55,19 @@ export default {
                 </div>
 
                 <div v-else-if="products && products.length > 0" class="products-grid">
-                    <div v-for="product in products.slice(0, 8)" :key="product._id" class="product-card">
+                    <router-link
+                        v-for="product in products.slice(0, 8)"
+                        :key="product._id"
+                        class="product-card"
+                        :to="{ name: 'ProductDetails', params: { productSlug: slug(product.title || product.name) } }"
+                    >
                         <div class="product-image-container">
                             <img v-if="product.mainImages && product.mainImages.length" :src="product.mainImages[0]"
-                                :alt="product.title" class="product-image" />
+                                :alt="product.title || product.name" class="product-image" />
                         </div>
-                        <h3 class="product-title">{{ product.title }}</h3>
+                        <h3 class="product-title">{{ product.title || product.name }}</h3>
                         <p class="product-price">Rs. {{ product.price }}</p>
-                    </div>
+                    </router-link>
                 </div>
 
                 <div v-else class="no-products">

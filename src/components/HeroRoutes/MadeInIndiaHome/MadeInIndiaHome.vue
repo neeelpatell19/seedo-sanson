@@ -8,6 +8,7 @@ import "./MadeInIndiaHome.css"
             <div class="made-in-india-content">
                 <!-- Left Content Section -->
                 <div class="made-in-india-text">
+                    <img src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/MakeInIndeaLogoImageNew.png" alt="">
                     <h2 class="made-in-india-title">Made In India</h2>
                     <br>
                     <p class="made-in-india-description">
@@ -24,7 +25,7 @@ import "./MadeInIndiaHome.css"
                 <div class="made-in-india-image">
                     <div class="image-container">
                         <img 
-                            src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/MadeInIndiaBannerContainer.png" 
+                            src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/MakeInIndiaImage.jpg" 
                             alt="Child playing with Seedo toys"
                             class="child-toy-image"
                         />

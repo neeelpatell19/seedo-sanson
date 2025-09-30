@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-        <div class="Container TopPaddingAnotherPage">
+            <div class="Container TopPaddingAnotherPage">
                 <!-- <h1 class="text-center">Manufacturing</h1> -->
 
                 <!-- Step 1: Factory Exterior -->
@@ -143,14 +143,9 @@
                             <div class="card-image">
                                 <!-- If multiple images, show fading carousel; else single image -->
                                 <template v-if="Array.isArray(card.images) && card.images.length > 1">
-                                    <Swiper
-                                        :modules="modules"
-                                        effect="fade"
-                                        :autoplay="{ delay: 2500, disableOnInteraction: false }"
-                                        :loop="true"
-                                        class="manufacturing-card-swiper"
-                                        style="height: 100%;"
-                                    >
+                                    <Swiper :modules="modules" effect="fade"
+                                        :autoplay="{ delay: 2500, disableOnInteraction: false }" :loop="true"
+                                        class="manufacturing-card-swiper" style="height: 100%;">
                                         <SwiperSlide v-for="(imgSrc, i) in card.images" :key="i">
                                             <img :src="imgSrc" :alt="card.title" />
                                         </SwiperSlide>
@@ -271,13 +266,13 @@ const manufacturingCards = ref([
         id: 4,
         title: "SPRAY PAINTING",
         description: "Our 7 booths and 2 conveyor belts can paint up to 6,000 units daily efficiently.",
-        images: ["/Images/ManufacturingImages/SprayPainting.png","/Images/ManufacturingImages/SprayPaintingImage2.png"]
+        images: ["/Images/ManufacturingImages/SprayPainting.png", "/Images/ManufacturingImages/SprayPaintingImage2.png"]
     },
     {
         id: 5,
         title: "ASSEMBLY",
         description: "Seven assembly lines allow up to 50,000 products to be assembled daily accurately.",
-        images: ["/Images/ManufacturingImages/Assembly.png","/Images/ManufacturingImages/ASSEMBLYImage2.jpeg"]
+        images: ["/Images/ManufacturingImages/Assembly.png", "/Images/ManufacturingImages/ASSEMBLYImage2.jpeg"]
     },
     {
         id: 6,

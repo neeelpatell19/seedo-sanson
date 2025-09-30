@@ -60,12 +60,12 @@ export default {
             <!-- Header Section -->
             <div class="header-section">
                 <h1 class="company-title">Sanson Promo Innovations LLP</h1>
-                <button class="view-button">
+                <router-link to="/about" class="view-button">
                     <span>View</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
-                </button>
+                </router-link>
             </div>
 
             <!-- Swiper Slider Section -->

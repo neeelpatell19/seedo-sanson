@@ -9,8 +9,8 @@ import "./OurJourneyVideo.css"
                 <!-- Header Section -->
                 <div class="header-section">
                     <div class="journey-text-left">
-                        <h1 class="company-title">Discover our journey and what drives us</h1>
-                        <p class="journey-description">All Seedo toys are proudly manufactured by Sanson, ensuring top-tier quality and safety.</p>
+                        <h1 class="company-title">Discover our journey and <br> what drives us</h1>
+                      
                     </div>
                     <div class="journey-text-right">
                         <button class="view-button">
@@ -19,6 +19,7 @@ import "./OurJourneyVideo.css"
                                 <path d="M7 17L17 7M17 7H7M17 7V17" />
                             </svg>
                         </button>
+                        <p class="journey-description">All Seedo toys are proudly manufactured by Sanson, ensuring top-tier quality and safety.</p>
                     </div>
                 </div>
 
