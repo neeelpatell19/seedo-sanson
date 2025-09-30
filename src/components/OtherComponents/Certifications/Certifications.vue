@@ -84,7 +84,7 @@ const onSwiper = (swiper) => {
 };
 
 const items = [
-    { title: "Make In India", src: "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/MakeInIndia.jpg" },
+    // { title: "Make In India", src: "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/MakeInIndia.jpg" },
     { title: "ASTM International", src: "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/ASTM International.png" },
     { title: "Supplier Ethical Data Exchange", src: "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/Supplier Ethical Data Exchange.png" },
     { title: "International Organization for Standardization (9001 : 2015)", src: "https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/International Organization 1.jpeg" },

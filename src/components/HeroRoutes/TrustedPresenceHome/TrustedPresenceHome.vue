@@ -30,6 +30,7 @@ export default {
             <div class="section-header">
                 <h1 class="text-center">Trusted Presence Home</h1>
             </div>
+            <br>
             <div class="max-width-800">
                 <div>
                     <p class="text-center">Proudly available in 3000+ stores nationwide, including General Trade and
