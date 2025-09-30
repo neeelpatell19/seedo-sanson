@@ -99,7 +99,12 @@
                     </p>
                 </div>
             </div>
+           
+          
         </div>
+        <div class="ft__octopus">
+                <img src="/Images/FooterImage.png" alt="">
+            </div>
     </footer>
 </template>
 
