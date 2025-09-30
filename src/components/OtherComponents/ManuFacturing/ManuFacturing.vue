@@ -104,7 +104,7 @@
                                 <img src="/Images/SeedoLogoImage.svg" alt="SEEDO" />
                             </div> -->
                             <div class="make-in-india-logo">
-                                <img src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/MakeInIndia.jpg"
+                                <img src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/MakeInIndeaLogoImageNew.png"
                                     alt="Make in India" />
                             </div>
                         </div>

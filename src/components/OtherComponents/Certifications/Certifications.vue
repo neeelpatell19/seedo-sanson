@@ -25,7 +25,6 @@
                     960: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 24 },
                     1280: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 32 }
                 }" 
-                :autoplay="{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }"
                 :a11y="{ enabled: true }" 
                 :loop="true"
                 @swiper="onSwiper">
