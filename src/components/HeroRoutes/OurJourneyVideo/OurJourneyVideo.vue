@@ -13,12 +13,12 @@ import "./OurJourneyVideo.css"
                       
                     </div>
                     <div class="journey-text-right">
-                        <button class="view-button">
+                       <router-link to="/about" class="view-button">
                             <span>About us</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M7 17L17 7M17 7H7M17 7V17" />
                             </svg>
-                        </button>
+                        </router-link>
                         <p class="journey-description">All Seedo toys are proudly manufactured by Sanson, ensuring top-tier quality and safety.</p>
                     </div>
                 </div>

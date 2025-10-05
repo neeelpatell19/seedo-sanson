@@ -133,6 +133,7 @@ const product = reactive({
     price: 0,
     mrp: 0,
     description: "",
+    mainImages: [],
     variants: {
         default: {
             name: "Default",
@@ -171,6 +172,7 @@ function maybeHydrateFrom(products) {
     product.price = Number(match.price ?? product.price) || 0
     product.mrp = Number(match.mrp ?? product.mrp) || product.price || 0
     product.code = match.itemCode || match.code || match.sku || product.code
+    product.mainImages = Array.isArray(match.mainImages) ? match.mainImages : []
     // Description: prefer tabs.description (HTML) then description (HTML/string)
     const richDesc = (match.tabs && match.tabs.description) || match.description || ''
     if (typeof richDesc === 'string') {

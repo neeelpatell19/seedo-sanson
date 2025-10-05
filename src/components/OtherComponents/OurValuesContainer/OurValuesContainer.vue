@@ -8,7 +8,7 @@
           <figure class="ov-figure">
             <!-- dummy image; replace src as needed -->
             <img
-              src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/SeedoOurValuesImage.png"
+              src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/OurCoreValuesImage.jpeg"
               alt="Happy child playing with toy"
             />
           </figure>

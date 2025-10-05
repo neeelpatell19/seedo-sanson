@@ -27,7 +27,7 @@
                                 </select>
                             </div>
 
-                            <div class="filter-item">
+                            <div class="filter-item" v-if="hasValidSubcategories(categories, selectedCategoryId)">
                                 <label>Subcategory</label>
                                 <select v-model="selectedSubcategoryId" :disabled="!selectedCategoryId">
                                     <option value="">All</option>
@@ -103,6 +103,18 @@ export default {
             if (!categoryId) return []
             const found = (categories || []).find(c => String(c?._id) === String(categoryId))
             return Array.isArray(found?.subcategories) ? found.subcategories : []
+        },
+        hasValidSubcategories(categories, categoryId) {
+            if (!categoryId) return false
+            const subcategories = this.getSubcategories(categories, categoryId)
+            // Check if there are subcategories with valid names (not empty, not 'Untitled', not null/undefined)
+            return subcategories.some(sub => 
+                sub && 
+                sub.name && 
+                sub.name.trim() !== '' && 
+                sub.name !== 'Untitled' &&
+                sub.name.toLowerCase() !== 'untitled'
+            )
         },
         filterProducts(products, categories, categoryId, subcategoryId) {
             let list = products || []
