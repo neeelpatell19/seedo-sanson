@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import ProductContext from '../../HeroRoutes/PopularProductsHome/ProductContext/ProductContext.vue'
 
@@ -75,7 +75,21 @@ export default {
                 .replace(/\s+/g, '-')
                 .replace(/-+/g, '-')
 
-        const selectedSubcategory = ref('all')
+        // Only load saved filter state if page was not reloaded
+        let initialSubcategory = 'all'
+        if (performance.navigation.type === 0) { // 0 = navigation, 1 = reload
+            try {
+                const saved = localStorage.getItem('categories-filters')
+                if (saved) {
+                    const parsed = JSON.parse(saved)
+                    initialSubcategory = parsed.selectedSubcategory || 'all'
+                }
+            } catch (error) {
+                console.warn('Failed to load filters:', error)
+            }
+        }
+        
+        const selectedSubcategory = ref(initialSubcategory)
 
         const categoryTitle = computed(() =>
             categorySlug.value.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
@@ -146,6 +160,23 @@ export default {
             const matched = cats.find(cat => slug(cat?.name) === target)
             return matched?.name
         }
+
+        // Save filter state when it changes
+        const saveFilters = () => {
+            try {
+                const filterState = {
+                    selectedSubcategory: selectedSubcategory.value
+                }
+                localStorage.setItem('categories-filters', JSON.stringify(filterState))
+            } catch (error) {
+                console.warn('Failed to save filters:', error)
+            }
+        }
+
+        // Watch for changes in selectedSubcategory
+        watch(selectedSubcategory, () => {
+            saveFilters()
+        })
 
         return {
             categoryTitle,

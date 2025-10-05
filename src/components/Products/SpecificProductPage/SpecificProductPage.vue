@@ -76,7 +76,7 @@
                 <div class="sp-colors">
                     <div class="sp-colors-label">Color: <strong>{{ currentVariant.name }}</strong></div>
                     <div class="sp-swatches" role="listbox" aria-label="Choose color">
-                        <button v-for="(v, key) in product.variants" :key="key" class="sp-swatch"
+                        <button v-for="(v, key) in uniqueColorVariants" :key="key" class="sp-swatch"
                             :class="{ active: key === selectedVariantKey }" :style="{ backgroundColor: v.swatch }"
                             :aria-label="v.name" @click="selectVariant(key)" />
                     </div>
@@ -249,6 +249,24 @@ const breadcrumbs = computed(() => [
 const selectedVariantKey = ref("default");
 const selectedImageIndex = ref(0);
 const currentVariant = computed(() => product.variants[selectedVariantKey.value] || product.variants.default);
+
+// Get unique color variants (deduplicate by color swatch)
+const uniqueColorVariants = computed(() => {
+    const variants = product.variants || {}
+    const seen = new Set()
+    const unique = {}
+    
+    Object.entries(variants).forEach(([key, variant]) => {
+        const swatch = variant.swatch || '#cccccc'
+        if (!seen.has(swatch)) {
+            seen.add(swatch)
+            unique[key] = variant
+        }
+    })
+    
+    return unique
+})
+
 // Build a flat list of all images across variants, placing current variant first
 const allImages = computed(() => {
     const order = [selectedVariantKey.value, ...Object.keys(product.variants || {}).filter(k => k !== selectedVariantKey.value)]

@@ -91,13 +91,43 @@ export default {
             selectedSubcategoryId: ''
         }
     },
+    created() {
+        // Only load saved filter state if page was not reloaded
+        if (performance.navigation.type === 0) { // 0 = navigation, 1 = reload
+            try {
+                const saved = localStorage.getItem('allproducts-filters')
+                if (saved) {
+                    const parsed = JSON.parse(saved)
+                    this.showFilters = parsed.showFilters || false
+                    this.selectedCategoryId = parsed.selectedCategoryId || ''
+                    this.selectedSubcategoryId = parsed.selectedSubcategoryId || ''
+                }
+            } catch (error) {
+                console.warn('Failed to load filters:', error)
+            }
+        }
+    },
     methods: {
         toggleFilters() {
             this.showFilters = !this.showFilters
+            this.saveFilters()
         },
         resetFilters() {
             this.selectedCategoryId = ''
             this.selectedSubcategoryId = ''
+            this.saveFilters()
+        },
+        saveFilters() {
+            try {
+                const filterState = {
+                    showFilters: this.showFilters,
+                    selectedCategoryId: this.selectedCategoryId,
+                    selectedSubcategoryId: this.selectedSubcategoryId
+                }
+                localStorage.setItem('allproducts-filters', JSON.stringify(filterState))
+            } catch (error) {
+                console.warn('Failed to save filters:', error)
+            }
         },
         getSubcategories(categories, categoryId) {
             if (!categoryId) return []
@@ -108,10 +138,10 @@ export default {
             if (!categoryId) return false
             const subcategories = this.getSubcategories(categories, categoryId)
             // Check if there are subcategories with valid names (not empty, not 'Untitled', not null/undefined)
-            return subcategories.some(sub => 
-                sub && 
-                sub.name && 
-                sub.name.trim() !== '' && 
+            return subcategories.some(sub =>
+                sub &&
+                sub.name &&
+                sub.name.trim() !== '' &&
                 sub.name !== 'Untitled' &&
                 sub.name.toLowerCase() !== 'untitled'
             )
@@ -146,6 +176,14 @@ export default {
                 .trim()
                 .replace(/\s+/g, '-')
                 .replace(/-+/g, '-')
+        }
+    },
+    watch: {
+        selectedCategoryId() {
+            this.saveFilters()
+        },
+        selectedSubcategoryId() {
+            this.saveFilters()
         }
     }
 }
