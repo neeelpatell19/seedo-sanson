@@ -18,7 +18,7 @@ const routes = [
     component: AboutUs
   },
   {
-    path: '/product/:productSlug',
+    path: '/allproducts/:categorySlug/:productSlug',
     name: 'ProductDetails',
     component: SpecificProductPage
   },
@@ -26,6 +26,11 @@ const routes = [
     path: '/allproducts/:categorySlug',
     name: 'CategoryProducts',
     component: CategoriesWiseProduct
+  },
+  {
+    path: '/product/:productSlug',
+    name: 'ProductDetailsLegacy',
+    component: SpecificProductPage
   },
   {
     path: '/products',

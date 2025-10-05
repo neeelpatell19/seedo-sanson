@@ -59,7 +59,7 @@ export default {
                         v-for="product in products.slice(0, 8)"
                         :key="product._id"
                         class="product-card"
-                        :to="{ name: 'ProductDetails', params: { productSlug: slug(product.title || product.name) } }"
+                        :to="{ name: 'ProductDetailsLegacy', params: { productSlug: slug(product.title || product.name) } }"
                     >
                         <div class="product-image-container">
                             <img v-if="product.mainImages && product.mainImages.length" :src="product.mainImages[0]"

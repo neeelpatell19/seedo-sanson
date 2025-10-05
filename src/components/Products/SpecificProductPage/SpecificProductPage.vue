@@ -90,7 +90,7 @@
                     </template>
                 </ul>
                 <div v-if="product.boxQuantity" class="sp-boxqty">Box quantity: <strong>{{ product.boxQuantity
-                        }}</strong></div>
+                }}</strong></div>
             </div>
         </div>
         <div class="Container MainPaddingContainerTop80">
@@ -105,7 +105,7 @@
                     <!-- Dynamic products from API - limited to 8 products -->
                     <router-link v-for="p in (products || []).filter(p => (p && (p.title || p.name))).slice(0, 8)"
                         :key="p._id" class="product-card"
-                        :to="{ name: 'ProductDetails', params: { productSlug: slug(p.title || p.name) } }">
+                        :to="{ name: 'ProductDetails', params: { categorySlug: categorySlug.value, productSlug: slug(p.title || p.name) } }">
                         <div class="product-image-container">
                             <img v-if="p.mainImages && p.mainImages.length" :src="p.mainImages[0]"
                                 :alt="p.title || p.name" class="product-image" />
@@ -154,6 +154,7 @@ const product = reactive({
 const route = useRoute()
 const router = useRouter()
 const productSlug = computed(() => String(route.params.productSlug || '').toLowerCase())
+const categorySlug = computed(() => String(route.params.categorySlug || '').toLowerCase())
 const slug = (value) =>
     String(value || '')
         .toLowerCase()
@@ -239,34 +240,35 @@ watch(() => route.params.productSlug, (newSlug) => {
 }, { immediate: false })
 
 /* Breadcrumbs */
-const breadcrumbs = computed(() => [
-    { label: "Homepage", to: { name: 'Home' } },
-    { label: "All Products", to: { name: 'Allproducts' } },
-    { label: product.title, to: { name: 'ProductDetails', params: { productSlug: productSlug.value } }, current: true },
-]);
+const breadcrumbs = computed(() => {
+    const crumbs = [
+        { label: "Homepage", to: { name: 'Home' } },
+        { label: "All Products", to: { name: 'Allproducts' } }
+    ]
+
+    // Add category if available
+    if (categorySlug.value) {
+        const categoryName = categorySlug.value.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+        crumbs.push({
+            label: categoryName,
+            to: { name: 'CategoryProducts', params: { categorySlug: categorySlug.value } }
+        })
+    }
+
+    // Add current product
+    crumbs.push({
+        label: product.title,
+        to: { name: 'ProductDetails', params: { categorySlug: categorySlug.value, productSlug: productSlug.value } },
+        current: true
+    })
+
+    return crumbs
+})
 
 /* Gallery + variant state */
 const selectedVariantKey = ref("default");
 const selectedImageIndex = ref(0);
 const currentVariant = computed(() => product.variants[selectedVariantKey.value] || product.variants.default);
-
-// Get unique color variants (deduplicate by color swatch)
-const uniqueColorVariants = computed(() => {
-    const variants = product.variants || {}
-    const seen = new Set()
-    const unique = {}
-    
-    Object.entries(variants).forEach(([key, variant]) => {
-        const swatch = variant.swatch || '#cccccc'
-        if (!seen.has(swatch)) {
-            seen.add(swatch)
-            unique[key] = variant
-        }
-    })
-    
-    return unique
-})
-
 // Build a flat list of all images across variants, placing current variant first
 const allImages = computed(() => {
     const order = [selectedVariantKey.value, ...Object.keys(product.variants || {}).filter(k => k !== selectedVariantKey.value)]

@@ -55,7 +55,7 @@
                         <router-link
                             v-for="product in filterProducts(products, categories, selectedCategoryId, selectedSubcategoryId)"
                             :key="product._id" class="product-card"
-                            :to="{ name: 'ProductDetails', params: { productSlug: slug(product.title || product.name || product._id) } }">
+                            :to="getProductLink(product, categories)">
                             <div class="product-image-container">
                                 <img v-if="product.mainImages && product.mainImages.length" :src="product.mainImages[0]"
                                     :alt="product.title || product.name" class="product-image" />
@@ -176,6 +176,46 @@ export default {
                 .trim()
                 .replace(/\s+/g, '-')
                 .replace(/-+/g, '-')
+        },
+        getProductLink(product, categories) {
+            // Find the product's category
+            const productCategory = this.findProductCategory(product._id, categories)
+            if (productCategory) {
+                return {
+                    name: 'ProductDetails',
+                    params: {
+                        categorySlug: this.slug(productCategory.categoryName),
+                        productSlug: this.slug(product.title || product.name || product._id)
+                    }
+                }
+            }
+            // Fallback to legacy route
+            return {
+                name: 'ProductDetailsLegacy',
+                params: {
+                    productSlug: this.slug(product.title || product.name || product._id)
+                }
+            }
+        },
+        findProductCategory(productId, categories) {
+            // Find which category this product belongs to
+            if (!categories || !Array.isArray(categories)) return null
+            
+            for (const category of categories) {
+                if (category.subcategories && Array.isArray(category.subcategories)) {
+                    for (const subcategory of category.subcategories) {
+                        if (subcategory.products && Array.isArray(subcategory.products)) {
+                            const foundProduct = subcategory.products.find(p => p._id === productId)
+                            if (foundProduct) {
+                                return {
+                                    categoryName: category.name
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return null
         }
     },
     watch: {

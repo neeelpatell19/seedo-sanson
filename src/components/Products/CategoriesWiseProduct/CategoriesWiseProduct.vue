@@ -28,7 +28,7 @@
                                 <router-link
                                     v-for="product in filteredProducts(categories, categorySlug, selectedSubcategory)"
                                     :key="product._id" class="product-card"
-                                    :to="{ name: 'ProductDetails', params: { productSlug: slug(product.title || product.name) } }">
+                                    :to="{ name: 'ProductDetails', params: { categorySlug: categorySlug.value, productSlug: slug(product.title || product.name) } }">
                                     <div class="product-image-container">
                                         <img v-if="product.mainImages && product.mainImages.length"
                                             :src="product.mainImages[0]" :alt="product.title || product.name"
