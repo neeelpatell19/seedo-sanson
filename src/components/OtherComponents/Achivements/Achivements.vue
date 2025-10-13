@@ -1,11 +1,14 @@
 <template>
     <div class="achievements-container">
         <div class="Container">
-            <div>
-                <h2 class="text-center">We are very good at designing any kind of toy / product that matches your
-                    requirements</h2>
+            <div class="achievements-content-wrapper">
+                <div class="achievements-header">
+                    <h2>We <span class="highlight">specialize</span> in creating toys and products that <span class="highlight">align with your requirements.</span></h2>
+                </div>
+                <div class="achievements-image">
+                    <img src="/Images/Seedo Post-22 1.png" alt="Seedo toys" />
+                </div>
             </div>
-            <br><br>
             <div class="achievements-grid">
                 <div class="achievement-card" ref="card1">
                     <div class="achievement-number">{{ animatedCounters[0] }}+</div>
@@ -129,7 +132,53 @@ onUnmounted(() => {
 /* Achievements Component */
 .achievements-container {
     background-color: white;
-    padding: 80px 0 0 0;
+    padding: 0;
+}
+
+.achievements-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 81px 91px 0 91px;
+    gap: 50px;
+    height: 280px;
+    background-color: white;
+    margin-bottom: 0;
+}
+
+.achievements-header {
+    width: 734px;
+    height: 179px;
+}
+
+.achievements-header h2 {
+    font-size: 48px;
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 97%;
+    letter-spacing: 1px;
+    text-align: left;
+    margin: 60px 0 0 0;
+}
+
+.achievements-header .highlight {
+    color: #BC272B;
+    font-weight: 500;
+}
+
+.achievements-image {
+    width: 400px;
+    height: 280px;
+    flex-shrink: 0;
+    opacity: 1;
+}
+
+.achievements-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .achievements-grid {
@@ -137,7 +186,7 @@ onUnmounted(() => {
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
     width: 100vw;
-    margin: 40px 0 0 0;
+    margin: 0;
     background-color: #BC272B;
     padding: 40px 20px 40px 80px;
     margin-left: calc(-50vw + 50%);
@@ -183,7 +232,35 @@ onUnmounted(() => {
 }
 
 /* Responsive Design */
+@media (max-width: 1440px) {
+    .achievements-content-wrapper {
+        padding: 60px 40px 0 40px;
+    }
+}
+
 @media (max-width: 1024px) {
+    .achievements-content-wrapper {
+        flex-direction: column;
+        padding: 40px 30px 40px 30px;
+        gap: 30px;
+        height: auto;
+    }
+
+    .achievements-header {
+        width: 100%;
+        height: auto;
+    }
+
+    .achievements-header h2 {
+        font-size: 36px;
+    }
+
+    .achievements-image {
+        width: 100%;
+        height: auto;
+        max-width: 468px;
+        margin: 0 auto;
+    }
     .achievements-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0;
@@ -209,8 +286,12 @@ onUnmounted(() => {
 }
 
 @media (max-width: 768px) {
-    .achievements-container {
-        padding: 60px 0;
+    .achievements-content-wrapper {
+        padding: 40px 20px 40px 20px;
+    }
+
+    .achievements-header h2 {
+        font-size: 28px;
     }
 
     .achievements-grid {
@@ -243,6 +324,14 @@ onUnmounted(() => {
 }
 
 @media (max-width: 480px) {
+    .achievements-header h2 {
+        font-size: 24px;
+    }
+
+    .achievements-image {
+        height: 200px;
+    }
+
     .achievements-grid {
         grid-template-columns: 1fr;
         gap: 0;

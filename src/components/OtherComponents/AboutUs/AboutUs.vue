@@ -25,8 +25,9 @@
         </div>
     </section>
     <OurValuesContainer />
+        <Achivements />
     <OurOfferingAbout />
-    <Achivements />
+
     <HouseSpraying />
     <SeedoTimeline />
     <OurClientsAboutUs />
