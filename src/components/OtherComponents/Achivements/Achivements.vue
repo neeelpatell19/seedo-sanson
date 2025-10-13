@@ -188,24 +188,20 @@ onUnmounted(() => {
     width: 100vw;
     margin: 0;
     background-color: #BC272B;
-    padding: 40px 20px 40px 80px;
+    padding: 25px 0;
     margin-left: calc(-50vw + 50%);
 }
 
 .achievement-card {
     background: transparent;
     border: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 30px 20px;
+    padding: 20px 0;
     text-align: left;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-
-.achievement-card:last-child {
-    border-right: none;
+    align-items: center;
+    margin-left: 50px;
 }
 
 .achievement-card:hover {
@@ -228,7 +224,8 @@ onUnmounted(() => {
     color: #ffffff;
     font-weight: 400;
     line-height: 1.4;
-    text-align: left;
+    text-align: center;
+    width: 100%;
 }
 
 /* Responsive Design */
@@ -267,9 +264,9 @@ onUnmounted(() => {
     }
 
     .achievement-card {
-        padding: 30px 15px;
-        border-right: none;
+        padding: 20px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-left: 45px;
     }
 
     .achievement-card:nth-child(2n) {
@@ -301,9 +298,9 @@ onUnmounted(() => {
     }
 
     .achievement-card {
-        padding: 25px 15px;
-        border-right: none;
+        padding: 15px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-left: 45px;
     }
 
     .achievement-card:nth-child(2n) {
@@ -339,9 +336,9 @@ onUnmounted(() => {
     }
 
     .achievement-card {
-        padding: 20px 15px;
-        border-right: none;
+        padding: 15px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-left: 40px;
     }
 
     .achievement-card:last-child {
