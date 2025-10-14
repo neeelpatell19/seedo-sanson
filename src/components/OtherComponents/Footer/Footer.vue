@@ -26,10 +26,10 @@
             <nav class="ft__block">
                 <h3 class="ft__heading">Explore</h3>
                 <ul class="ft__list">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/allproducts">Products</a></li>
-                    <li><a href="/manufacturing">Manufacturing Process</a></li>
-                    <li><a href="/about">About Us</a></li>
+                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/allproducts">Products</router-link></li>
+                    <li><router-link to="/manufacturing">Manufacturing Process</router-link></li>
+                    <li><router-link to="/about">About Us</router-link></li>
                 </ul>
             </nav>
 
