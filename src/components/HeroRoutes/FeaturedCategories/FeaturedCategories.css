@@ -49,15 +49,28 @@
 
 /* Card Background Variants */
 .featured-category-card-blue {
-    background: linear-gradient(135deg, #2C5AA0, #1E3A8A);
+    background: linear-gradient(135deg, #0D5C86, #003049);
 }
 
 .featured-category-card-grey {
-    background: #E0E0E0;
+    background: linear-gradient(135deg, #DE4230, #943227);
+}
+
+.featured-category-card-light-gray {
+    background: #F2F2F2;
+}
+
+.featured-category-card-light-gray .featured-category-title {
+    color: #BC272B;
+}
+
+.featured-category-card-light-gray .featured-category-button {
+    color: #BC272B;
+    border-color: #BC272B;
 }
 
 .featured-category-card-gradient {
-    background: linear-gradient(135deg, #FFD700, #FF8C00);
+    background: linear-gradient(135deg, #DCA928, #FEB705);
 }
 
 /* Featured Category Content */
@@ -76,7 +89,7 @@
 }
 
 .featured-category-card-grey .featured-category-title {
-    color: #8B4513;
+    color: #FFFFFF;
 }
 
 .featured-category-card-gradient .featured-category-title {
