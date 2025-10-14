@@ -1,4 +1,12 @@
 <template>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-content" @click="openZepto">
+            <img src="/Images/Free Shipping.png" alt="Free Shipping" class="announcement-icon" />
+            <span>Now Available on Zepto</span>
+        </div>
+    </div>
+    
     <header class="navigation-bar" :class="{ 'scrolled': isScrolled, 'drawer-open': drawerOpen }" role="banner">
         <div class="nav-inner">
             <!-- Logo -->
@@ -184,6 +192,11 @@ const uniqueCategories = (cats) => {
         seen.add(key);
         return true;
     });
+};
+
+// Open Zepto website in new window
+const openZepto = () => {
+    window.open('https://www.zepto.com/', '_blank');
 };
 
 // Scroll handler
