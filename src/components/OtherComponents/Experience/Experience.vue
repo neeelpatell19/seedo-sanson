@@ -40,7 +40,7 @@
 <style scoped>
 .experience-container {
     background-color: white;
-    padding: 80px 0;
+    padding: 0 0 80px 0;
 }
 
 .Container {
@@ -50,41 +50,42 @@
 }
 
 .experience-header {
-    text-align: center;
-    margin-bottom: 60px;
+    width: 518px;
+    height: 90.99523162841797px;
+    position: relative;
+    top: 40px;
+    left: 300px;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-bottom: 0;
+    align-items: flex-start;
+    z-index: 1;
 }
 
 .experience-subtitle {
-    font-family: 'Degular', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 27.98px;
-    line-height: 120%;
-    letter-spacing: 0px;
-    color: #BC272B;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+    margin: 0 0 10px;
+    color: #d33a35;
+    letter-spacing: 0.2px;
+
 }
 
 .experience-header h2 {
-    font-family: 'Degular', sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 50px;
-    line-height: 110%;
-    letter-spacing: 0px;
-    vertical-align: middle;
-    color: #1a1a1a;
     margin: 0;
+    color: #05324a;
+    line-height: 1.15;
 }
 
 .experience-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 40px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 /* Left: 25 Years Box */
@@ -92,7 +93,6 @@
     width: 224px;
     height: 205px;
     background-color: white;
-    border: 2px solid #1a1a1a;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,7 +105,7 @@
     font-family: 'Degular', sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 180px;
+    font-size: 150px;
     line-height: 87%;
     letter-spacing: 0px;
     text-align: right;
@@ -122,8 +122,8 @@
 
 /* Center: Image */
 .experience-image {
-    width: 518px;
-    height: 291px;
+    width: 386px;
+    height: 272px;
     flex-shrink: 0;
 }
 
@@ -131,7 +131,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 4px;
 }
 
 /* Right: Text Content */
@@ -141,14 +140,18 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex-shrink: 0;
 }
 
 .experience-text p {
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: #1a1a1a;
-    line-height: 1.5;
+    font-family: 'Degular', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 133%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #495358;
     margin: 0;
 }
 
@@ -159,14 +162,19 @@
     color: white;
     border: none;
     border-radius: 24px;
-    font-size: 16px;
+    font-family: 'Degular', sans-serif;
     font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 108%;
+    letter-spacing: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    padding: 12px 8px;
 }
 
 .explore-button:hover {
@@ -195,7 +203,7 @@
     }
 
     .years-number {
-        font-size: 150px;
+        font-size: 120px;
     }
 
     .experience-image {
@@ -230,7 +238,7 @@
     }
 
     .years-number {
-        font-size: 120px;
+        font-size: 100px;
     }
 
     .years-label {
@@ -268,7 +276,7 @@
     }
 
     .years-number {
-        font-size: 100px;
+        font-size: 80px;
     }
 
     .experience-text p {

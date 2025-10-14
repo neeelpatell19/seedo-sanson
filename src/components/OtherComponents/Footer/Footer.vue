@@ -26,9 +26,10 @@
             <nav class="ft__block">
                 <h3 class="ft__heading">Explore</h3>
                 <ul class="ft__list">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="/allproducts">Products</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="/manufacturing">Manufacturing Process</a></li>
+                    <li><a href="/about">About Us</a></li>
                 </ul>
             </nav>
 
