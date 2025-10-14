@@ -11,6 +11,7 @@
 
 <script>
 import { ref, onMounted } from "vue";
+import { getCurrentConfig } from "../../../../config/environment.js";
 
 export default {
   name: "ProductContext",
@@ -25,19 +26,23 @@ export default {
       error.value = null;
 
       try {
-        // console.log('Fetching products from API via proxy...')
-        const response = await fetch(
-          "https://testapi.prepseed.com/seedo/getAllProducts",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${process.env.VUE_APP_API_TOKEN}`,
-            },
-            mode: "cors",
-            credentials: "include",
-          }
-        );
+        // Get environment-specific configuration
+        const config = getCurrentConfig();
+        const apiUrl = `${config.apiBaseUrl}/seedo/getAllProducts`;
+        
+        console.log('Environment:', import.meta.env.DEV ? 'Development' : 'Production');
+        console.log('Fetching products from:', apiUrl);
+        console.log('Using token:', config.apiToken ? 'Yes' : 'No');
+        
+        const response = await fetch(apiUrl, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            ...(config.apiToken && { Authorization: `Bearer ${config.apiToken}` }),
+          },
+          mode: "cors",
+          credentials: "include",
+        });
         // console.log('Fetch response status:', response.status)
         if (!response.ok) {
           throw new Error("Failed to fetch products");

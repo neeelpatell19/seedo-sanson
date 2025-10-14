@@ -2,15 +2,16 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [vue()],
   server: {
     proxy: {
-      // Local Development API (localhost:4040/api/endpoints)
+      // Development API proxy
       '/api': {
-        target: 'https://testapi.prepseed.com',
+        target: 'http://localhost:4040',
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '/api')
       },
       // Live API (testapi.prepseed.com/endpoints - no /api prefix)
       '/live': {
@@ -20,8 +21,13 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/live/, '')
       }
     }
+  },
+  define: {
+    // Make environment variables available
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false,
   }
-})
+}))
 
 // Alternative: Switch between APIs based on environment
 // export default defineConfig(({ mode }) => ({
