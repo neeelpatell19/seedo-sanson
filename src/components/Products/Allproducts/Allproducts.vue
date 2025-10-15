@@ -137,18 +137,16 @@ export default {
         hasValidSubcategories(categories, categoryId) {
             if (!categoryId) return false
             const subcategories = this.getSubcategories(categories, categoryId)
-            // Check if there are subcategories with valid names (not empty, not 'Untitled', not null/undefined)
-            return subcategories.some(sub =>
-                sub &&
-                sub.name &&
-                sub.name.trim() !== '' &&
-                sub.name !== 'Untitled' &&
-                sub.name.toLowerCase() !== 'untitled'
-            )
+            // Check if there are subcategories with products, regardless of subcategory name
+            return subcategories.some(sub => {
+                // Check if subcategory has products
+                return sub && Array.isArray(sub.products) && sub.products.length > 0
+            })
         },
         filterProducts(products, categories, categoryId, subcategoryId) {
             let list = products || []
             if (!categoryId && !subcategoryId) return list
+            
             // If subcategory selected, filter by products belonging to that subcategory
             if (subcategoryId) {
                 const subs = (categories || [])
@@ -157,15 +155,28 @@ export default {
                 const ids = new Set((subs[0]?.products || []).map(p => String(p?._id)))
                 return list.filter(p => ids.has(String(p?._id)))
             }
-            // Else if only category selected, include products from all its subcategories
+            
+            // Else if only category selected, check if category has subcategories with products
             if (categoryId) {
                 const cat = (categories || []).find(c => String(c?._id) === String(categoryId))
-                const ids = new Set(
-                    (cat?.subcategories || [])
-                        .flatMap(s => Array.isArray(s.products) ? s.products : [])
-                        .map(p => String(p?._id))
-                )
-                return list.filter(p => ids.has(String(p?._id)))
+                if (!cat) return list
+                
+                // Check if category has subcategories with products
+                const hasSubcategories = this.hasValidSubcategories(categories, categoryId)
+                
+                if (hasSubcategories) {
+                    // Always include products from subcategories when they exist
+                    const ids = new Set(
+                        (cat?.subcategories || [])
+                            .flatMap(s => Array.isArray(s.products) ? s.products : [])
+                            .map(p => String(p?._id))
+                    )
+                    return list.filter(p => ids.has(String(p?._id)))
+                } else {
+                    // Include products directly from main category when no subcategories exist
+                    const ids = new Set((cat?.products || []).map(p => String(p?._id)))
+                    return list.filter(p => ids.has(String(p?._id)))
+                }
             }
             return list
         },
