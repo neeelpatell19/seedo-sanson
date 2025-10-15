@@ -30,10 +30,23 @@ export default {
                 // Expose categories as-is for navigation usage
                 categories.value = Array.isArray(data?.categories) ? data.categories : []
                 // Flatten products from categories -> subcategories -> products
+                // Always prioritize products from subcategories when they exist
                 const flattened = Array.isArray(categories.value)
-                    ? categories.value
-                        .flatMap(cat => Array.isArray(cat.subcategories) ? cat.subcategories : [])
-                        .flatMap(sub => Array.isArray(sub.products) ? sub.products : [])
+                    ? categories.value.flatMap(cat => {
+                        // Check if category has subcategories with products
+                        const hasSubcategoriesWithProducts = Array.isArray(cat.subcategories) && 
+                            cat.subcategories.some(sub => sub && Array.isArray(sub.products) && sub.products.length > 0)
+                        
+                        if (hasSubcategoriesWithProducts) {
+                            // Always get products from subcategories when they exist
+                            return Array.isArray(cat.subcategories) 
+                                ? cat.subcategories.flatMap(sub => Array.isArray(sub.products) ? sub.products : [])
+                                : []
+                        } else {
+                            // Get products directly from main category when no subcategories exist
+                            return Array.isArray(cat.products) ? cat.products : []
+                        }
+                    })
                     : []
                 products.value = flattened
                 // console.log('Product data fetched (flattened products):', flattened)
