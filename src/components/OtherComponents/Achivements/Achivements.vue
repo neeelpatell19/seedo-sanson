@@ -1,11 +1,14 @@
 <template>
     <div class="achievements-container">
         <div class="Container">
-            <div>
-                <h2 class="text-center">We are very good at designing any kind of toy / product that matches your
-                    requirements</h2>
+            <div class="achievements-content-wrapper">
+                <div class="achievements-header">
+                    <h2>We <span class="highlight">specialize</span> in creating toys and products that <span class="highlight">align with your requirements.</span></h2>
+                </div>
+                <div class="achievements-image">
+                    <img src="/Images/Seedo Post-22 1.png" alt="Seedo toys" />
+                </div>
             </div>
-            <br><br>
             <div class="achievements-grid">
                 <div class="achievement-card" ref="card1">
                     <div class="achievement-number">{{ animatedCounters[0] }}+</div>
@@ -125,88 +128,191 @@ onUnmounted(() => {
     }
 })
 </script>
-
 <style scoped>
 /* Achievements Component */
 .achievements-container {
     background-color: white;
-    padding: 80px 0;
+    padding: 0;
+}
+
+.achievements-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 81px 91px 0 91px;
+    gap: 50px;
+    height: 280px;
+    background-color: white;
+    margin-bottom: 0;
+}
+
+.achievements-header {
+    width: 734px;
+    height: 179px;
+}
+
+.achievements-header h2 {
+    font-size: 48px;
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 97%;
+    letter-spacing: 1px;
+    text-align: left;
+    margin: 60px 0 0 0;
+}
+
+.achievements-header .highlight {
+    color: #BC272B;
+    font-weight: 500;
+}
+
+.achievements-image {
+    width: 400px;
+    height: 280px;
+    flex-shrink: 0;
+    opacity: 1;
+}
+
+.achievements-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100vw;
+    margin: 0;
+    background-color: #BC272B;
+    padding: 25px 0;
+    margin-left: calc(-50vw + 50%);
 }
 
 .achievement-card {
-    background: white;
-    border: 2px solid #d33a35;
-    /* Red border */
-    border-radius: 16px;
-    padding: 40px 20px;
-    text-align: center;
+    background: transparent;
+    border: none;
+    padding: 20px 0;
+    text-align: left;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 50px;
 }
 
 .achievement-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border-color: #b8312e;
 }
 
 .achievement-number {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #d33a35;
-    /* Red color for numbers */
+    font-family: 'Degular', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 60px;
+    line-height: 87%;
+    letter-spacing: 0px;
+    color: #ffffff;
     margin-bottom: 10px;
-    line-height: 1.2;
 }
 
 .achievement-label {
     font-size: 1rem;
-    color: #000000;
-    /* Black color for labels */
-    font-weight: 500;
+    color: #ffffff;
+    font-weight: 400;
     line-height: 1.4;
+    text-align: center;
+    width: 100%;
 }
 
 /* Responsive Design */
+@media (max-width: 1440px) {
+    .achievements-content-wrapper {
+        padding: 60px 40px 0 40px;
+    }
+}
+
 @media (max-width: 1024px) {
+    .achievements-content-wrapper {
+        flex-direction: column;
+        padding: 40px 30px 40px 30px;
+        gap: 30px;
+        height: auto;
+    }
+
+    .achievements-header {
+        width: 100%;
+        height: auto;
+    }
+
+    .achievements-header h2 {
+        font-size: 36px;
+    }
+
+    .achievements-image {
+        width: 100%;
+        height: auto;
+        max-width: 468px;
+        margin: 0 auto;
+    }
     .achievements-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 25px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
     }
 
     .achievement-card {
-        padding: 30px 15px;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-left: 45px;
+    }
+
+    .achievement-card:nth-child(2n) {
+        border-right: none;
+    }
+
+    .achievement-card:nth-child(n+3) {
+        border-bottom: none;
     }
 
     .achievement-number {
-        font-size: 2.2rem;
+        font-size: 45px;
     }
 }
 
 @media (max-width: 768px) {
-    .achievements-container {
-        padding: 60px 0;
+    .achievements-content-wrapper {
+        padding: 40px 20px 40px 20px;
+    }
+
+    .achievements-header h2 {
+        font-size: 28px;
     }
 
     .achievements-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+        padding: 30px 20px 30px 50px;
     }
 
     .achievement-card {
-        padding: 25px 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-left: 45px;
+    }
+
+    .achievement-card:nth-child(2n) {
+        border-right: none;
+    }
+
+    .achievement-card:nth-child(n+3) {
+        border-bottom: none;
     }
 
     .achievement-number {
-        font-size: 2rem;
+        font-size: 40px;
     }
 
     .achievement-label {
@@ -215,17 +321,32 @@ onUnmounted(() => {
 }
 
 @media (max-width: 480px) {
+    .achievements-header h2 {
+        font-size: 24px;
+    }
+
+    .achievements-image {
+        height: 200px;
+    }
+
     .achievements-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 0;
+        padding: 20px 15px 20px 40px;
     }
 
     .achievement-card {
-        padding: 20px 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-left: 40px;
+    }
+
+    .achievement-card:last-child {
+        border-bottom: none;
     }
 
     .achievement-number {
-        font-size: 1.8rem;
+        font-size: 32px;
     }
 
     .achievement-label {

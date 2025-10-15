@@ -1,3 +1,40 @@
+/* ===== Announcement Bar ===== */
+.announcement-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: #003049;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.announcement-content {
+    color: white;
+    font-family: 'Degular', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.announcement-content:hover {
+    opacity: 0.8;
+}
+
+.announcement-icon {
+    height: 16px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
 /* ===== Transparent by default; turns white after scrolling 50px ===== */
 .navigation-bar {
     --nav-fg: black;
@@ -5,7 +42,7 @@
     --nav-border: transparent;
 
     position: fixed;
-    top: 0;
+    top: 30px;
     left: 0;
     right: 0;
     z-index: 1000;

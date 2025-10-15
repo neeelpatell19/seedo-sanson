@@ -1,23 +1,28 @@
 <template>
-    <div>
-        <slot :products="products" :categories="categories" :loading="loading" :error="error"></slot>
-    </div>
+  <div>
+    <slot
+      :products="products"
+      :categories="categories"
+      :loading="loading"
+      :error="error"
+    ></slot>
+  </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
 export default {
-    name: 'ProductContext',
-    setup() {
-        const products = ref([])
-        const categories = ref([])
-        const loading = ref(false)
-        const error = ref(null)
+  name: "ProductContext",
+  setup() {
+    const products = ref([]);
+    const categories = ref([]);
+    const loading = ref(false);
+    const error = ref(null);
 
-        const fetchProducts = async () => {
-            loading.value = true
-            error.value = null
+    const fetchProducts = async () => {
+      loading.value = true;
+      error.value = null;
 
             try {
                 // console.log('Fetching products from API via proxy...')
@@ -58,17 +63,17 @@ export default {
             }
         }
 
-        onMounted(() => {
-            console.log('ProductContext mounted')
-            fetchProducts()
-        })
+    onMounted(() => {
+      console.log("ProductContext mounted");
+      fetchProducts();
+    });
 
-        return {
-            products,
-            categories,
-            loading,
-            error
-        }
-    }
-}
+    return {
+      products,
+      categories,
+      loading,
+      error,
+    };
+  },
+};
 </script>
