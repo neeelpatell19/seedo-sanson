@@ -1,14 +1,36 @@
 /* Hero Video Container - Main wrapper */
-/* .hero-video-container {
-    width: 100%;
-} */
+.hero-video-container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    position: relative;
+    z-index: 1;
+    margin-top: -100px !important;
+}
+
+/* Override any parent container constraints */
+.hero-video-container.Container {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+.hero-video-container.MainPaddingContainerTop80 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.hero-video-container.paddingTop100px {
+    padding-top: 0px !important;
+}
 
 /* Hero Video Wrapper - Contains video and overlay */
 .hero-video-wrapper {
     position: relative;
-    /* width: 100%; */
-    border-radius: 12px;
-    height: 700px;
+    width: 100% !important;
+    max-width: none !important;
+    height: 800px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 2px solid #e0e0e0;
@@ -17,6 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: auto;
 }
 
 .hero-video-wrapper:hover {
@@ -28,11 +51,9 @@
 /* Hero Video - Main video element */
 .hero-video {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     background-color: #f0f0f0;
-    min-height: 300px;
-    height: 100%;
     object-fit: cover;
 }
 
@@ -173,6 +194,61 @@
 .hero-play-button:focus {
     outline: 3px solid rgba(255, 71, 87, 0.5);
     outline-offset: 2px;
+}
+
+/* Custom Controls */
+.hero-custom-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.hero-control-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    cursor: pointer !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    pointer-events: auto;
+    z-index: 101;
+    position: relative;
+}
+
+.hero-control-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+    cursor: pointer !important;
+}
+
+.hero-control-btn:active {
+    transform: scale(0.95);
+    cursor: pointer !important;
+}
+
+.hero-control-icon {
+    width: 20px;
+    height: 20px;
+    color: white;
+    pointer-events: none;
+}
+
+/* Ensure buttons are clickable and show pointer cursor */
+.hero-custom-controls button,
+.hero-custom-controls .hero-control-btn,
+.hero-custom-controls button:hover,
+.hero-custom-controls button:active,
+.hero-custom-controls button:focus {
+    cursor: pointer !important;
+    pointer-events: auto !important;
 }
 
 /* Dark mode support */
