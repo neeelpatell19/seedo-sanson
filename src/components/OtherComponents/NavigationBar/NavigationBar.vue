@@ -7,7 +7,7 @@
         </div>
     </div>
     
-    <header class="navigation-bar" :class="{ 'scrolled': isScrolled, 'drawer-open': drawerOpen }" role="banner">
+    <header class="navigation-bar" :class="{ 'scrolled': isScrolled, 'drawer-open': drawerOpen, 'home-page': isHomePage }" role="banner">
         <div class="nav-inner">
             <!-- Logo -->
             <router-link class="navigation-bar-logo" to="/" aria-label="Seedo logo">
@@ -131,8 +131,11 @@
 
 <script setup>
 import { reactive, computed, onMounted, onUnmounted } from "vue";
+import { useRoute } from "vue-router";
 import "./NavigationBar.css";
 import ProductContext from '../../HeroRoutes/PopularProductsHome/ProductContext/ProductContext.vue'
+
+const route = useRoute();
 
 const state = reactive({
     drawerOpen: false,
@@ -142,6 +145,7 @@ const state = reactive({
 
 const drawerOpen = computed(() => state.drawerOpen);
 const isScrolled = computed(() => state.isScrolled);
+const isHomePage = computed(() => route.name === 'Home');
 
 const toggleDrawer = (event) => {
     event.preventDefault();

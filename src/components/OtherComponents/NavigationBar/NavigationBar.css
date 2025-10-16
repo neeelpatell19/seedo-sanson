@@ -54,6 +54,15 @@
     height: auto;
 }
 
+/* Home page specific styling - white text on transparent background */
+.navigation-bar.home-page {
+    --nav-fg: white;
+}
+
+.navigation-bar.home-page.scrolled {
+    --nav-fg: #0b2d3f;
+}
+
 .navigation-bar.scrolled {
     --nav-fg: #0b2d3f;
     --nav-bg: rgba(255, 255, 255, .94);
@@ -212,6 +221,15 @@
     display: block;
     transition: all 0.3s ease;
     border-radius: 1px;
+}
+
+/* Home page hamburger styling */
+.navigation-bar.home-page .hamburger span {
+    background: white;
+}
+
+.navigation-bar.home-page.scrolled .hamburger span {
+    background: var(--nav-fg);
 }
 
 /* Hamburger animation when drawer is open - using class on navigation bar */
