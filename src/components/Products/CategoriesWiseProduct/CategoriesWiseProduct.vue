@@ -117,16 +117,21 @@ export default {
             const cats = Array.isArray(categories) ? categories : []
             const target = String(slugValue || '').toLowerCase()
             const matched = cats.find(cat => slug(cat?.name) === target)
-            return matched && Array.isArray(matched.subcategories) ? matched.subcategories.filter(Boolean) : []
+            const subcategories = matched && Array.isArray(matched.subcategories) ? matched.subcategories.filter(Boolean) : []
+            // Only return subcategories that have products AND meaningful names
+            return subcategories.filter(sub => {
+                return sub && 
+                       Array.isArray(sub.products) && 
+                       sub.products.length > 0 &&
+                       sub.name && 
+                       sub.name.trim() !== ''
+            })
         }
 
         const hasValidSubcategories = (categories, slugValue) => {
             const subcategories = subcategoriesForCategory(categories, slugValue)
-            // Check if there are subcategories with products, regardless of subcategory name
-            return subcategories.some(sub => {
-                // Check if subcategory has products
-                return sub && Array.isArray(sub.products) && sub.products.length > 0
-            })
+            // Check if there are subcategories with products AND meaningful names
+            return subcategories.length > 0
         }
 
         const filteredProducts = (categories, slugValue, selected) => {
@@ -135,15 +140,21 @@ export default {
             const matched = cats.find(cat => slug(cat?.name) === target)
             if (!matched) return []
 
-            // Check if category has subcategories with products
-            const hasSubcategories = hasValidSubcategories(categories, slugValue)
+            // Check if category has subcategories with products (regardless of subcategory names)
+            const hasSubcategoriesWithProducts = Array.isArray(matched.subcategories) && 
+                matched.subcategories.some(sub => sub && Array.isArray(sub.products) && sub.products.length > 0)
             
-            if (hasSubcategories) {
-                // Always show products from subcategories when they exist
+            if (hasSubcategoriesWithProducts) {
+                // Show products from subcategories when they exist
                 let subs = Array.isArray(matched.subcategories) ? matched.subcategories : []
-                if (selected && selected !== 'all') {
+                
+                // If subcategories have meaningful names, filter by selected subcategory
+                const hasMeaningfulSubcategoryNames = subs.some(sub => sub && sub.name && sub.name.trim() !== '')
+                
+                if (hasMeaningfulSubcategoryNames && selected && selected !== 'all') {
                     subs = subs.filter(sub => slug(sub?.name) === selected)
                 }
+                
                 const allProducts = subs
                     .flatMap(sub => Array.isArray(sub.products) ? sub.products : [])
 
@@ -155,7 +166,7 @@ export default {
                     return true
                 })
             } else {
-                // Show products directly from main category when no subcategories exist
+                // Show products directly from main category when no subcategories with products exist
                 const directProducts = Array.isArray(matched.products) ? matched.products : []
                 
                 const seen = new Set()

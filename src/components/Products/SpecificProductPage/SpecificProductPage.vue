@@ -26,14 +26,7 @@
                             <img src="https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/ShareIcon.png"
                                 alt="">
                         </button>
-                        <button class="sp-icon" :class="{ active: isFav }" aria-label="Favorite"
-                            @click="isFav = !isFav">
-                            <!-- heart -->
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M12.1 21.35l-1.1-1C5.1 15 2 12.13 2 8.5A4.5 4.5 0 0 1 6.5 4c1.7 0 3.1.8 4 2.09A5.02 5.02 0 0 1 20 8.5c0 3.63-3.1 6.5-9 11.85z" />
-                            </svg>
-                        </button>
+                     
                     </div>
                 </div>
 
@@ -101,9 +94,15 @@
             </div>
             <!-- Reuse PopularProductsHome grid/card classes -->
             <ProductContext v-slot="{ products }">
-                <div class="products-grid sp-related-grid">
-                    <!-- Dynamic products from API - limited to 8 products -->
-                    <router-link v-for="p in (products || []).filter(p => (p && (p.title || p.name))).slice(0, 8)"
+                <div v-if="loading" class="loading">
+                    Loading related products...
+                </div>
+                <div v-else-if="error" class="error">
+                    Error loading related products: {{ error }}
+                </div>
+                <div v-else-if="getRelatedProducts(products).length > 0" class="products-grid sp-related-grid">
+                    <!-- Filtered products from same category - limited to 8 products -->
+                    <router-link v-for="p in getRelatedProducts(products)"
                         :key="p._id" class="product-card"
                         :to="{ name: 'ProductDetails', params: { categorySlug: categorySlug.value, productSlug: slug(p.title || p.name) } }">
                         <div class="product-image-container">
@@ -112,8 +111,11 @@
                             <img v-else src="/placeholder-seed.svg" :alt="p.title || p.name" class="product-image" />
                         </div>
                         <h3 class="product-title">{{ p.title || p.name }}</h3>
-                        <p class="product-price">Rs. {{ p.price }}</p>
+                        <p class="product-price">Rs. {{ p.price==0 ? '-' : p.price }}</p>
                     </router-link>
+                </div>
+                <div v-else class="no-products">
+                    No related products found in this category.
                 </div>
             </ProductContext>
         </div>
@@ -163,6 +165,9 @@ const slug = (value) =>
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
 
+// Current product's category name for filtering related products
+const currentProductCategory = ref('')
+
 // Hydrate product from context when available
 function maybeHydrateFrom(products) {
     const list = Array.isArray(products) ? products : []
@@ -174,6 +179,8 @@ function maybeHydrateFrom(products) {
     product.mrp = Number(match.mrp ?? product.mrp) || product.price || 0
     product.code = match.itemCode || match.code || match.sku || product.code
     product.mainImages = Array.isArray(match.mainImages) ? match.mainImages : []
+    // Store current product's category for filtering related products
+    currentProductCategory.value = match.categoryName || ''
     // Description: prefer tabs.description (HTML) then description (HTML/string)
     const richDesc = (match.tabs && match.tabs.description) || match.description || ''
     if (typeof richDesc === 'string') {
@@ -300,6 +307,20 @@ function prevImage() {
 /* Description “See more” */
 const showFull = ref(false);
 const truncatedDesc = computed(() => product.description.slice(0, 240) + (product.description.length > 240 ? "..." : ""));
+
+/* Related products filtering function */
+const getRelatedProducts = (products) => {
+    if (!Array.isArray(products) || !currentProductCategory.value) return []
+    
+    return products
+        .filter(p => {
+            // Filter by same category and exclude current product
+            return p && 
+                   p.categoryName === currentProductCategory.value && 
+                   slug(p.title || p.name) !== productSlug.value
+        })
+        .slice(0, 8) // Limit to 8 products
+}
 
 /* Price helpers */
 const discountPercent = computed(() => Math.round((1 - product.price / product.mrp) * 100));

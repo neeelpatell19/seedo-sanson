@@ -132,15 +132,27 @@ export default {
         getSubcategories(categories, categoryId) {
             if (!categoryId) return []
             const found = (categories || []).find(c => String(c?._id) === String(categoryId))
-            return Array.isArray(found?.subcategories) ? found.subcategories : []
+            const subcategories = Array.isArray(found?.subcategories) ? found.subcategories : []
+            // Only return subcategories that have products AND meaningful names
+            return subcategories.filter(sub => {
+                return sub && 
+                       Array.isArray(sub.products) && 
+                       sub.products.length > 0 &&
+                       sub.name && 
+                       sub.name.trim() !== ''
+            })
         },
         hasValidSubcategories(categories, categoryId) {
             if (!categoryId) return false
             const subcategories = this.getSubcategories(categories, categoryId)
-            // Check if there are subcategories with products, regardless of subcategory name
+            // Check if there are subcategories with products AND meaningful names
             return subcategories.some(sub => {
-                // Check if subcategory has products
-                return sub && Array.isArray(sub.products) && sub.products.length > 0
+                // Check if subcategory has products AND a meaningful name (not empty)
+                return sub && 
+                       Array.isArray(sub.products) && 
+                       sub.products.length > 0 &&
+                       sub.name && 
+                       sub.name.trim() !== ''
             })
         },
         filterProducts(products, categories, categoryId, subcategoryId) {

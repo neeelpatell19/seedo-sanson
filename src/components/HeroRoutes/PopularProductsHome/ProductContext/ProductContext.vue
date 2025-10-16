@@ -26,7 +26,7 @@ export default {
 
             try {
                 // console.log('Fetching products from API via proxy...')
-                const response = await fetch('https://testapi.prepseed.com/seedo/getAllProducts')
+                const response = await fetch('http://localhost:4040/api/seedo/getAllProducts')
                 // console.log('Fetch response status:', response.status)
                 if (!response.ok) {
                     throw new Error('Failed to fetch products')
@@ -36,6 +36,7 @@ export default {
                 categories.value = Array.isArray(data?.categories) ? data.categories : []
                 // Flatten products from categories -> subcategories -> products
                 // Always prioritize products from subcategories when they exist
+                // Include categoryName with each product for filtering
                 const flattened = Array.isArray(categories.value)
                     ? categories.value.flatMap(cat => {
                         // Check if category has subcategories with products
@@ -45,11 +46,23 @@ export default {
                         if (hasSubcategoriesWithProducts) {
                             // Always get products from subcategories when they exist
                             return Array.isArray(cat.subcategories) 
-                                ? cat.subcategories.flatMap(sub => Array.isArray(sub.products) ? sub.products : [])
+                                ? cat.subcategories.flatMap(sub => 
+                                    Array.isArray(sub.products) 
+                                        ? sub.products.map(product => ({
+                                            ...product,
+                                            categoryName: cat.name
+                                        }))
+                                        : []
+                                )
                                 : []
                         } else {
                             // Get products directly from main category when no subcategories exist
-                            return Array.isArray(cat.products) ? cat.products : []
+                            return Array.isArray(cat.products) 
+                                ? cat.products.map(product => ({
+                                    ...product,
+                                    categoryName: cat.name
+                                }))
+                                : []
                         }
                     })
                     : []
