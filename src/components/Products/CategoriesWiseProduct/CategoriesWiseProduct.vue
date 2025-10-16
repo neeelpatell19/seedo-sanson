@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import ProductContext from '../../HeroRoutes/PopularProductsHome/ProductContext/ProductContext.vue'
 
@@ -201,6 +201,15 @@ export default {
         // Watch for changes in selectedSubcategory
         watch(selectedSubcategory, () => {
             saveFilters()
+        })
+
+        // Clear filter state when leaving the page
+        onBeforeUnmount(() => {
+            try {
+                localStorage.removeItem('categories-filters')
+            } catch (error) {
+                console.warn('Failed to clear filters:', error)
+            }
         })
 
         return {

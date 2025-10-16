@@ -67,7 +67,6 @@ export default {
                     })
                     : []
                 products.value = flattened
-                // console.log('Product data fetched (flattened products):', flattened)
             } catch (err) {
                 error.value = err.message
                 console.error('Error fetching products:', err)

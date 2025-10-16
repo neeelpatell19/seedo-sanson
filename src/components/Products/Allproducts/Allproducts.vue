@@ -4,19 +4,8 @@
             <h2 class="text-center">All Products</h2>
             <div>
                 <ProductContext v-slot="{ products, categories, loading, error }">
-                    <!-- Filters Toggle -->
-                    <div class="filters-bar">
-                        <button class="view-button" @click="toggleFilters">
-                            <span>{{ showFilters ? 'Hide Filters' : 'Show Filters' }}</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17" />
-                            </svg>
-                        </button>
-                    </div>
-
                     <!-- Filters Panel -->
-                    <div v-if="showFilters" class="filters-panel">
+                    <div class="filters-panel">
                         <div class="filters-row">
                             <div class="filter-item">
                                 <label>Category</label>
@@ -27,7 +16,7 @@
                                 </select>
                             </div>
 
-                            <div class="filter-item" v-if="hasValidSubcategories(categories, selectedCategoryId)">
+                            <div class="filter-item" v-if="hasSubcategoriesWithProducts(categories, selectedCategoryId)">
                                 <label>Subcategory</label>
                                 <select v-model="selectedSubcategoryId" :disabled="!selectedCategoryId">
                                     <option value="">All</option>
@@ -86,7 +75,6 @@ export default {
     },
     data() {
         return {
-            showFilters: false,
             selectedCategoryId: '',
             selectedSubcategoryId: ''
         }
@@ -98,7 +86,6 @@ export default {
                 const saved = localStorage.getItem('allproducts-filters')
                 if (saved) {
                     const parsed = JSON.parse(saved)
-                    this.showFilters = parsed.showFilters || false
                     this.selectedCategoryId = parsed.selectedCategoryId || ''
                     this.selectedSubcategoryId = parsed.selectedSubcategoryId || ''
                 }
@@ -108,10 +95,6 @@ export default {
         }
     },
     methods: {
-        toggleFilters() {
-            this.showFilters = !this.showFilters
-            this.saveFilters()
-        },
         resetFilters() {
             this.selectedCategoryId = ''
             this.selectedSubcategoryId = ''
@@ -120,7 +103,6 @@ export default {
         saveFilters() {
             try {
                 const filterState = {
-                    showFilters: this.showFilters,
                     selectedCategoryId: this.selectedCategoryId,
                     selectedSubcategoryId: this.selectedSubcategoryId
                 }
@@ -133,7 +115,7 @@ export default {
             if (!categoryId) return []
             const found = (categories || []).find(c => String(c?._id) === String(categoryId))
             const subcategories = Array.isArray(found?.subcategories) ? found.subcategories : []
-            // Only return subcategories that have products AND meaningful names
+            // Only return subcategories that have products AND meaningful names for dropdown
             return subcategories.filter(sub => {
                 return sub && 
                        Array.isArray(sub.products) && 
@@ -141,6 +123,13 @@ export default {
                        sub.name && 
                        sub.name.trim() !== ''
             })
+        },
+        hasSubcategoriesWithProducts(categories, categoryId) {
+            if (!categoryId) return false
+            const cat = (categories || []).find(c => String(c?._id) === String(categoryId))
+            if (!cat) return false
+            return Array.isArray(cat.subcategories) && 
+                cat.subcategories.some(sub => sub && Array.isArray(sub.products) && sub.products.length > 0)
         },
         hasValidSubcategories(categories, categoryId) {
             if (!categoryId) return false
@@ -173,10 +162,11 @@ export default {
                 const cat = (categories || []).find(c => String(c?._id) === String(categoryId))
                 if (!cat) return list
                 
-                // Check if category has subcategories with products
-                const hasSubcategories = this.hasValidSubcategories(categories, categoryId)
+                // Check if category has subcategories with products (regardless of subcategory names)
+                const hasSubcategoriesWithProducts = Array.isArray(cat.subcategories) && 
+                    cat.subcategories.some(sub => sub && Array.isArray(sub.products) && sub.products.length > 0)
                 
-                if (hasSubcategories) {
+                if (hasSubcategoriesWithProducts) {
                     // Always include products from subcategories when they exist
                     const ids = new Set(
                         (cat?.subcategories || [])
@@ -239,6 +229,14 @@ export default {
                 }
             }
             return null
+        }
+    },
+    beforeUnmount() {
+        // Clear filter state when leaving the page
+        try {
+            localStorage.removeItem('allproducts-filters')
+        } catch (error) {
+            console.warn('Failed to clear filters:', error)
         }
     },
     watch: {
