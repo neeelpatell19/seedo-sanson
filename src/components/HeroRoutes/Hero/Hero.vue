@@ -8,7 +8,9 @@ export default {
             isPlaying: false,
             videoElement: null,
             isMuted: false,
-            observer: null
+            observer: null,
+            isPageVisible: true,
+            autoplayAttempted: false
         }
     },
     mounted() {
@@ -22,16 +24,19 @@ export default {
         
         this.setupVideoEventListeners();
         this.setupIntersectionObserver();
+        this.setupPageVisibilityListener();
         
         // Try to autoplay immediately when component mounts
         this.$nextTick(() => {
-            this.autoplayVideo();
+            this.forceAutoplayOnMount();
         });
     },
     beforeUnmount() {
         if (this.observer) {
             this.observer.disconnect();
         }
+        // Remove page visibility listener
+        document.removeEventListener('visibilitychange', this.handleVisibilityChange);
     },
     methods: {
         setupVideoEventListeners() {
@@ -62,6 +67,10 @@ export default {
                     // Ensure video remains unmuted when it can play
                     this.videoElement.muted = false;
                     this.isMuted = false;
+                    // Try autoplay when video is ready
+                    if (!this.autoplayAttempted && this.isPageVisible) {
+                        this.autoplayVideo();
+                    }
                 });
             }
         },
@@ -70,8 +79,8 @@ export default {
             if ('IntersectionObserver' in window) {
                 this.observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Video is visible, autoplay (unmuted)
+                        if (entry.isIntersecting && this.isPageVisible) {
+                            // Video is visible and page is active, autoplay (unmuted)
                             this.autoplayVideo();
                         } else {
                             // Video is not visible, pause
@@ -88,21 +97,68 @@ export default {
             }
         },
         
+        setupPageVisibilityListener() {
+            document.addEventListener('visibilitychange', this.handleVisibilityChange);
+        },
+        
+        handleVisibilityChange() {
+            this.isPageVisible = !document.hidden;
+            
+            if (this.isPageVisible) {
+                // Page became visible, try to autoplay if video is in view
+                if (this.videoElement && this.isVideoInView()) {
+                    this.autoplayVideo();
+                }
+            } else {
+                // Page became hidden, pause video
+                this.pauseVideo();
+            }
+        },
+        
+        isVideoInView() {
+            if (!this.videoElement) return false;
+            const rect = this.videoElement.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            return rect.top < windowHeight && rect.bottom > 0;
+        },
+        
         autoplayVideo() {
-            if (this.videoElement && !this.isPlaying) {
+            if (this.videoElement && !this.isPlaying && this.isPageVisible) {
+                // Mark that we've attempted autoplay
+                this.autoplayAttempted = true;
+                
                 // Ensure video is unmuted for autoplay
                 this.videoElement.muted = false;
                 this.isMuted = false;
                 
+                // Try unmuted autoplay first
                 this.videoElement.play().catch(error => {
-                    console.error('Error autoplaying video:', error);
+                    console.log('Unmuted autoplay failed, trying muted:', error.message);
                     // If unmuted autoplay fails, try muted autoplay
                     this.videoElement.muted = true;
                     this.isMuted = true;
                     this.videoElement.play().catch(err => {
-                        console.error('Error autoplaying video (muted fallback):', err);
+                        console.log('Muted autoplay also failed:', err.message);
+                        // If both fail, we'll rely on user interaction
                     });
                 });
+            }
+        },
+        
+        // Force autoplay on mount - more aggressive approach
+        forceAutoplayOnMount() {
+            if (this.videoElement && !this.autoplayAttempted) {
+                // Wait a bit for the video to be ready
+                setTimeout(() => {
+                    this.autoplayVideo();
+                }, 100);
+                
+                // Also try after video metadata is loaded
+                this.videoElement.addEventListener('loadedmetadata', () => {
+                    if (!this.autoplayAttempted) {
+                        this.autoplayVideo();
+                    }
+                }, { once: true });
             }
         },
         
