@@ -152,6 +152,7 @@
 @media (max-width: 480px) {
     .hero-video-container {
         padding: 10px;
+        margin-top: 70px !important;
     }
     
     .hero-play-button {

@@ -190,6 +190,7 @@ onUnmounted(() => {
     background-color: #BC272B;
     padding: 25px 0;
     margin-left: calc(-50vw + 50%);
+    margin-top: 30px;
 }
 
 .achievement-card {
@@ -269,13 +270,13 @@ onUnmounted(() => {
         margin-left: 45px;
     }
 
-    .achievement-card:nth-child(2n) {
+    /* .achievement-card:nth-child(2n) {
         border-right: none;
     }
 
     .achievement-card:nth-child(n+3) {
         border-bottom: none;
-    }
+    } */
 
     .achievement-number {
         font-size: 45px;
@@ -298,18 +299,18 @@ onUnmounted(() => {
     }
 
     .achievement-card {
-        padding: 15px 0;
+        padding: 30px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         margin-left: 45px;
     }
 
-    .achievement-card:nth-child(2n) {
+    /* .achievement-card:nth-child(2n) {
         border-right: none;
     }
 
     .achievement-card:nth-child(n+3) {
         border-bottom: none;
-    }
+    } */
 
     .achievement-number {
         font-size: 40px;
@@ -332,13 +333,13 @@ onUnmounted(() => {
     .achievements-grid {
         grid-template-columns: 1fr;
         gap: 0;
-        padding: 20px 15px 20px 40px;
+        padding: 0px;
     }
 
     .achievement-card {
-        padding: 15px 0;
+        padding: 30px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        margin-left: 40px;
+        margin-left: 0px;
     }
 
     .achievement-card:last-child {

@@ -143,8 +143,7 @@
                             <div class="card-image">
                                 <!-- If multiple images, show fading carousel; else single image -->
                                 <template v-if="Array.isArray(card.images) && card.images.length > 1">
-                                    <Swiper :modules="modules" effect="fade"
-                                        :autoplay="{ delay: 2500, disableOnInteraction: false }" :loop="true"
+                                    <Swiper :modules="modules" effect="fade" :loop="true"
                                         class="manufacturing-card-swiper" style="height: 100%;">
                                         <SwiperSlide v-for="(imgSrc, i) in card.images" :key="i">
                                             <img :src="imgSrc" :alt="card.title" />
