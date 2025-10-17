@@ -26,7 +26,7 @@ export default {
 
             try {
                 // console.log('Fetching products from API via proxy...')
-                const response = await fetch('https://testapi.prepseed.com/seedo/getAllProducts')
+                const response = await fetch('http://localhost:4040/api/seedo/getAllProducts')
                 // console.log('Fetch response status:', response.status)
                 if (!response.ok) {
                     throw new Error('Failed to fetch products')
