@@ -21,7 +21,7 @@
                 <!-- Right: Text Content -->
                 <div class="experience-text">
                     <p>Over the years, we've made ourselves completely self-reliant — every step, from concept to creation, happens under one roof. Our in-house capabilities ensure complete control over design, production, and finishing, eliminating the need for outsourcing.</p>
-                    <button class="explore-button">
+                    <button class="explore-button" @click="navigateToManufacturing">
                         Explore More
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6 3L11 8L6 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -34,7 +34,13 @@
 </template>
 
 <script setup>
-// Experience component logic
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const navigateToManufacturing = () => {
+    router.push({ name: 'Manufacturing' })
+}
 </script>
 
 <style scoped>

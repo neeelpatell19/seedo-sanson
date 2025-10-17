@@ -98,8 +98,8 @@ export default {
             <swiper-slide>
                 <div class="featured-category-card featured-category-card-light-gray">
                     <div class="featured-category-content">
-                        <h3 class="featured-category-title">Easy Learning <br> Toys</h3>
-                        <router-link :to="`/allproducts/${slug('Easy Learning Toys')}`"
+                        <h3 class="featured-category-title">Early Learning <br> Toys</h3>
+                        <router-link :to="`/allproducts/${slug('Early Learning Toys')}`"
                             class="featured-category-button">
                             <span>View</span>
                             <svg class="featured-category-arrow" viewBox="0 0 24 24" fill="currentColor">

@@ -47,7 +47,7 @@
 
             <!-- Right: Details -->
             <div class="sp-right">
-                <div class="sp-meta-top">Item code: {{ product.code }}</div>
+                <div class="sp-meta-top">Item code: {{ product.code || '-' }}</div>
                 <h1 class="sp-title">{{ product.title }}</h1>
 
                 <div class="sp-price-wrap">
@@ -66,7 +66,7 @@
                             less</button></p>
                 </div> -->
 
-                <div class="sp-colors">
+                <div v-if="hasColorVariants" class="sp-colors">
                     <div class="sp-colors-label">Color: <strong>{{ currentVariant.name }}</strong></div>
                     <div class="sp-swatches" role="listbox" aria-label="Choose color">
                         <button v-for="(v, key) in uniqueColorVariants" :key="key" class="sp-swatch"
@@ -277,6 +277,12 @@ const selectedVariantKey = ref("default");
 const selectedImageIndex = ref(0);
 const currentVariant = computed(() => product.variants[selectedVariantKey.value] || product.variants.default);
 const uniqueColorVariants = computed(() => product.variants || {});
+const hasColorVariants = computed(() => {
+    const variants = product.variants || {};
+    const keys = Object.keys(variants);
+    // Check if there are variants and if any variant has meaningful color data
+    return keys.length > 1 || (keys.length === 1 && variants[keys[0]]?.swatch !== '#cccccc');
+});
 // Build a flat list of all images across variants, placing current variant first
 const allImages = computed(() => {
     const order = [selectedVariantKey.value, ...Object.keys(product.variants || {}).filter(k => k !== selectedVariantKey.value)]
