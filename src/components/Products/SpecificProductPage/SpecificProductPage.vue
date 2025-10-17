@@ -276,6 +276,7 @@ const breadcrumbs = computed(() => {
 const selectedVariantKey = ref("default");
 const selectedImageIndex = ref(0);
 const currentVariant = computed(() => product.variants[selectedVariantKey.value] || product.variants.default);
+const uniqueColorVariants = computed(() => product.variants || {});
 // Build a flat list of all images across variants, placing current variant first
 const allImages = computed(() => {
     const order = [selectedVariantKey.value, ...Object.keys(product.variants || {}).filter(k => k !== selectedVariantKey.value)]

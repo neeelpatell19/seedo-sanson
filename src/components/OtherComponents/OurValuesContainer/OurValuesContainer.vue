@@ -39,9 +39,7 @@
             <div class="ov-card-body">
               <h3>Our Vision</h3>
               <p>
-                To become a leading toy manufacturer globally, recognized for excellence in
-                product quality and innovation while integrating advanced technology into
-                our offerings.
+               To grow as a trusted leader in the toy market by creating safe, innovative products that resonate with children’s imaginations and parents’ expectations of quality.
               </p>
             </div>
           </article>

@@ -56,7 +56,7 @@
                         </router-link>
                         <!-- <ul class="dropdown">
                             <li><router-link to="/about/company">Company</router-link></li>
-                            <li><router-link to="/about/manufacturing">Manufacturing</router-link></li>
+                            <li><router-link to="/about/manufacturing">Manufacturing Process</router-link></li>
                             <li><router-link to="/about/careers">Careers</router-link></li>
                             <li><router-link to="/contact">Contact</router-link></li>
                         </ul> -->
@@ -115,11 +115,11 @@
 
                         <li class="drawer__item">
                             <router-link to="/manufacturing" class="drawer__link"
-                                @click="closeDrawer">Manufacturing</router-link>
+                                @click="closeDrawer">Manufacturing Process</router-link>
                         </li>
 
                         <li class="drawer__item">
-                            <router-link to="/about" class="drawer__link" @click="closeDrawer">about us</router-link>
+                            <router-link to="/about" class="drawer__link" @click="closeDrawer">About Us</router-link>
                         </li>
 
                     </ul>
