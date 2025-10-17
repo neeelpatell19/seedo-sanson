@@ -342,7 +342,7 @@
     }
 
     .cards-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 25px;
     }
 
@@ -401,7 +401,7 @@
     }
 
     .cards-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 20px;
     }
 
@@ -826,9 +826,10 @@
     .certification-card {
         height: 100%;
     }
-     .onlypcbr{
+
+    .onlypcbr {
         display: none;
-     }
+    }
 
     .certification-overlay {
         padding: 15px;
