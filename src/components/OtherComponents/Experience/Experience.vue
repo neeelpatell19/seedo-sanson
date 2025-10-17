@@ -259,6 +259,20 @@
     .explore-button {
         margin: 0 auto;
     }
+    .experience-header {
+    width: 100%;
+    height: 90.99523162841797px;
+    position: relative;
+    top: 40px;
+    left: 0px;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-bottom: 0;
+    align-items: flex-start;
+    z-index: 1;
+}
 }
 
 @media (max-width: 480px) {

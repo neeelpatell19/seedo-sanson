@@ -6,8 +6,9 @@
             <span>Now Available on Zepto</span>
         </div>
     </div>
-    
-    <header class="navigation-bar" :class="{ 'scrolled': isScrolled, 'drawer-open': drawerOpen, 'home-page': isHomePage }" role="banner">
+
+    <header class="navigation-bar"
+        :class="{ 'scrolled': isScrolled, 'drawer-open': drawerOpen, 'home-page': isHomePage }" role="banner">
         <div class="nav-inner">
             <!-- Logo -->
             <router-link class="navigation-bar-logo" to="/" aria-label="Seedo logo">
@@ -106,7 +107,7 @@
                                         <li v-for="cat in uniqueCategories(categories)" :key="cat._id">
                                             <router-link :to="`/allproducts/${slug(cat.name)}`" @click="closeDrawer">{{
                                                 cat.name
-                                            }}</router-link>
+                                                }}</router-link>
                                         </li>
                                     </template>
                                 </ProductContext>
@@ -114,8 +115,8 @@
                         </li>
 
                         <li class="drawer__item">
-                            <router-link to="/manufacturing" class="drawer__link"
-                                @click="closeDrawer">Manufacturing Process</router-link>
+                            <router-link to="/manufacturing" class="drawer__link" @click="closeDrawer">Manufacturing
+                                Process</router-link>
                         </li>
 
                         <li class="drawer__item">

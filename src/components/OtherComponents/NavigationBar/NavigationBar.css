@@ -6,7 +6,7 @@
     right: 0;
     height: 30px;
     background-color: #003049;
-    z-index: 1001;
+    z-index: 101;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -209,9 +209,33 @@
     background: rgba(0, 0, 0, 0.05);
 }
 
+/* Home page hamburger hover - mobile only */
+@media (max-width: 991px) {
+    .navigation-bar.home-page .hamburger:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .navigation-bar.home-page.scrolled .hamburger:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+}
+
 .hamburger:focus {
     outline: 2px solid var(--nav-fg);
     outline-offset: 2px;
+}
+
+/* Home page hamburger focus - mobile only */
+@media (max-width: 991px) {
+    .navigation-bar.home-page .hamburger:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+    }
+
+    .navigation-bar.home-page.scrolled .hamburger:focus {
+        outline: 2px solid var(--nav-fg);
+        outline-offset: 2px;
+    }
 }
 
 .hamburger span {
@@ -223,13 +247,15 @@
     border-radius: 1px;
 }
 
-/* Home page hamburger styling */
-.navigation-bar.home-page .hamburger span {
-    background: white;
-}
+/* Home page hamburger styling - mobile only */
+@media (max-width: 991px) {
+    .navigation-bar.home-page .hamburger span {
+        background: black;
+    }
 
-.navigation-bar.home-page.scrolled .hamburger span {
-    background: var(--nav-fg);
+    .navigation-bar.home-page.scrolled .hamburger span {
+        background: var(--nav-fg);
+    }
 }
 
 /* Hamburger animation when drawer is open - using class on navigation bar */
