@@ -138,6 +138,9 @@
         text-align: center;
     }
 
+    .swiper-container {
+        margin-bottom: 0px;
+    }
 
     .SansonIntroContent {
         padding: 0px;

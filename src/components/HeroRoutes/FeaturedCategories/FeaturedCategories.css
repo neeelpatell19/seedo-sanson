@@ -187,13 +187,14 @@
 
     .featured-categories-container {
         padding: 0 15px;
+        margin-top: 65px;
     }
 
     .featured-categories-header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         gap: 16px;
-        margin-bottom: 30px;
     }
 
     .featured-categories-grid {

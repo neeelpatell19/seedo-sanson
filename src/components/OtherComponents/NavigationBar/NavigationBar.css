@@ -440,3 +440,14 @@
         padding: 10px 10px;
     }
 }
+
+@media (max-width: 768px) {
+    .navigation-bar-logo img {
+        height: 40px;
+    }
+    
+    .navigation-bar .nav-inner {
+        min-height: 40px;
+        padding: 6px 10px;
+    }
+}
