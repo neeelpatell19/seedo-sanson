@@ -16,6 +16,27 @@
     justify-content: center;
 }
 
+/* Tablet responsive */
+@media (max-width: 1024px) {
+    .AboutUs .hero {
+        min-height: 600px;
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .AboutUs .hero {
+        min-height: 500px;
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .AboutUs .hero {
+        min-height: 300px;
+    }
+}
+
 .AboutUs .hero-content {
     text-align: left;
     max-width: 1200px;
@@ -29,6 +50,44 @@
     font-size: 2.5rem;
     line-height: 1.3;
     font-weight: 600;
+}
+
+/* Tablet responsive for hero content */
+@media (max-width: 1024px) {
+    .AboutUs .hero-content {
+        padding: 0 30px;
+        padding-bottom: 80px;
+    }
+    
+    .AboutUs .hero-content h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Mobile responsive for hero content */
+@media (max-width: 768px) {
+    .AboutUs .hero-content {
+        padding: 0 20px;
+        padding-bottom: 60px;
+        text-align: center;
+    }
+    
+    .AboutUs .hero-content h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .AboutUs .hero-content {
+        padding: 0 15px;
+        padding-bottom: 40px;
+    }
+    
+    .AboutUs .hero-content h2 {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
 }
 
 /* Info Box */
@@ -58,15 +117,53 @@
     max-width: 850px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .AboutUs .hero-content h2 {
-        font-size: 2rem;
-        text-align: center;
+/* Tablet responsive for about-box */
+@media (max-width: 1024px) {
+    .AboutUs .about-box {
+        margin-top: -50px;
+        padding: 35px 25px;
     }
+    
+    .AboutUs .about-box h3 {
+        font-size: 1.6rem;
+    }
+}
 
+/* Mobile responsive for about-box */
+@media (max-width: 768px) {
     .AboutUs .about-box {
         margin-top: -40px;
         padding: 30px 20px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    
+    .AboutUs .about-box h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+    
+    .AboutUs .about-box p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .AboutUs .about-box {
+        margin-top: -30px;
+        padding: 25px 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .AboutUs .about-box h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+    
+    .AboutUs .about-box p {
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
 }
