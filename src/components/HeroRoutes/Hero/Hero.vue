@@ -17,40 +17,24 @@ export default {
     mounted() {
         this.videoElement = this.$refs.heroVideo;
 
-        // Configure video for mobile autoplay and iOS
+        // Configure video for mobile autoplay and iOS (same as Journey video)
         if (this.videoElement) {
-            // Start muted for autoplay compatibility on mobile
-            this.videoElement.muted = true;
-            this.isMuted = true;
-            
             // iOS-specific configuration
             this.videoElement.setAttribute('playsinline', 'true');
             this.videoElement.setAttribute('webkit-playsinline', 'true');
             this.videoElement.setAttribute('x5-playsinline', 'true');
             this.videoElement.playsInline = true;
             
-            // Disable native controls to prevent fullscreen
-            this.videoElement.controls = false;
+            // Keep native controls enabled like Journey video
+            this.videoElement.controls = true;
         }
 
         this.setupVideoEventListeners();
-        this.setupIntersectionObserver();
-        this.setupPageVisibilityListener();
-
-        // Try to autoplay immediately when component mounts
-        this.$nextTick(() => {
-            this.forceAutoplayOnMount();
-        });
+        // Simplified setup - let native autoplay handle it (same as Journey video)
     },
     beforeUnmount() {
-        if (this.observer) {
-            this.observer.disconnect();
-        }
-        // Remove page visibility listener
-        document.removeEventListener('visibilitychange', this.handleVisibilityChange);
-        // Remove fallback event listeners
-        window.removeEventListener('scroll', this.checkViewport);
-        window.removeEventListener('resize', this.checkViewport);
+        // Simplified cleanup (same as Journey video)
+        // Native video handles its own cleanup
     },
     methods: {
         setupVideoEventListeners() {
@@ -66,11 +50,8 @@ export default {
                     console.log('Prevented iOS fullscreen end');
                 });
 
-                // Prevent default click behavior on iOS
-                this.videoElement.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.toggleVideo();
-                });
+                // Allow native controls to handle clicks (same as Journey video)
+                // No custom click prevention needed
 
                 this.videoElement.addEventListener('play', () => {
                     this.isPlaying = true;
@@ -95,13 +76,8 @@ export default {
 
                 this.videoElement.addEventListener('canplay', () => {
                     console.log('Video can play');
-                    // Ensure video starts muted for mobile autoplay compatibility
-                    this.videoElement.muted = true;
-                    this.isMuted = true;
-                    // Try autoplay when video is ready
-                    if (!this.autoplayAttempted && this.isPageVisible) {
-                        this.autoplayVideo();
-                    }
+                    // Let native autoplay handle it (same as Journey video)
+                    // No forced muted state or custom autoplay needed
                 });
             }
         },
@@ -277,9 +253,12 @@ export default {
         <br>
         <br>
         <div class="hero-video-wrapper">
-            <video ref="heroVideo" class="hero-video" src="/Images/s1red.mp4" preload="metadata" loop
-                playsinline webkit-playsinline autoplay x5-playsinline controls="false" muted poster=""
+            <video ref="heroVideo" class="hero-video" controls autoplay loop muted playsinline webkit-playsinline
+            x5-playsinline
                 @click="toggleVideo">
+                <source src="/Images/s1red.mp4" type="video/mp4">
+                <source src="/Images/s1red.mp4" type="video/ogg">
+                Your browser does not support the video tag.
             </video>
             <div class="hero-video-overlay" v-show="!isPlaying">
                 <button class="hero-play-button" @click="toggleVideo">

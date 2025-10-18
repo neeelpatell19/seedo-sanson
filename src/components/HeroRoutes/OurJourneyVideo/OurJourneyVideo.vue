@@ -15,7 +15,7 @@ export default {
                 video.setAttribute('webkit-playsinline', 'true');
                 video.setAttribute('x5-playsinline', 'true');
                 video.playsInline = true;
-                
+
                 // Prevent iOS fullscreen behavior
                 video.addEventListener('webkitbeginfullscreen', (e) => {
                     e.preventDefault();
@@ -58,8 +58,8 @@ export default {
                 <!-- Video Section -->
                 <div class="journey-video-section">
                     <div class="video-container">
-                        <video class="journey-video" controls autoplay loop muted
-                            playsinline webkit-playsinline x5-playsinline
+                        <video class="journey-video" controls autoplay loop muted playsinline webkit-playsinline
+                            x5-playsinline
                             poster="https://via.placeholder.com/800x450/333/fff?text=The+making+of+Seedo+Toys">
                             <source src="https://prepseed.s3.ap-south-1.amazonaws.com/Untitled_design_Seedo.mp4"
                                 type="video/mp4">
