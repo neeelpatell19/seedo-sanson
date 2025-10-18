@@ -17,10 +17,11 @@ export default {
     mounted() {
         this.videoElement = this.$refs.heroVideo;
 
-        // Ensure video starts unmuted and configure for iOS
+        // Configure video for mobile autoplay and iOS
         if (this.videoElement) {
-            this.videoElement.muted = false;
-            this.isMuted = false;
+            // Start muted for autoplay compatibility on mobile
+            this.videoElement.muted = true;
+            this.isMuted = true;
             
             // iOS-specific configuration
             this.videoElement.setAttribute('playsinline', 'true');
@@ -94,9 +95,9 @@ export default {
 
                 this.videoElement.addEventListener('canplay', () => {
                     console.log('Video can play');
-                    // Ensure video remains unmuted when it can play
-                    this.videoElement.muted = false;
-                    this.isMuted = false;
+                    // Ensure video starts muted for mobile autoplay compatibility
+                    this.videoElement.muted = true;
+                    this.isMuted = true;
                     // Try autoplay when video is ready
                     if (!this.autoplayAttempted && this.isPageVisible) {
                         this.autoplayVideo();
@@ -205,21 +206,21 @@ export default {
         attemptAutoplay() {
             if (!this.videoElement || this.isPlaying) return;
 
-            // Try unmuted autoplay first
-            this.videoElement.muted = false;
-            this.isMuted = false;
+            // Start with muted autoplay for mobile compatibility
+            this.videoElement.muted = true;
+            this.isMuted = true;
 
             this.videoElement.play().then(() => {
-                console.log('Video autoplay successful (unmuted)');
+                console.log('Video autoplay successful (muted)');
             }).catch(error => {
-                console.log('Unmuted autoplay failed, trying muted:', error.message);
-                // If unmuted autoplay fails, try muted autoplay
-                this.videoElement.muted = true;
-                this.isMuted = true;
+                console.log('Muted autoplay failed:', error.message);
+                // If muted autoplay fails, try unmuted as fallback
+                this.videoElement.muted = false;
+                this.isMuted = false;
                 this.videoElement.play().then(() => {
-                    console.log('Video autoplay successful (muted)');
+                    console.log('Video autoplay successful (unmuted)');
                 }).catch(err => {
-                    console.log('Muted autoplay also failed:', err.message);
+                    console.log('All autoplay attempts failed:', err.message);
                     // If both fail, we'll rely on user interaction
                 });
             });
@@ -277,7 +278,7 @@ export default {
         <br>
         <div class="hero-video-wrapper">
             <video ref="heroVideo" class="hero-video" src="/Images/s1red.mp4" preload="metadata" loop
-                playsinline webkit-playsinline x5-playsinline controls="false"
+                playsinline webkit-playsinline x5-playsinline controls="false" muted
                 @click="toggleVideo">
             </video>
             <div class="hero-video-overlay" v-show="!isPlaying">
