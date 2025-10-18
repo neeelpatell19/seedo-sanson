@@ -278,7 +278,7 @@ export default {
         <br>
         <div class="hero-video-wrapper">
             <video ref="heroVideo" class="hero-video" src="/Images/s1red.mp4" preload="metadata" loop
-                playsinline webkit-playsinline autoplay x5-playsinline controls="false" muted poster="/Images/Seedo Post-22 1.png"
+                playsinline webkit-playsinline autoplay x5-playsinline controls="false" muted poster=""
                 @click="toggleVideo">
             </video>
             <div class="hero-video-overlay" v-show="!isPlaying">
