@@ -17,10 +17,19 @@ export default {
     mounted() {
         this.videoElement = this.$refs.heroVideo;
 
-        // Ensure video starts unmuted
+        // Ensure video starts unmuted and configure for iOS
         if (this.videoElement) {
             this.videoElement.muted = false;
             this.isMuted = false;
+            
+            // iOS-specific configuration
+            this.videoElement.setAttribute('playsinline', 'true');
+            this.videoElement.setAttribute('webkit-playsinline', 'true');
+            this.videoElement.setAttribute('x5-playsinline', 'true');
+            this.videoElement.playsInline = true;
+            
+            // Disable native controls to prevent fullscreen
+            this.videoElement.controls = false;
         }
 
         this.setupVideoEventListeners();
@@ -45,6 +54,23 @@ export default {
     methods: {
         setupVideoEventListeners() {
             if (this.videoElement) {
+                // Prevent iOS fullscreen behavior
+                this.videoElement.addEventListener('webkitbeginfullscreen', (e) => {
+                    e.preventDefault();
+                    console.log('Prevented iOS fullscreen');
+                });
+
+                this.videoElement.addEventListener('webkitendfullscreen', (e) => {
+                    e.preventDefault();
+                    console.log('Prevented iOS fullscreen end');
+                });
+
+                // Prevent default click behavior on iOS
+                this.videoElement.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.toggleVideo();
+                });
+
                 this.videoElement.addEventListener('play', () => {
                     this.isPlaying = true;
                 });
@@ -125,7 +151,7 @@ export default {
             // Check on scroll and resize
             window.addEventListener('scroll', this.checkViewport);
             window.addEventListener('resize', this.checkViewport);
-            
+
             // Initial check
             this.checkViewport();
         },
@@ -251,6 +277,7 @@ export default {
         <br>
         <div class="hero-video-wrapper">
             <video ref="heroVideo" class="hero-video" src="/Images/s1red.mp4" preload="metadata" loop
+                playsinline webkit-playsinline x5-playsinline controls="false"
                 @click="toggleVideo">
             </video>
             <div class="hero-video-overlay" v-show="!isPlaying">
