@@ -29,7 +29,7 @@ export default {
     <div class="featured-categories-container Container MainPaddingContainerTop80">
         <div class="featured-categories-header">
             <h2 class="featured-categories-title">Featured Categories</h2>
-            <a href="#" class="featured-categories-view-all">View All</a>
+            <router-link to="/allproducts" class="featured-categories-view-all">View All</router-link>
         </div>
 
         <swiper class="featured-categories-grid" :modules="modules" :slides-per-view="1" :space-between="20"
