@@ -45,7 +45,7 @@
     top: 30px;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 2000;
     color: var(--nav-fg);
     background: var(--nav-bg);
     border-bottom: 1px solid var(--nav-border);
@@ -53,6 +53,9 @@
     width: 100%;
     height: auto;
 }
+
+/* Center navbar content specifically on the Manufacturing page */
+/* removed manufacturing-page centering overrides */
 
 /* Home page specific styling - white text on transparent background */
 .navigation-bar.home-page {
@@ -73,12 +76,13 @@
 .navigation-bar .nav-inner {
     max-width: 1220px;
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 0px 20px;
     display: grid;
     grid-template-columns: auto 1fr auto;
     gap: 16px;
     align-items: center;
     min-height: 60px;
+    margin-bottom: 20px;
 }
 
 .navigation-bar-logo img {
@@ -210,6 +214,13 @@
 }
 
 /* Home page hamburger hover - mobile only */
+
+@media (min-width: 1311px) {
+    .navigation-bar .nav-inner{
+        padding: 15px 20px;
+    }
+    
+}
 @media (max-width: 991px) {
     .navigation-bar.home-page .hamburger:hover {
         background: rgba(255, 255, 255, 0.1);
@@ -448,6 +459,6 @@
     
     .navigation-bar .nav-inner {
         min-height: 40px;
-        padding: 6px 10px;
+        padding: 10px 20px;
     }
 }

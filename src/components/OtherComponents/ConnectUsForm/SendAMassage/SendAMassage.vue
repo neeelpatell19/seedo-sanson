@@ -98,7 +98,7 @@
         console.log('Request body:', requestBody);
         
         try {
-          const response = await fetch('https://testapi.prepseed.com/autosend/emailToSeedo', {
+          const response = await fetch('http://192.168.1.222:4040/api/autosend/emailToSeedo', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
