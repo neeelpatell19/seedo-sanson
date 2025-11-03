@@ -250,7 +250,7 @@ export default {
         <br>
         <br>
         <div class="hero-video-wrapper">
-            <video ref="heroVideo" class="hero-video" autoplay loop playsinline webkit-playsinline x5-playsinline 
+            <video ref="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline x5-playsinline 
                 @click="toggleVideo">
                 <source src="/Images/s1red.mp4" type="video/mp4">
                 <source src="/Images/s1red.mp4" type="video/ogg">
