@@ -68,7 +68,7 @@
 .SpecificProductPage .sp-grid {
     display: grid;
     grid-template-columns: 1.05fr 1fr;
-    gap: 36px;
+    gap: 70px;
 }
 
 .SpecificProductPage .sp-grid>div:first-child{
@@ -97,7 +97,7 @@
 
 .SpecificProductPage .sp-main-img {
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 2;
     /* square like screenshot */
     object-fit: contain;
     border-radius: 8px;
@@ -191,7 +191,7 @@
 
 .SpecificProductPage .sp-thumb img {
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1.46;
     object-fit: contain;
     border-radius: 8px;
 }
@@ -206,7 +206,7 @@
 /* Right panel */
 .SpecificProductPage .sp-right {
     display: grid;
-    gap: 14px;
+    gap: 20px;
     align-content: start;
 }
 
