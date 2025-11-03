@@ -17,20 +17,17 @@ export default {
     mounted() {
         this.videoElement = this.$refs.heroVideo;
 
-        // Configure video for mobile autoplay and iOS (same as Journey video)
+        // Configure video for mobile autoplay and iOS (custom controls)
         if (this.videoElement) {
             // iOS-specific configuration
             this.videoElement.setAttribute('playsinline', 'true');
             this.videoElement.setAttribute('webkit-playsinline', 'true');
             this.videoElement.setAttribute('x5-playsinline', 'true');
             this.videoElement.playsInline = true;
-            
-            // Keep native controls enabled like Journey video
-            this.videoElement.controls = true;
         }
 
         this.setupVideoEventListeners();
-        // Simplified setup - let native autoplay handle it (same as Journey video)
+        // Do not force autoplay/muted; let user interact or native behavior decide
     },
     beforeUnmount() {
         // Simplified cleanup (same as Journey video)
@@ -253,8 +250,7 @@ export default {
         <br>
         <br>
         <div class="hero-video-wrapper">
-            <video ref="heroVideo" class="hero-video" controls autoplay loop muted playsinline webkit-playsinline
-            x5-playsinline
+            <video ref="heroVideo" class="hero-video" autoplay loop playsinline webkit-playsinline x5-playsinline 
                 @click="toggleVideo">
                 <source src="/Images/s1red.mp4" type="video/mp4">
                 <source src="/Images/s1red.mp4" type="video/ogg">
