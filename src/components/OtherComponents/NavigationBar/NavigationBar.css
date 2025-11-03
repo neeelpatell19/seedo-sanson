@@ -215,12 +215,7 @@
 
 /* Home page hamburger hover - mobile only */
 
-@media (min-width: 1311px) {
-    .navigation-bar .nav-inner{
-        padding: 15px 20px;
-    }
-    
-}
+
 @media (max-width: 991px) {
     .navigation-bar.home-page .hamburger:hover {
         background: rgba(255, 255, 255, 0.1);
