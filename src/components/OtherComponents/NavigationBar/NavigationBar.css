@@ -64,6 +64,7 @@
 
 .navigation-bar.home-page.scrolled {
     --nav-fg: #0b2d3f;
+
 }
 
 .navigation-bar.scrolled {
@@ -71,8 +72,13 @@
     --nav-bg: rgba(255, 255, 255, .94);
     --nav-border: rgba(10, 40, 60, .06);
     backdrop-filter: saturate(1.2) blur(8px);
+    height: 84px;
 }
-
+ .navigation-bar.scrolled  .navigation-bar-logo img{
+    height: 40px;
+    position: absolute;
+    top: 20px;
+}
 .navigation-bar .nav-inner {
     max-width: 1220px;
     margin: 0 auto;
@@ -89,6 +95,7 @@
     height: 60px;
     width: auto;
     display: block;
+    transition: height 0.3s ease;
 }
 
 /* ===== Desktop menu ===== */
@@ -101,6 +108,8 @@
         display: block;
     }
 }
+
+
 
 .menu {
     display: flex;
@@ -449,7 +458,7 @@
 
 @media (max-width: 768px) {
     .navigation-bar-logo img {
-        height: 40px;
+        height: 36px;
     }
     
     .navigation-bar .nav-inner {
