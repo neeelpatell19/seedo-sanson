@@ -201,6 +201,9 @@
         grid-template-columns: repeat(4, minmax(72px, 1fr));
         gap: 10px;
     }
+    .SpecificProductPage .sp-right{
+        padding: 0px 20px;
+    }
 }
 
 /* Right panel */
