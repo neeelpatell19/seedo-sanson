@@ -17,7 +17,7 @@ export default {
     SansonIntro,
     WhyChooseUsHome,
     PopularProductsHome,
-      TrustedPresenceHome,
+    TrustedPresenceHome,
     OurJourneyVideo,
     MadeInIndiaHome,
     SendAMassage
@@ -31,10 +31,10 @@ export default {
     <FeaturedCategories />
     <HomeMarquee />
     <SansonIntro />
-    <WhyChooseUsHome />
     <PopularProductsHome />
     <TrustedPresenceHome />
     <OurJourneyVideo />
+    <WhyChooseUsHome />
     <MadeInIndiaHome />
     <SendAMassage />
   </div>
