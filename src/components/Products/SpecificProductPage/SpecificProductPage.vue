@@ -1,5 +1,5 @@
 <template>
-    <section class="SpecificProductPage paddingTop100px ">
+    <section class="SpecificProductPage paddingTop100px  ">
         <!-- Breadcrumbs -->
         <nav class="sp-breadcrumbs ExtraSpaceTop50px" aria-label="Breadcrumb ">
             <ol>
