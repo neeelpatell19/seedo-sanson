@@ -203,7 +203,17 @@
 @media (max-width: 560px) {
     .SpecificProductPage .sp-thumb-list {
         grid-template-columns: repeat(4, minmax(72px, 1fr));
-        gap: 10px;
+        gap: 2px;
+    }
+    .SpecificProductPage .sp-left{
+        grid-template-columns: 1fr;
+    }
+    .SpecificProductPage .sp-grid{
+        gap: 20px;
+    }
+    .SpecificProductPage .sp-right{
+        gap: 9px;
+        padding: 20px;
     }
 }
 
