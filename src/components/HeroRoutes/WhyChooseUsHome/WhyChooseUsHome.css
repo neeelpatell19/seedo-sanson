@@ -18,11 +18,17 @@
     display: flex;
     justify-content: center;
 }
-
+.header-section h1{
+    color: #003049;
+}
+.WhyChooseUsPointsContainer  p{
+    color : #003049;
+}
 .why-choose-us-home{
-    background-image: url("https://s3.ap-south-1.amazonaws.com/prepseed/prod/ldoc/media/Background1.png");
-   
+    background-image: url('/Images/yellow bg.png');
+    margin-top: 0px;
 
    object-fit: cover;
 }
 
+/*  */
