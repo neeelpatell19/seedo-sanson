@@ -12,7 +12,7 @@
         <div class="nav-inner">
             <!-- Logo -->
             <router-link class="navigation-bar-logo" to="/" aria-label="Seedo logo">
-                <img src="/Images/SeedoLogoImage.svg" alt="Logo" />
+                    <img src="/Images/SeedoLogoImage.png" alt="Logo" />
             </router-link>
 
             <!-- Desktop Menu -->
@@ -78,7 +78,7 @@
             <aside id="mobile-drawer" class="drawer__panel" role="dialog" aria-label="Mobile navigation">
                 <div class="drawer__header">
                     <router-link class="drawer__logo" to="/" @click="closeDrawer">
-                        <img src="/Images/SeedoLogoImage.svg" alt="Logo" />
+                        <img src="/Images/SeedoLogoImage.png" alt="Logo" />
                     </router-link>
                     <button class="drawer__close" @click="closeDrawer" aria-label="Close menu">✕</button>
                 </div>

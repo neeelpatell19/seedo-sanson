@@ -5,7 +5,7 @@
             <div class="ft__brand">
                 <!-- Replace with your real logo if needed -->
                 <div class="ft__logo" aria-label="Seedo Toys Logo">
-                    <img src="/Images/SeedoLogoImage.svg" alt="">
+                    <img src="/Images/SeedoLogoImage.png" alt="">
                 </div>
 
                 <p class="ft__tagline">Break the Limit.</p>
