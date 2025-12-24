@@ -75,9 +75,9 @@
     height: 84px;
 }
  .navigation-bar.scrolled  .navigation-bar-logo img{
-    height: 40px;
+    height: 75px;
     position: absolute;
-    top: 20px;
+    top: 6px;
 }
 .navigation-bar .nav-inner {
     max-width: 1220px;
@@ -92,7 +92,7 @@
 }
 
 .navigation-bar-logo img {
-    height: 60px;
+    height: 80px;
     width: auto;
     display: block;
     transition: height 0.3s ease;
@@ -458,11 +458,16 @@
 
 @media (max-width: 768px) {
     .navigation-bar-logo img {
-        height: 36px;
+        height: 48px;
     }
     
     .navigation-bar .nav-inner {
         min-height: 40px;
         padding: 10px 20px;
     }
+
+    .navigation-bar.scrolled  .navigation-bar-logo img{
+        top: 0px;
+    }
+
 }
