@@ -21,7 +21,7 @@ const WhyChooseUsPoints = [
     <div class="why-choose-us-home MainMarginContainerTop80">
         <div class="Container">
             <div class="header-section">
-                <h1 class="company-title text-center white">Why Choose Us</h1>
+                <h1 class="company-title text-center ">Why Choose Us</h1>
                 <!-- <button class="view-button">
                 <span>View</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -32,7 +32,7 @@ const WhyChooseUsPoints = [
             <div class="WhyChooseUsPointsContainer max-width-800">
                 <div>
                     <div class="WhyChooseUsPoint" v-for="point in WhyChooseUsPoints" :key="point.id">
-                    <p class="WhyChooseUsPointDescription white">{{ point.description }}</p>
+                    <p class="WhyChooseUsPointDescription ">{{ point.description }}</p>
                 </div>
                 </div>
             </div>

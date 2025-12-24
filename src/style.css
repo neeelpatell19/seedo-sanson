@@ -124,7 +124,7 @@ body {
 }
 
 .MainPaddingContainerTop80 {
-  padding-top: 30px !important; 
+  padding-top: 60px !important; 
 }
 
 .MainPaddingContainerBottom80 {
@@ -296,7 +296,7 @@ input, textarea {
   }
   
   .paddingTop100px {
-    padding-top: 50px;
+    padding-top: 70px;
   }
   
   .ExtraSpaceTop50px {

@@ -45,7 +45,7 @@
     top: 30px;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 2000;
     color: var(--nav-fg);
     background: var(--nav-bg);
     border-bottom: 1px solid var(--nav-border);
@@ -54,6 +54,9 @@
     height: auto;
 }
 
+/* Center navbar content specifically on the Manufacturing page */
+/* removed manufacturing-page centering overrides */
+
 /* Home page specific styling - white text on transparent background */
 .navigation-bar.home-page {
     --nav-fg: white;
@@ -61,6 +64,7 @@
 
 .navigation-bar.home-page.scrolled {
     --nav-fg: #0b2d3f;
+
 }
 
 .navigation-bar.scrolled {
@@ -68,23 +72,30 @@
     --nav-bg: rgba(255, 255, 255, .94);
     --nav-border: rgba(10, 40, 60, .06);
     backdrop-filter: saturate(1.2) blur(8px);
+    height: 84px;
 }
-
+ .navigation-bar.scrolled  .navigation-bar-logo img{
+    height: 75px;
+    position: absolute;
+    top: 6px;
+}
 .navigation-bar .nav-inner {
     max-width: 1220px;
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 0px 20px;
     display: grid;
     grid-template-columns: auto 1fr auto;
     gap: 16px;
     align-items: center;
     min-height: 60px;
+    margin-bottom: 20px;
 }
 
 .navigation-bar-logo img {
-    height: 60px;
+    height: 80px;
     width: auto;
     display: block;
+    transition: height 0.3s ease;
 }
 
 /* ===== Desktop menu ===== */
@@ -97,6 +108,8 @@
         display: block;
     }
 }
+
+
 
 .menu {
     display: flex;
@@ -210,6 +223,8 @@
 }
 
 /* Home page hamburger hover - mobile only */
+
+
 @media (max-width: 991px) {
     .navigation-bar.home-page .hamburger:hover {
         background: rgba(255, 255, 255, 0.1);
@@ -443,11 +458,16 @@
 
 @media (max-width: 768px) {
     .navigation-bar-logo img {
-        height: 40px;
+        height: 48px;
     }
     
     .navigation-bar .nav-inner {
         min-height: 40px;
-        padding: 6px 10px;
+        padding: 10px 20px;
     }
+
+    .navigation-bar.scrolled  .navigation-bar-logo img{
+        top: 0px;
+    }
+
 }
