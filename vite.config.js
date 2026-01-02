@@ -10,13 +10,13 @@ export default defineConfig({
     proxy: {
       // Local Development API (localhost:4040/api/endpoints)
       '/api': {
-        target: 'http://192.168.1.222:4040/api',
+        target: 'https://napi.prepseed.com/api',
         changeOrigin: true,
         secure: false,
       },
       // Live API (testapi.prepseed.com/endpoints - no /api prefix)
       '/live': {
-        target: 'http://192.168.1.222:4040/api',
+        target: 'https://napi.prepseed.com/api',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/live/, '')
@@ -33,7 +33,7 @@ export default defineConfig({
 //       '/api': {
 //         target: mode === 'development' 
 //           ? 'http://localhost:4040' 
-//           : 'http://192.168.1.222:4040/api',
+//           : 'https://napi.prepseed.com/api',
 //         changeOrigin: true,
 //         secure: false,
 //       }
