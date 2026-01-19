@@ -6,6 +6,16 @@
   color: #1a1a1a;
   position: relative;
 }
+.img-parent{
+  display: flex;
+  /* align-items: start; */
+  justify-content: start;
+}
+.image-social{
+  height: 80px;
+  width: 80px;
+background: transparent;
+}
 
 /* Grid */
 .ft__grid {
