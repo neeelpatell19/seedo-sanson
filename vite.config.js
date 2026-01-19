@@ -1,29 +1,29 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue()],
   server: {
-    host: '0.0.0.0', // Allow external connections
-    port: 5173,      // Default Vite port
+    host: "0.0.0.0", // Allow external connections
+    port: 5173, // Default Vite port
     proxy: {
       // Local Development API (localhost:4040/api/endpoints)
-      '/api': {
-        target: 'https://napi.prepseed.com/api',
+      "/api": {
+        target: "https://napi.prepseed.com",
         changeOrigin: true,
         secure: false,
       },
       // Live API (testapi.prepseed.com/endpoints - no /api prefix)
-      '/live': {
-        target: 'https://napi.prepseed.com/api',
+      "/live": {
+        target: "https://napi.prepseed.com",
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/live/, '')
-      }
-    }
-  }
-})
+        rewrite: (path) => path.replace(/^\/live/, ""),
+      },
+    },
+  },
+});
 
 // Alternative: Switch between APIs based on environment
 // export default defineConfig(({ mode }) => ({
@@ -31,9 +31,9 @@ export default defineConfig({
 //   server: {
 //     proxy: {
 //       '/api': {
-//         target: mode === 'development' 
-//           ? 'http://localhost:4040' 
-//           : 'https://napi.prepseed.com/api',
+//         target: mode === 'development'
+//           ? 'http://localhost:4040'
+//           : 'https://napi.prepseed.com',
 //         changeOrigin: true,
 //         secure: false,
 //       }
