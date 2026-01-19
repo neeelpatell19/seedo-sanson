@@ -11,14 +11,20 @@
                 <p class="ft__tagline">Break the Limit.</p>
 
                 <div class="ft__socials" aria-label="Social links">
-                    <a class="ft__social" href="https://www.instagram.com/seedotoys/" target="_blank" rel="noopener"
+                    <!-- <a class="ft__social" href="https://www.instagram.com/seedotoys/" target="_blank" rel="noopener"
                         aria-label="Instagram">
                         <i class="ri-instagram-line" aria-hidden="true"></i>
                     </a>
                     <a class="ft__social" href="https://www.linkedin.com/company/sanson-promo-innovations-llp/"
                         target="_blank" rel="noopener" aria-label="LinkedIn">
                         <i class="ri-linkedin-box-line" aria-hidden="true"></i>
-                    </a>
+                    </a> -->
+                        
+                            <img class="image-social" src="/Images/fb-qr.png" alt="facebook-qr">
+                    <img class="image-social" src="/Images/ig-qr.png" alt="instagram-qr">
+                    <img class="image-social" src="/Images/ln-qr.png" alt="linkedin-qr">
+                       
+                    
                 </div>
             </div>
 
