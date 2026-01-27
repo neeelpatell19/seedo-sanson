@@ -6,6 +6,7 @@ import SpecificProductPage from './components/Products/SpecificProductPage/Speci
 import Allproducts from './components/Products/Allproducts/Allproducts.vue'
 import CategoriesWiseProduct from './components/Products/CategoriesWiseProduct/CategoriesWiseProduct.vue'
 import ManuFacturing from './components/OtherComponents/ManuFacturing/ManuFacturing.vue'
+import VideoPlayer from './components/OtherComponents/VideoPlayer/VideoPlayer.vue'
 const routes = [
   {
     path: '/',
@@ -46,6 +47,11 @@ const routes = [
     path: '/manufacturing',
     name: 'Manufacturing',
     component: ManuFacturing
+  },
+  {
+    path: '/how-to-play-video-for-blaze-runner',
+  name: 'VideoPlayer',
+  component: VideoPlayer
   }
 ]
 

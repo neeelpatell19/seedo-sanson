@@ -28,9 +28,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <NavigationBar />     
+  <NavigationBar v-if="$route.path !== '/how-to-play-video-for-blaze-runner'" />     
   <router-view :key="$route.fullPath" />
-  <Footer />
+  <Footer v-if="$route.path !== '/how-to-play-video-for-blaze-runner'" />
 </template>
 
 <style scoped></style>
