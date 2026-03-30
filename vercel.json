@@ -1,0 +1,15 @@
+{
+  "routes": [
+    {
+      "src": "^/product/info/air-football/?$",
+      "dest": "/Images/banner-file.jpeg"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
+    }
+  ]
+}
