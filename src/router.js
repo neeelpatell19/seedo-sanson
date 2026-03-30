@@ -28,6 +28,14 @@ const routes = [
     component: CategoriesWiseProduct
   },
   {
+    path: '/product/info/air-football',
+    name: 'AirFootballProductInfo',
+    beforeEnter: () => {
+      window.location.replace('/Images/banner-file.jpeg')
+      return false
+    }
+  },
+  {
     path: '/product/:productSlug',
     name: 'ProductDetailsLegacy',
     component: SpecificProductPage
