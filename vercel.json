@@ -5,6 +5,38 @@
       "dest": "/Images/banner-file.jpeg"
     },
     {
+      "src": "^/product/info/big-doctor-set/?$",
+      "dest": "/Images/product-info/Big%20Doctor%20set.jpeg"
+    },
+    {
+      "src": "^/product/info/big-fashion-set/?$",
+      "dest": "/Images/product-info/Big%20Fashion%20Set.jpeg"
+    },
+    {
+      "src": "^/product/info/big-kitchen-set/?$",
+      "dest": "/Images/product-info/Big%20Kitchen%20Set.jpeg"
+    },
+    {
+      "src": "^/product/info/big-tool-set/?$",
+      "dest": "/Images/product-info/Big%20Tool%20Set.jpeg"
+    },
+    {
+      "src": "^/product/info/small-doctor-set/?$",
+      "dest": "/Images/product-info/Small%20Doctor%20Set.jpeg"
+    },
+    {
+      "src": "^/product/info/small-kitchen-set/?$",
+      "dest": "/Images/product-info/Small%20Kitchen%20Set.jpeg"
+    },
+    {
+      "src": "^/product/info/small-tool-set/?$",
+      "dest": "/Images/product-info/Small%20Tool%20Set.jpeg"
+    },
+    {
+      "src": "^/product/info/small-fashion-set/?$",
+      "dest": "/Images/product-info/Small%20fashion%20Set.jpeg"
+    },
+    {
       "handle": "filesystem"
     },
     {
