@@ -81,6 +81,13 @@ const routes = [
     ...redirectToAsset('/Images/product-info/Small%20fashion%20Set.jpeg')
   },
   {
+    path: '/product/video/blaze-runner',
+    name: 'BlazeRunnerUnboxingVideo',
+    ...redirectToAsset(
+      'https://prepseed-files.prepseed.com/seedo/How+To+Play+Video+of+Blaze+Runner.mp4'
+    )
+  },
+  {
     path: '/product/:productSlug',
     name: 'ProductDetailsLegacy',
     component: SpecificProductPage
