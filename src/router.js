@@ -88,6 +88,23 @@ const routes = [
     )
   },
   {
+    path: '/docs/catalogue/domestic',
+    name: 'CatalogueDomestic',
+    ...redirectToAsset(
+      'https://prepseed-files.prepseed.com/seedo/SEEDO+CATALOG+DOMESTIC.pdf'
+    )
+  },
+  {
+    path: '/docs/catalogue/master',
+    name: 'CatalogueMaster',
+    ...redirectToAsset('https://prepseed-files.prepseed.com/seedo/SEEDO+CATALOG+MASTER.pdf')
+  },
+  {
+    path: '/docs/catalogue',
+    name: 'Catalogue',
+    ...redirectToAsset('https://prepseed-files.prepseed.com/seedo/SEEDO+CATALOG.pdf')
+  },
+  {
     path: '/product/:productSlug',
     name: 'ProductDetailsLegacy',
     component: SpecificProductPage
