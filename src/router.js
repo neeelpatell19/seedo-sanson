@@ -102,7 +102,7 @@ const routes = [
   {
     path: '/docs/catalogue',
     name: 'Catalogue',
-    ...redirectToAsset('https://prepseed-files.prepseed.com/seedo/SEEDO+CATALOG.pdf')
+    ...redirectToAsset('https://prepseed-files.prepseed.com/seedo/SEEDO+CATALOG+2026.pdf')
   },
   {
     path: '/product/:productSlug',
