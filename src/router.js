@@ -6,6 +6,7 @@ import SpecificProductPage from './components/Products/SpecificProductPage/Speci
 import Allproducts from './components/Products/Allproducts/Allproducts.vue'
 import CategoriesWiseProduct from './components/Products/CategoriesWiseProduct/CategoriesWiseProduct.vue'
 import ManuFacturing from './components/OtherComponents/ManuFacturing/ManuFacturing.vue'
+import ProductInfoGallery from './components/ProductInfo/ProductInfoGallery.vue'
 
 const redirectToAsset = (assetPath) => ({
   beforeEnter: () => {
@@ -38,7 +39,79 @@ const routes = [
   {
     path: '/product/info/air-football',
     name: 'AirFootballProductInfo',
-    ...redirectToAsset('/Images/banner-file.jpeg')
+    ...redirectToAsset('/Images/product-info/Air%20Football.png')
+  },
+  {
+    path: '/product/info/big-stunt',
+    name: 'BigStuntProductInfo',
+    component: ProductInfoGallery,
+    props: {
+      title: 'Big Stunt',
+      images: [
+        '/Images/product-info/Big%20Stunt%201.1.png',
+        '/Images/product-info/Big%20Stunt%201.2.png'
+      ]
+    }
+  },
+  {
+    path: '/product/info/buildieflakes-42-pcs',
+    name: 'Buildieflakes42ProductInfo',
+    ...redirectToAsset('/Images/product-info/Buildieflakes%2042%20pcs.png')
+  },
+  {
+    path: '/product/info/buildieflakes-90-pcs',
+    name: 'Buildieflakes90ProductInfo',
+    ...redirectToAsset('/Images/product-info/Buildieflakes%2090%20pcs.png')
+  },
+  {
+    path: '/product/info/color-blast-rocket-blocks',
+    name: 'ColorBlastRocketBlocksProductInfo',
+    ...redirectToAsset('/Images/product-info/Color%20Blast%20Rocket%20Blocks%20100%20Pcs.png')
+  },
+  {
+    path: '/product/info/crack-n-create-30-pcs',
+    name: 'CrackNCreate30ProductInfo',
+    ...redirectToAsset('/Images/product-info/Crack%20N%20Create%2030%20pcs.png')
+  },
+  {
+    path: '/product/info/pack-of-6-pull-back-cars',
+    name: 'PackOf6PullBackCarsProductInfo',
+    ...redirectToAsset('/Images/product-info/Pack%20of%206%20plastic%20pull%20back%20cars.png')
+  },
+  {
+    path: '/product/info/press-n-go-rocket',
+    name: 'PressNGoRocketProductInfo',
+    ...redirectToAsset('/Images/product-info/Press%20N%20Go%20Rocket.png')
+  },
+  {
+    path: '/product/info/road-sniper',
+    name: 'RoadSniperProductInfo',
+    component: ProductInfoGallery,
+    props: {
+      title: 'Road Sniper',
+      images: [
+        '/Images/product-info/Road%20Sniper%201.1.png',
+        '/Images/product-info/Road%20Sniper%201.2.png'
+      ]
+    }
+  },
+  {
+    path: '/product/info/super-sonic-stunt-car',
+    name: 'SuperSonicStuntCarProductInfo',
+    ...redirectToAsset('/Images/product-info/Super%20Sonic%20Stunt%20Car.png')
+  },
+  {
+    path: '/product/info/thunder-bird',
+    name: 'ThunderBirdProductInfo',
+    component: ProductInfoGallery,
+    props: {
+      title: 'Thunder Bird',
+      images: [
+        '/Images/product-info/Thunder%20Bird%201.1.png',
+        '/Images/product-info/Thunder%20Bird%201.2.png',
+        '/Images/product-info/Thunder%20Bird%201.3.png'
+      ]
+    }
   },
   {
     path: '/product/info/big-doctor-set',

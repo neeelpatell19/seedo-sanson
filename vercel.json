@@ -2,7 +2,35 @@
   "routes": [
     {
       "src": "^/product/info/air-football/?$",
-      "dest": "/Images/banner-file.jpeg"
+      "dest": "/Images/product-info/Air%20Football.png"
+    },
+    {
+      "src": "^/product/info/buildieflakes-42-pcs/?$",
+      "dest": "/Images/product-info/Buildieflakes%2042%20pcs.png"
+    },
+    {
+      "src": "^/product/info/buildieflakes-90-pcs/?$",
+      "dest": "/Images/product-info/Buildieflakes%2090%20pcs.png"
+    },
+    {
+      "src": "^/product/info/color-blast-rocket-blocks/?$",
+      "dest": "/Images/product-info/Color%20Blast%20Rocket%20Blocks%20100%20Pcs.png"
+    },
+    {
+      "src": "^/product/info/crack-n-create-30-pcs/?$",
+      "dest": "/Images/product-info/Crack%20N%20Create%2030%20pcs.png"
+    },
+    {
+      "src": "^/product/info/pack-of-6-pull-back-cars/?$",
+      "dest": "/Images/product-info/Pack%20of%206%20plastic%20pull%20back%20cars.png"
+    },
+    {
+      "src": "^/product/info/press-n-go-rocket/?$",
+      "dest": "/Images/product-info/Press%20N%20Go%20Rocket.png"
+    },
+    {
+      "src": "^/product/info/super-sonic-stunt-car/?$",
+      "dest": "/Images/product-info/Super%20Sonic%20Stunt%20Car.png"
     },
     {
       "src": "^/product/info/big-doctor-set/?$",
