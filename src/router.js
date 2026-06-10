@@ -42,6 +42,11 @@ const routes = [
     ...redirectToAsset('/Images/product-info/Air%20Football.png')
   },
   {
+    path: '/product/info/light-and-gear-dino',
+    name: 'LightAndGearDinoProductInfo',
+    ...redirectToAsset('/Images/light-and-gear-dino.png')
+  },
+  {
     path: '/product/info/big-stunt',
     name: 'BigStuntProductInfo',
     component: ProductInfoGallery,

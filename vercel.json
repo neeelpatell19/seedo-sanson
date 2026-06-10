@@ -5,6 +5,10 @@
       "dest": "/Images/product-info/Air%20Football.png"
     },
     {
+      "src": "^/product/info/light-and-gear-dino/?$",
+      "dest": "/Images/light-and-gear-dino.png"
+    },
+    {
       "src": "^/product/info/buildieflakes-42-pcs/?$",
       "dest": "/Images/product-info/Buildieflakes%2042%20pcs.png"
     },
