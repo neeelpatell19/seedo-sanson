@@ -1,10 +1,18 @@
 <template>
   <div class="pig-wrap">
     <h1 class="pig-title">{{ title }}</h1>
-    <div class="pig-images">
+    <div class="pig-media">
+      <video
+        v-for="(src, idx) in videos"
+        :key="'v-' + idx"
+        :src="src"
+        controls
+        playsinline
+        class="pig-video"
+      />
       <img
         v-for="(src, idx) in images"
-        :key="idx"
+        :key="'i-' + idx"
         :src="src"
         :alt="`${title} - image ${idx + 1}`"
         class="pig-img"
@@ -16,7 +24,8 @@
 <script setup>
 defineProps({
   title: { type: String, default: '' },
-  images: { type: Array, default: () => [] }
+  images: { type: Array, default: () => [] },
+  videos: { type: Array, default: () => [] }
 })
 </script>
 
@@ -39,13 +48,20 @@ defineProps({
   text-align: center;
 }
 
-.pig-images {
+.pig-media {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
   width: 100%;
   max-width: 720px;
+}
+
+.pig-video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
 .pig-img {

@@ -52,9 +52,9 @@ const routes = [
     component: ProductInfoGallery,
     props: {
       title: 'Big Stunt',
-      images: [
-        '/Images/product-info/Big%20Stunt%201.1.png',
-        '/Images/product-info/Big%20Stunt%201.2.png'
+      videos: [
+        'https://prepseed-files.prepseed.com/seedo/Big+Stunt+Part+1.mp4',
+        'https://prepseed-files.prepseed.com/seedo/Big+Stunt+Part+2.mp4'
       ]
     }
   },
@@ -94,9 +94,8 @@ const routes = [
     component: ProductInfoGallery,
     props: {
       title: 'Road Sniper',
-      images: [
-        '/Images/product-info/Road%20Sniper%201.1.png',
-        '/Images/product-info/Road%20Sniper%201.2.png'
+      videos: [
+        'https://prepseed-files.prepseed.com/seedo/Road+Sniper.mp4'
       ]
     }
   },
@@ -111,10 +110,8 @@ const routes = [
     component: ProductInfoGallery,
     props: {
       title: 'Thunder Bird',
-      images: [
-        '/Images/product-info/Thunder%20Bird%201.1.png',
-        '/Images/product-info/Thunder%20Bird%201.2.png',
-        '/Images/product-info/Thunder%20Bird%201.3.png'
+      videos: [
+        'https://prepseed-files.prepseed.com/seedo/Thunderbird+.mp4'
       ]
     }
   },
