@@ -39,7 +39,7 @@ const routes = [
   {
     path: '/product/info/air-football',
     name: 'AirFootballProductInfo',
-    ...redirectToAsset('/Images/product-info/Air%20Football.png')
+    ...redirectToAsset('/Images/product-info/Air%20Football.mp4')
   },
   {
     path: '/product/info/light-and-gear-dino',
