@@ -79,6 +79,17 @@ const routes = [
     ...redirectToAsset('/Images/product-info/Crack%20N%20Create%2030%20pcs.png')
   },
   {
+    path: '/product/info/grip-n-go',
+    name: 'GripNGoProductInfo',
+    component: ProductInfoGallery,
+    props: {
+      title: 'Grip N Go',
+      images: [
+        '/Images/product-info/Grip%20N%20Go.png'
+      ]
+    }
+  },
+  {
     path: '/product/info/pack-of-6-pull-back-cars',
     name: 'PackOf6PullBackCarsProductInfo',
     ...redirectToAsset('/Images/product-info/Pack%20of%206%20plastic%20pull%20back%20cars.png')
